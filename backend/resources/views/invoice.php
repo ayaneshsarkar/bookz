@@ -300,8 +300,8 @@
           <tr>
             <th>#</th>
             <th>Product Title</th>
-            <th>Netto</th>
-            <th>Tax (18%)</th>
+            <th>Net</th>
+            <th>GST (18%)</th>
             <th>Gross</th>
           </tr>
         </thead>
@@ -332,7 +332,7 @@
           <tr>
             <th></th>
             <th></th>
-            <th>Total Netto</th>
+            <th>Total Net</th>
             <th>Total Tax</th>
             <th>Total Gross</th>
           </tr>
