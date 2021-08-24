@@ -150,7 +150,7 @@
             ]);
         }
 
-        public function generateInvoice(Request $request, Response $response)
+        private function generateInvoice(array $data = [], Response $response)
         {
             $dompdf = new Dompdf();
             $dompdf->setPaper('A4', 'portrait');
@@ -163,7 +163,7 @@
             $dompdf->render();
             $pdf = $dompdf->output();
 
-            \file_put_contents("invoices/invoice.pdf", $pdf);
+            return $pdf;
         }
 
     }
