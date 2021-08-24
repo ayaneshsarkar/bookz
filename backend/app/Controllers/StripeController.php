@@ -6,16 +6,17 @@
      */
     namespace App\Controllers;
 
-    use App\Controllers;
     use App\Core\Application;
     use App\Core\Request;
     use App\Core\Response;
     use App\Middlewares\AuthMiddleware;
     use App\Core\Validator;
     use App\Core\FileHandler;
+    use App\Helpers\Helper;
     use Dompdf\Dompdf;
     use Dompdf\Exception;
     use Error;
+    use NumberFormatter;
     use Stripe\PaymentIntent;
     use Stripe\Stripe;
 
@@ -61,6 +62,7 @@
             $data = $request->getBody();
             $amount = $this->cart->cartTotal();
             $userId = Application::$APP->user->id;
+            $invoiceId = \date('Y-m-d') . '-' . Helper::randomString(12);
 
             Validator::isString($data->transactionId ?? NULL, 'transaction id', true);
             Validator::isString($data->status ?? NULL , 'status', true);
@@ -81,6 +83,8 @@
             FileHandler::makeDir('orders/' . $userId);
 
             // Store Order
+            // Initiating Invoice Id
+            $data->invoiceId = $invoiceId;
             $orderId = $this->order->createOrder(Application::$APP->user, $data, $amount);
 
             FileHandler::makeDir('orders/'.$userId."/$orderId");
@@ -112,6 +116,25 @@
             }
 
             $this->order->createOrderItems($orderId, $cartItems);
+
+            // Store Invoice
+
+            $invoiceData = [
+                'orderId' => $orderId,
+                'invoiceNo' => $invoiceId,
+                'transactionId' => $data->transactionId ?? null,
+                'items' => $cartItems,
+                'fmt' => new NumberFormatter('en_IN', NumberFormatter::CURRENCY),
+                'i' => 1
+            ];
+
+            $invoiceOutput = $this->generateInvoice($invoiceData, $response);
+
+            // Store Invoice File
+            FileHandler::putFile(
+                'orders/'.$userId."/$orderId/invoices/$invoiceId.pdf", 
+                $invoiceOutput
+            );
             
             // Clear Cart
             $this->cart->deleteCart($cartId);
@@ -156,7 +179,7 @@
             $dompdf->setPaper('A4', 'portrait');
 
             $fileName = 'invoice';
-            $html = $response->loadView($fileName);
+            $html = $response->loadView($fileName, $data);
 
             $dompdf->loadHtml($html);
             

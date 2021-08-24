@@ -102,7 +102,7 @@
          *
          * @return integer
          */
-        public function putFile(string $filePath, string $fileData = ''): int
+        public static function putFile(string $filePath, string $fileData = ''): int
         {
             return \file_put_contents($filePath, $fileData);
         }

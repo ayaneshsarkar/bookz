@@ -8,6 +8,17 @@
   <title>Invoice</title>
 </head>
 
+<?php 
+  $totalNet = $totalTax = $totalGross = 0; 
+
+  function getTaxedPrice(int $price, int $percentage): object {
+    $tax = ($percentage / 100) * $price;
+    $netPrice = $price - $tax;
+
+    return (object)[ 'net' => $netPrice, 'tax' => $tax ];
+  }
+?>
+
 
 <style>
   /* @page { margin: 5px; } */
@@ -238,17 +249,10 @@
 
 <body>
   <div class="container">
-    <!-- <div style="position: absolute; top: 0px; right: 50%; display: none;">
-      <span class="text small float-right">Invoice</span>
-    </div>  -->
-
-    <!-- <hr style="position: relative; top: 50px;"> -->
-
     <div class="row" style="position: relative; margin-bottom: 3rem;">
-
       <div style="position: absolute; top: 0;" class="header mb-5">
         <span style="white-space: pre-line !important;">
-          <strong>Herr/Frau/Firma</strong><br>
+          <strong>Mr./Mrs./Company</strong><br>
           Ayanesh Sarkar<br>
           South Sreepur Boral<br>
           Kolkata - 700154<br>
@@ -263,22 +267,12 @@
 
       <div style="position: absolute; top: 0; right: 50%;">
         <span class="float-right text-right" style="text-align: right;">
-          <!-- <strong>#1234567</strong><br> -->
           Online Freelance Services<br>
           Ayanesh Sarkar<br>
           South Sreepur Boral<br>
           Kolkata - 700154<br><br>
-          <!-- <strong>Date: </strong>1/1/21<br> -->
         </span>
       </div>
-
-      <!-- <div style="position: absolute; top: 75px; right: 50%;">
-        <span class="float-right text-right">
-          <strong class="semi">Order ID: </strong>$data['order_id'] ?? '1234567'<br>
-          <strong class="semi">Pay ID: </strong>$data['payment_id'] ?? '123456789'<br>
-          <strong class="semi">Payer ID: </strong>$data['payer_id'] ?? '1234567890'
-        </span>
-      </div> -->
     </div>
 
     <div class="row element mb-2" style="top: 8.4rem; left: 0;">
@@ -288,14 +282,14 @@
 
     <div class="row element mb-2" style="top: 6.7rem; left: 0;">
       <div class="space-between" style="width: 100%">
-        <div class="item" style="margin-right: 2rem">
-          <span class="semiTitle">Invoice Num: </span> ABCD12345
+        <!-- <div class="item" style="margin-right: 2rem">
+          <span class="semiTitle">Invoice Id: </span> <?php // $invoiceNo; ?>
         </div>
         <div class="item" style="margin-right: 2rem">
-          <span class="semiTitle">Payer Id: </span> ABCD123
-        </div>
+          <span class="semiTitle">Payer Id: </span> <?php // $transactionId; ?>
+        </div> -->
         <div class="item">
-          <span class="semiTitle">Date: </span> 01.01.2021
+          <span class="semiTitle">Date: </span> <?= \date('Y.m.d'); ?>
         </div>
       </div>
     </div>
@@ -313,22 +307,25 @@
         </thead>
   
         <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>Warbreaker</td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
-          </tr>
-
-          <tr>
-            <td scope="row">2</td>
-            <td>Warbreaker</td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
-          </tr>
-          
+          <?php if($items): ?>
+            <?php foreach($items as $item): ?>
+              <?php 
+                $actualPrice = ($item->price  * $item->quantity);
+                $prices = getTaxedPrice($actualPrice, 18);
+                
+                $totalNet += $prices->net;
+                $totalTax += $prices->tax;
+                $totalGross += $actualPrice;
+              ?>
+              <tr>
+                <td scope="row"><?= $i++; ?></td>
+                <td><?= $item->title; ?></td>
+                <td><?= $fmt->format($prices->net); ?></td>
+                <td><?= $fmt->format($prices->tax); ?></td>
+                <td><?= $fmt->format($actualPrice); ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </tbody>
   
         <thead>
@@ -345,9 +342,9 @@
           <tr>
             <td></td>
             <td></td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
+            <td><?=  $fmt->format($totalNet); ?></td>
+            <td><?=  $fmt->format($totalTax); ?></td>
+            <td><?=  $fmt->format($totalGross); ?></td>
           </tr>
         </tbody>
       </table>
@@ -360,46 +357,35 @@
     <h5 class="mb-2 element" 
       style="top: 0; left: 0; font-size: 1.2rem !important;"
     >
-      Transaction Id: <span>(#ABC1234567)</span>
+      Transaction Id: <span>(#<?= strtoupper($transactionId); ?>)</span>
     </h5>
 
     <div class="row element" style="top: -2rem; left: 0;">
       <table class="content-table">
-        <!-- <thead>
-          <tr>
-            <th>#{{ strtoupper($data['order_id']) }}</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead> -->
-
         <thead>
           <tr>
             <th>Date</th>
             <th>Gateway</th>
-            <th>Transaction Id:</th>
+            <!-- <th>Transaction Id:</th> -->
             <th>Total Amount</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <td>01.01.2021</td>
+            <td><?= date('Y-m-d'); ?></td>
             <td>
               Stripe Payment Service
             </td>
-            <td>ABC12345</td>
-            <td>470</td>
+            <td><?= $fmt->format($totalGross); ?></td>
           </tr>
         </tbody>
 
         <thead>
           <tr>
             <th></th>
-            <th></th>
-            <th class="right">Balance</th>
-            <th>0</th>
+            <th class="right">Due</th>
+            <th><?= $fmt->format(0); ?></th>
           </tr>
         </thead>
       </table>

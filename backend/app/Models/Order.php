@@ -44,7 +44,7 @@
                 'date_of_birth' => $user->date_of_birth,
                 'transaction_id' => $data->transactionId,
                 'status' => $data->status,
-                'invoice_id' => Helper::randomString(12),
+                'invoice_id' => $data->invoiceId ?? Helper::randomString(12),
                 'paid_amount' => $amount,
                 'order_code' => 
                 \date('Y-m-d', \strtotime(\time())) . '-' . Helper::randomString(50)
