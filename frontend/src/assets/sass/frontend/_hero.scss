@@ -1,0 +1,45 @@
+#hero {
+  grid-column: 1 / -1;
+  background-color: $heroColor;
+  height: 30rem;
+  border-radius: 2rem;
+  padding: 4rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+
+  .hero__textbox {
+    flex: 0 0 50%;
+    h1 {
+      font-size: 5rem;
+      font-weight: 800;
+      color: $themeColor;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 3rem;
+      color: $secondaryText;
+    }
+
+    a {
+      padding: 1rem 2.5rem;
+      font-size: 2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 5rem;
+      background-color: $heroButton;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .hero__image {
+    position: relative;
+    width: 150%;
+    height: 150%;
+    align-self: center;
+    margin-left: 3rem;
+  }
+}

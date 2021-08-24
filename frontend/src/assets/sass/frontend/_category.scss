@@ -1,0 +1,21 @@
+.category {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  margin-bottom: $sectionBreak;
+
+  &__box {
+    height: 15rem;
+    border-radius: 1.5rem;
+    background-image: linear-gradient(to right bottom, $lightTheme, $lighterTheme);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-weight: 600;
+      font-size: 2.5rem;
+    }
+  }
+}

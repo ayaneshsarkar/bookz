@@ -1,0 +1,73 @@
+.tableContainer {
+  grid-column: 2 / 12;
+  border-collapse: collapse;
+  background-color: $adminBookTheme;
+  border-radius: 2rem ;
+  overflow: hidden;
+  box-shadow: $bXl;
+  transition: $normalTransition;
+
+  thead {
+    tr {
+      background-color: $lighterTheme;
+      color: $bookGreyText;
+      text-align: left;
+
+      th {
+        font-size: 2rem;
+        font-weight: 600 !important;
+
+        &::selection {
+          background-color: $primaryText;
+          color: $lighterTheme;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      // &:not(:last-child) {
+      //   border-bottom: 0.1rem solid $inputText;
+      // }
+
+      &:nth-of-type(even) {
+        background-color: $sidebarMenuTheme;
+      }
+
+      // &:last-of-type {
+      //   border-bottom: 0.2rem solid $themeColor;
+      // }
+
+      td {
+        font-size: 1.7rem;
+        font-weight: 400 !important;
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+          fill: none;
+          stroke: $primaryText;
+          stroke-width: 2;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  th, td {
+    padding: 2rem 3rem;
+    color: $bookGreyText;
+  }
+
+  &.small {
+    th, td {
+      padding: 1.2rem 1.5rem;
+    }
+  }
+
+  margin-bottom: $sectionBreak-lg;
+}

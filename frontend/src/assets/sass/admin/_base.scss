@@ -1,0 +1,107 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*::selection {
+  background-color: $themeColor;
+  color: $primaryText;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:link, &:visited {
+    color: inherit;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+
+input, textarea, select {
+  border: none;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+
+  &:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-color: inherit;
+  }
+
+  &::placeholder {
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+// input[type="date" i] {
+//   color: $primaryText !important;
+// }
+
+textarea {
+  resize: none;
+}
+
+button {
+  border: none;
+  outline: none !important;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.adminMargin {
+  margin-left: 10rem !important;
+}
+
+.flexBreak {
+  flex: 1;
+  height: 0;
+}
+
+.whiteSelection {
+  &::selection{
+    background-color: $primaryText;
+    color: $lighterTheme;
+  }
+}
+
+.noMargin {
+  margin: 0 0 0 0 !important;
+}

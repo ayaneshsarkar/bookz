@@ -1,0 +1,22 @@
+.adminContainer {
+  grid-column: 2 / 12;
+  // min-height: 20rem;
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  box-shadow: $bXl;
+  // border: 0.1rem solid $themeColor;
+  background-color: $adminBookTheme;
+  transition: $normalTransition;
+
+  &.flex {
+    display: flex;
+  }
+
+  &.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+    grid-gap: 10rem;
+  }
+
+  margin-bottom: $sectionBreak-lg;
+}

@@ -1,0 +1,102 @@
+.popular {
+  grid-column: 1 / -1;
+  margin-bottom: $sectionBreak-md;
+}
+
+.featured {
+  grid-column: 1 / -1;
+  margin-bottom: $sectionBreak-lg;
+}
+
+.allbooks {
+  padding: 2rem 0;
+  grid-column: 1 / -1;
+  margin-bottom: $sectionBreak-lg;
+}
+
+.list__title {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  // width: 100%;
+}
+
+.list__box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  grid-gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  &.lg {
+    justify-content: flex-start;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-gap: 4rem;
+  }
+
+  &-item {
+    height: auto;
+
+    &--img {
+      height: 25rem;
+      border-radius: 1rem;
+      background-image: linear-gradient(to right bottom, $lightTheme, $lighterTheme);
+      margin-bottom: 1.5rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.product {
+        height: 35rem;
+        border-radius: 0 !important;
+        background-image: linear-gradient(to right bottom, $adminBookTheme, $adminBookTheme);
+        transform: scale(1);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+          cursor: pointer;
+          transform: translateY(-0.5rem);
+          transform-origin: center;
+        }
+      }
+
+      .bookimg {
+        padding: 2rem;
+        width: 100%;
+        height: 100%;
+        // object-fit: cover;
+      }
+    }
+
+    &--title {
+      font-weight: 600;
+      font-size: 2rem;
+    }
+
+    &--author {
+      color: $greyText;
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+
+    &--price {
+      padding: 0.7rem 0 0 0;
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    
+    &.hover {
+      padding: 0.7rem 0.7rem 2.5rem;
+      //box-shadow: $bDflt;
+    }
+
+    &.hover:hover {
+      // box-shadow: $bMd;
+      box-shadow: $bDflt;
+    }
+  }
+}

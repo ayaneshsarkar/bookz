@@ -1,0 +1,54 @@
+.books {
+  grid-column: 2 / 12;
+  padding: 0 2rem;
+  margin-bottom: $sectionBreak;
+
+  &__title {
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: $titleGreyText;
+    margin-bottom: 4rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    justify-content: center;
+    align-items: center;
+    grid-gap: 4rem;
+
+
+    &--box {
+      background-color: $adminBookTheme;
+      height: 35rem;
+      // border-radius: 2rem;
+      transition: all 0.2s ease-out;
+      margin-bottom: 1rem;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-img {
+        max-width: 100%;
+        height: 100%;
+      }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: $bXl;
+        transform: translateY(-0.2rem);
+      }
+    }
+
+    &--title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $bookGreyText;
+      text-align: center;
+    }
+  }
+}

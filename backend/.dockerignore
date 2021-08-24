@@ -1,0 +1,5 @@
+vendor
+public/avatars
+public/bookimages
+public/orders
+composer.lock

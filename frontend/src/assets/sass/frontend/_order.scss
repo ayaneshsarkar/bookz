@@ -1,0 +1,43 @@
+.order {
+
+  &__title {
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+
+    &--price {
+      margin-left: 2rem;
+      color: $bookGreyText;
+    }
+  }
+
+  &__delivery {
+    margin-bottom: 5rem;
+    color: $bookGreyText;
+    font-weight: 600;
+
+    &--title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &--name {
+      font-size: 2rem;
+    }
+
+    &--content {
+      color: $greyText;
+      font-size: 1.9rem;
+      white-space: pre-wrap;
+    }
+  }
+
+  &__payment {
+    margin-bottom: 3rem;
+
+    &--title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}

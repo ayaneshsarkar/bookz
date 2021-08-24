@@ -1,0 +1,23 @@
+.premium {
+  grid-column: 1 / -1;
+  padding: 5rem;
+  background-color: $secondaryTheme;
+  margin-bottom: $sectionBreak-md;
+
+  .list__box {
+    padding: 0 0 5rem 0;
+    //grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-gap: 7rem;
+
+    &-item {
+      &--img {
+        background-color: $premiumTheme;
+        background-image: none;
+      }
+
+      &--author {
+        color: $lightGreyText;
+      }
+    }
+  }
+}

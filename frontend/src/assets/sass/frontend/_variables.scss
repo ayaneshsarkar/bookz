@@ -1,0 +1,57 @@
+$bodyColor: #303A52;
+$searhboxColor: #5C6375;
+$themeColor: rgba(252, 133, 174, 1);
+$secondaryTheme: rgba(253, 133, 180, 0.8);
+$premiumTheme: #FFC5DC;
+$newsletterTheme: #D476A0;
+$heroColor:#5C6375;
+$heroButton: #8B8E96;
+$inputButton: #303A52;
+$footerTheme: #574B90;
+$darkenedBodyColor: #2D3853;
+
+$sidebarMenuTheme: #5F6C8B;
+
+$lightTheme: rgba(252, 133, 174, 0.9);
+$lighterTheme: rgba(252, 133, 174, 0.7);
+$disabledTheme: rgba(223, 102, 144, 0.7);
+
+// Breakpoint Widths
+$xlBreak: 1200px;
+$lgBreak: 992px;
+$mdBreak: 768px;
+$smBreak: 576px;
+
+$sectionBreak-lg: 15rem;
+$sectionBreak: 10rem;
+$sectionBreak-md: 5rem;
+
+// Typography
+$primaryFont: 1.6rem;
+$mainavFont: 3.5rem;
+
+// Text Colors
+$primaryText: #fff;
+$secondaryText: #F8F8F8;
+$greyText: #B6B6B6;
+$titleGreyText: #E4E2E3;
+$bookGreyText: #E1E1E1;
+$lightGreyText: #ECECEC;
+$inputText: #8E8E8E;
+$onlineColor: #1DB573;
+
+
+
+// Transitions
+$normalTransition: all 0.3s linear;
+
+// From Admin
+$adminBookTheme: #434E6A;
+
+// Box Shadows
+$bSm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$bDflt: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$bMd: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$bLg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$bXl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$b2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);

@@ -1,0 +1,78 @@
+.newsletter {
+  grid-column: 1 / -1;
+  //padding: 5rem 0;
+  padding-bottom: 0;
+  margin-bottom: $sectionBreak-lg;
+
+  .primaryHeading {
+    padding: 0 0 8rem 0;
+  }
+
+  &__box {
+    width: 100%;
+    height: 25rem;
+    border-radius: 2rem;
+    background-color: $newsletterTheme;
+
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      grid-column: 2 / 5;
+      position: relative;
+      width: 120%;
+      height: 130%;
+      align-self: center;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &-emailbox {
+      grid-column: 6 / 10;
+    }
+  }
+}
+
+.mailbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  //margin: 0 auto;
+
+  label {
+    color: $primaryText;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.7rem;
+  }
+
+  &__input {
+    display: flex;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    padding: 2rem 3rem;
+    font-size: $primaryFont;
+    font-weight: 600;
+    border-radius: 2rem;
+    color: $inputText;
+    margin-right: -10rem;
+  }
+
+  button {
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    background-color: $inputButton;
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+}
