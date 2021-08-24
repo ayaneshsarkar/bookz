@@ -156,16 +156,20 @@
 
             $dompdf = new Dompdf();
             $dompdf->setPaper('A4', 'portrait');
+            // $dompdf->set_option('defaultMediaType', 'all');
+            // $dompdf->set_option('isFontSubsettingEnabled', true);
+
+            $fontPath = Application::$APPPATH . "/resources/fonts";
 
             $fileName = 'invoice';
-            $html = $response->loadView($fileName);
+            $html = $response->loadView($fileName, ['fontPath' => $fontPath]);
 
             $dompdf->loadHtml($html);
             
             $dompdf->render();
             $dompdf->stream('invoice.pdf');
 
-            return $html;
+            // return $html;
         }
 
     }

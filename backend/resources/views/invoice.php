@@ -10,48 +10,6 @@
 
 
 <style>
-
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Montserrat'), url(https://fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_cJD3gnD_g.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Montserrat'), url(https://fonts.gstatic.com/s/montserrat/v18/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    src: local('Montserrat'), url(https://fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Montserrat'), url(https://fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Montserrat'), url(https://fonts.gstatic.com/s/montserrat/v18/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
   /* @page { margin: 5px; } */
   /* @media print {
     @page {
@@ -59,7 +17,33 @@
     }
   } */
 
-  
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/Montserrat-Light.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/Montserrat-SemiBold.ttf') format('truetype');
+  }
 
   .float-right {
     float: right;
@@ -77,8 +61,8 @@
 
   .invoiceTitle {
     font-family: 'Montserrat' !important;
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: bolder;
+    font-size: 1.3rem;
     text-transform: uppercase;
   }
 
@@ -117,13 +101,15 @@
   }
 
   .semiTitle {
-    font-size: 1.36rem;
-    font-weight: 500;
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
+    font-size: 1rem;
   }
 
   .paymentDetails {
-    font-weight: 500;
-    font-size: 1.45rem;
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
+    font-size: 1rem;
   }
 
   .mt-5 {
@@ -135,16 +121,19 @@
   }
 
   strong {
-    font-weight: 600 !important;
+    font-family: 'Montserrat' !important;
+    font-weight: bolder;
   }
 
   strong.semi {
-    font-weight: 500 !important;
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
   }
 
   .page-break {
-      page-break-after: always;
+    page-break-after: always;
   }
+
   .img {
     min-height: 100px !important;
     width: 150px !important;
@@ -152,8 +141,9 @@
   }
 
   .text {
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
     font-size: 2rem;
-    font-weight: 500;
   }
 
   .text.small {
@@ -190,10 +180,11 @@
   }
 
   .content-table thead tr {
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
     border-color: #009879 !important;
     color: #fff;
     text-align: left !important;
-    font-weight: 500;
   }
 
   .content-table thead tr th.right {
@@ -225,12 +216,14 @@
   }
 
   .content-table tbody tr.active-row {
-    font-weight: 500;
+    font-family: 'Montserrat' !important;
+    font-weight: bold;
     color: #009879;
   }
 
   footer {
-    font-weight: 300;
+    font-family: 'Montserrat' !important;
+    font-weight: lighter;
     font-size: 0.9rem;
   }
 
@@ -261,7 +254,7 @@
           Kolkata - 700154<br>
           India<br>
           <strong>E-Mail: </strong> 
-            <a href="#" target="_blank">
+            <a href="mailto:ayaneshsarkar101@gmail.com" target="_blank">
               ayaneshsarkar101@gmail.com
             </a>
           <br>
@@ -288,12 +281,12 @@
       </div> -->
     </div>
 
-    <div class="row element mb-2" style="top: 6rem; left: 0;">
+    <div class="row element mb-2" style="top: 8.4rem; left: 0;">
       <br>
       <h5 class="invoiceTitle">Invoice</h5>
     </div>
 
-    <div class="row element mb-2" style="top: 4.5rem; left: 0;">
+    <div class="row element mb-2" style="top: 6.7rem; left: 0;">
       <div class="space-between" style="width: 100%">
         <div class="item" style="margin-right: 2rem">
           <span class="semiTitle">Invoice Num: </span> ABCD12345
@@ -307,7 +300,7 @@
       </div>
     </div>
 
-    <div class="row" style="position: relative; top: 2rem; left: 0;">
+    <div class="row" style="position: relative; top: 4rem; left: 0;">
       <table class="content-table">
         <thead>
           <tr>
@@ -335,30 +328,7 @@
             <td>20</td>
             <td>470</td>
           </tr>
-
-          <tr>
-            <td scope="row">3</td>
-            <td>Warbreaker</td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
-          </tr>
-
-          <tr>
-            <td scope="row">4</td>
-            <td>Warbreaker</td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
-          </tr>
-
-          <tr>
-            <td scope="row">5</td>
-            <td>Warbreaker</td>
-            <td>450</td>
-            <td>20</td>
-            <td>470</td>
-          </tr>
+          
         </tbody>
   
         <thead>
@@ -383,15 +353,17 @@
       </table>
     </div>
 
-    <div class="row element">
+    <div class="row element" style="top: 1.6rem; left: 0;">
       <h5 class="paymentDetails">Payment Details:</h5>
     </div>
 
-    <h5 class="mb-2 element invoiceTitle" style="top: -1.6rem; left: 0;">
+    <h5 class="mb-2 element" 
+      style="top: 0; left: 0; font-size: 1.2rem !important;"
+    >
       Transaction Id: <span>(#ABC1234567)</span>
     </h5>
 
-    <div class="row element" style="top: -3.7rem; left: 0;">
+    <div class="row element" style="top: -2rem; left: 0;">
       <table class="content-table">
         <!-- <thead>
           <tr>
@@ -405,7 +377,7 @@
         <thead>
           <tr>
             <th>Date</th>
-            <th style="padding-right: 20rem !important;">Gateway</th>
+            <th>Gateway</th>
             <th>Transaction Id:</th>
             <th>Total Amount</th>
           </tr>
@@ -414,7 +386,7 @@
         <tbody>
           <tr>
             <td>01.01.2021</td>
-            <td style="width: 100% !important;">
+            <td>
               Stripe Payment Service
             </td>
             <td>ABC12345</td>
@@ -434,10 +406,10 @@
     </div>
 
 
-    <div class="row element" style="top: -4rem; left: 0;">
-      <span class="mb-1" style="position: absolute; top: 0; white-space: pre-line !important; display: inline-block;">All Terms and Conditions Included.</span>
+    <div class="row element" style="top: -3rem; left: 0;">
+      <span class="mb-1" style="position: absolute; top: 0; white-space: pre-line !important; display: none;">All Terms and Conditions Included.</span>
 
-      <footer style="text-align: center; position: absolute; top: 2rem; color: grey;">
+      <footer style="text-align: center; position: absolute; top: 0; color: grey;">
         <p class="text-center">Copyright &copy; <?= date('Y') ?> - Online Freelance Services | All Rights Reserved.</p>
       </footer>
     </div>
