@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Router, Switch } from 'react-router-dom';
 import { verifyUser } from './actions/authActions';
@@ -11,17 +11,15 @@ const App = ({ verifyUser }) => {
   useEffect(() => verifyUser(), [verifyUser]);
 
   return (
-    <Fragment>
-      <Router history={history}>
-        <Switch>
-          <Frontend />
-        </Switch>
+    <Router history={history}>
+      <Switch>
+        <Frontend />
+      </Switch>
 
-        <Switch>
-          <Backend />
-        </Switch>
-      </Router>
-    </Fragment>
+      <Switch>
+        <Backend />
+      </Switch>
+    </Router>
   );
 }
 
