@@ -74,20 +74,20 @@
         {
             $selectArray = [
                 'orders.*',
-                'order_items.id as orderitemid',
-                'order_items.order_id',
-                'order_items.title',
-                'order_items.description',
-                'order_items.author',
-                'order_items.bookurl',
-                'order_items.book_code',
-                'order_items.publish_date',
-                'order_items.category',
-                'order_items.quantity',
-                'order_items.price',
-                'order_items.type',
-                'order_items.created_at as orderItemCreated',
-                'order_items.updated_at as orderItemUpdated'
+                // 'order_items.id as orderitemid',
+                // 'order_items.order_id',
+                // 'order_items.title',
+                // 'order_items.description',
+                // 'order_items.author',
+                // 'order_items.bookurl',
+                // 'order_items.book_code',
+                // 'order_items.publish_date',
+                // 'order_items.category',
+                // 'order_items.quantity',
+                // 'order_items.price',
+                // 'order_items.type',
+                // 'order_items.created_at as orderItemCreated',
+                // 'order_items.updated_at as orderItemUpdated'
             ];
 
             return $this->select(implode(', ', $selectArray))
