@@ -30,7 +30,6 @@ export const getOrders = () => async dispatch => {
 export const getOrderBooks = () => async dispatch => {
   const res = await fetchWithAuth('get', `${host}/get-order-books`);
   const data = await res.json();
-  console.log(data);
 
   dispatch({ type: GET_ORDER_BOOKS, payload: data.books });
 }

@@ -61,6 +61,14 @@
   th, td {
     padding: 2rem 3rem;
     color: $bookGreyText;
+
+    &.imp {
+      color: $themeColor;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &.small {

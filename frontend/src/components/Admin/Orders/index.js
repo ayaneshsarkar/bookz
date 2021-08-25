@@ -1,18 +1,24 @@
-import React from 'react';
-import AdminUX from '../../../containers/AdminUX';
-import Header from '../Header';
-import Head from '../../../containers/Helmet';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getOrders } from '../../../actions/orderActions';
+import OrderContainer from '../../../containers/OrderContainer';
+import OrderTable from './OrderTable';
 
-const Orders = () => {
+const Orders = ({ orders, user, getOrders }) => {
+  useEffect(() => getOrders(), [ getOrders ]);
+
   return (
-    <>
-      <Head title="Orders" />
-      <AdminUX>
-        <Header title="All Orders" />
-        
-      </AdminUX>
-    </>
+    <OrderContainer title="All Orders" headerTitle="All Orders">
+      <OrderTable orders={orders} user={user} />
+    </OrderContainer>
   );
 }
 
-export default Orders;
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user,
+    orders: Object.values(state.orders)
+  }
+}
+
+export default connect(mapStateToProps, { getOrders })(Orders);
