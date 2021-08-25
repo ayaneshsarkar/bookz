@@ -196,7 +196,7 @@
                 foreach($this->executeArray as $key => $value) {
                     $statement->bindParam(":$key", $value);
                 }
-                $statement->execute();
+                $statement->execute($this->executeArray);
                 $this->executeArray = [];
                 return $statement->fetchAll();
             } else {

@@ -128,7 +128,7 @@
                     ->join('order_items', 'order_id')
                     ->where('id', $orderId)
                     ->andWhere('user_id', Application::$APP->user->id)
-                    ->getFirst();
+                    ->getAll();
         }
 
     }
