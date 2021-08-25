@@ -8,9 +8,11 @@ const Order = ({ books, getOrder, match }) => {
   useEffect(() => getOrder(match.params.id), [getOrder, match.params.id])
 
   return (
-    <OrderContainer title="Order" headerTitle="Order" tablePadding="small smallMargin">
-      <OrderBooks books={books} />
-    </OrderContainer>
+    <>
+      <OrderContainer title="Order" headerTitle="Order" tablePadding="small smallMargin">
+        <OrderBooks books={books} />
+      </OrderContainer>
+    </>
   );
 };
 

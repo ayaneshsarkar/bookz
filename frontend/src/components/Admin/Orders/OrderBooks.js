@@ -12,7 +12,7 @@ const OrderBooks = ({ books }) => {
           <td className="imp">
             <Link to={`/book/${slugify(book.title)}/${book.book_code}`}>{ i + 1 }</Link>
           </td>
-          <td className="tableMedia" style={{ minWidth: '10rem', verticalAlign: 'middle' }}>
+          <td className="tableMedia" style={{ minWidth: '10rem' }}>
             <div className="tableImage">
               <img src={`${host}/${book.bookurl}`} alt={book.title} />
             </div>
