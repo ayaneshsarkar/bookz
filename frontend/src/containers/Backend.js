@@ -10,6 +10,8 @@ import AddBook from '../components/Admin/Books/AddBook';
 import EditBook from '../components/Admin/Books/EditBook';
 
 import Orders from '../components/Admin/Orders';
+import Order from '../components/Admin/Orders/Order';
+
 import '../assets/sass/admin/admin.scss';
 
 class Backend extends Component {
@@ -31,6 +33,7 @@ class Backend extends Component {
 
         {/* Orders */}
         <Route exact path="/admin/orders" component={Orders} />
+        <Route path="/admin/order/:id" component={Order} />
       </Fragment>
     );
   }

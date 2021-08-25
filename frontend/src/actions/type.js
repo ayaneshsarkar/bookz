@@ -17,6 +17,6 @@ export const CLEAR_CART = 'CLEAR_CART';
 export const UPDATE_USER = 'UPDATE_USER';
 export const GET_ORDERS = 'GET_ORDERS';
 export const GET_ORDER = 'GET_ORDER';
+export const GET_SINGLE_ORDER = 'GET_SINGLE_ORDER';
 export const GET_ORDER_BOOKS = 'GET_ORDER_BOOKS';
-
-
+export const GET_SINGLE_ORDER_BOOKS = 'GET_SINGLE_ORDER_BOOKS';

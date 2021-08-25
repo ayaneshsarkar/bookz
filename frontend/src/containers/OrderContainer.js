@@ -11,7 +11,7 @@ const OrderContainer = props => {
       <AdminUX path="">
         <Header title={props.headerTitle} search={false} add={false} addLink={false} />
 
-        <AdminBox table={true} tablePadding="small">
+        <AdminBox table={true} tablePadding={props.tablePadding || null}>
           { props.children }
         </AdminBox>
       </AdminUX>

@@ -7,7 +7,7 @@ const OrderTable = ({ orders, user }) => {
     return orders.map((order, i) => {
       return (
         <tr key={i}>
-          <td className="imp"><Link to={`/admin/orders/${order.id}`}>{ i + 1 }</Link></td>
+          <td className="imp"><Link to={`/admin/order/${order.id}`}>{ i + 1 }</Link></td>
           <td>{ order.first_name + ' ' + order.last_name }</td>
           <td>{ order.invoice_id.toUpperCase() }</td>
 
