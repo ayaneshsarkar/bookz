@@ -17,6 +17,15 @@
     align-items: center;
     grid-gap: 4rem;
 
+    &.admin {
+      grid-template-columns: repeat(auto-fit, 30rem);
+      justify-content: flex-start;
+    }
+
+    &.admin &--box {
+      justify-content: center;
+      align-items: center;
+    }
 
     &--box {
       background-color: $adminBookTheme;

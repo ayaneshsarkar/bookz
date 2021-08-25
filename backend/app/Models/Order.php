@@ -91,7 +91,7 @@
             ];
 
             return $this->select(implode(', ', $selectArray))
-                    ->join('order_items', 'order_id')
+                    // ->join('order_items', 'order_id')
                     ->where('user_id', Application::$APP->user->id)
                     // ->groupByPostgres('orders.id', 'order_items.id')
                     ->getAll();

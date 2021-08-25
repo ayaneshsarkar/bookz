@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getOrderBooks, getOrders } from '../../actions/orderActions';
 import AdminUX from '../../containers/AdminUX';
@@ -20,13 +20,13 @@ class Admin extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Head title="Recommerce Admin" />
         <AdminUX>
           <Header title="Dashboard" search={true} />
           <section id="books" className="books">
             <h1 className="books__title">Your Books</h1>
-            <div className="books__content">
+            <div className="books__content admin">
               {
                 this.state.books.length ? 
                 this.state.books.map(book => <Book key={book.id} book={book} />)
@@ -35,7 +35,7 @@ class Admin extends Component {
             </div>
           </section>
         </AdminUX>
-      </Fragment>
+      </>
     );
   }
 }

@@ -22,6 +22,8 @@ export const getOrders = () => async dispatch => {
   const res = await fetchWithAuth('get', `${host}/get-orders`);
   const data = await res.json();
 
+  console.log(data);
+
   dispatch({ type: GET_ORDERS, payload: data.orders });
 }
 
