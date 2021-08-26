@@ -39,15 +39,14 @@
                 'avatar' => $user->avatar ?? NULL,
                 'address' => $user->address ?? NULL,
                 'city' => $user->city,
-                'state' => $user->country,
+                'state' => $user->state,
                 'country' => $user->country,
-                'date_of_birth' => $user->date_of_birth,
+                'date_of_birth' => $user->date_of_birth ?? NULL,
                 'transaction_id' => $data->transactionId,
                 'status' => $data->status,
                 'invoice_id' => $data->invoiceId ?? Helper::randomString(12),
                 'paid_amount' => $amount,
-                'order_code' => 
-                \date('Y-m-d', \strtotime(\time())) . '-' . Helper::randomString(50)
+                'order_code' => \date('Y-m-d') . '-' . Helper::randomString(50)
             ]);
         }
 
