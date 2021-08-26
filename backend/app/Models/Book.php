@@ -67,7 +67,11 @@
                 'type_id' => $data->type_id,
                 'price' => $data->price,
                 'publish_date' => date('Y-m-d H:i:s', strtotime($data->publish_date)),
-                'book_code' => Helper::randomString(100)
+                'book_code' => Helper::randomString(100),
+                'featured' => $data->featured ?? 0,
+                'premium' => $data->premium ?? 0,
+                'inventory' => $data->inventory ?? 1,
+                'bookfile' => $data->bookfile ?? NULL
             ];
 
             return $this->insert($bookArr);
@@ -83,7 +87,11 @@
                 'bookurl' => $data->bookurl,
                 'type_id' => $data->type_id,
                 'price' => $data->price,
-                'publish_date' => date('Y-m-d H:i:s', strtotime($data->publish_date))
+                'publish_date' => date('Y-m-d H:i:s', strtotime($data->publish_date)),
+                'featured' => $data->featured ?? 0,
+                'premium' => $data->premium ?? 0,
+                'inventory' => $data->inventory ?? 1,
+                'bookfile' => $data->bookfile ?? NULL
             ];
 
             return $this->updateOne($updateArr, $data->id);

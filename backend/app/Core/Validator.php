@@ -120,6 +120,28 @@
         }
 
         /**
+         * isPDF function
+         *
+         * @param array $file
+         * @param string $key
+         *
+         * @return boolean
+         */
+        public static function isPDF(array $file, $key)
+        {
+            $fileName = $file['name'];
+            $allowedExt = ["pdf", "epub"];
+
+            $fileNameArr = explode('.', $fileName);
+            $actualFileExt = end($fileNameArr);
+            $actualFileExt = strtolower($actualFileExt);
+            
+            if(!in_array($actualFileExt, $allowedExt)) {
+                self::$errors[$key] = "This $key has to be an Image";
+            }
+        }
+
+        /**
          * function isDrop
          *
          * @param mixed $compareArr

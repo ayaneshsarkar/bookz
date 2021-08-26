@@ -52,7 +52,11 @@
             Validator::isInt($data->price ?? NULL, 'price', true);
             Validator::isInt($data->type_id ?? NULL, 'type', true);
             Validator::isString($data->publish_date ?? NULL, 'publish date', true);
+            Validator::isInt($data->featured ?? NULL, 'featured', false);
+            Validator::isInt($data->premium ?? NULL, 'premium', false);
+            Validator::isInt($data->inventory ?? NULL, 'inventory', false);
 
+            //  Checkking valid Bookurl
             if($request->hasFile('bookurl')) {
                 Validator::isImage($request->getFile('bookurl'), 'bookurl');
             } else {
@@ -60,10 +64,22 @@
                 $response->json([ 'status' => FALSE, 'errors' => 'Bookurl is required.' ]);
             }
 
+            //  Checking Valid Bookfile
+            if($request->hasFile('bookfile')) {
+                Validator::isPDF($request->getFile('bookfile'), 'bookfile');
+            } else {
+                return 
+                $response->json([ 'status' => FALSE, 'errors' => 'Bookfile is required.' ]);
+            }
+
             $errors = Validator::validate();
             
             if(empty($errors)) {
                 $data->bookurl = FileHandler::moveFile($request->getFile('bookurl'));
+                $data->bookfile = FileHandler::moveFile(
+                    $request->getFile('bookfile'), 'bookfiles'
+                );
+
                 $id = $this->book->create($data);
                 return $response->json([ 'status' => TRUE, 'errors' => NULL, 'id' => $id ]);
             } else {
@@ -84,11 +100,18 @@
             Validator::isInt($data->type_id ?? NULL, 'type', true);
             Validator::isInt($data->price ?? NULL, 'price', true);
             Validator::isString($data->publish_date ?? NULL, 'publish date', true);
+            Validator::isInt($data->featured ?? NULL, 'featured', false);
+            Validator::isInt($data->premium ?? NULL, 'premium', false);
+            Validator::isInt($data->inventory ?? NULL, 'inventory', false);
 
             $errors = Validator::validate();
 
             if($request->hasFile('bookurl')) {
                 Validator::isImage($request->getFile('bookurl'), 'bookurl');
+            }
+
+            if($request->hasFile('bookfile')) {
+                Validator::isPDF($request->getFile('bookfile'), 'bookfile');
             }
             
             if(empty($errors)) {
@@ -98,6 +121,9 @@
                     $bookurlFile = $request->hasFile('bookurl') ?
                                     $request->getFile('bookurl') : '';
                     
+                    $bookMainFile = $request->hasFile('bookfile') ? 
+                                    $request->getFile('bookfile') : '';
+                    
                     if($bookurlFile) {
                         FileHandler::deleteFile($book->bookurl);
                         $data->bookurl = FileHandler::moveFile($bookurlFile);
@@ -105,7 +131,15 @@
                         $data->bookurl = $book->bookurl;
                     }
 
+                    if($bookMainFile) {
+                        FileHandler::deleteFile($book->bookfile);
+                        $data->bookfile = FileHandler::moveFile($bookMainFile, 'bookfiles');
+                    } else {
+                        $data->bookfile = $book->bookfile;
+                    }
+
                     $this->book->update($data);
+                    
                     return $response->json([ 
                         'status' => TRUE, 
                         'errors' => NULL, 
