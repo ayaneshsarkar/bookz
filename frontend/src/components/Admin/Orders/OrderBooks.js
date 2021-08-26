@@ -9,13 +9,16 @@ const OrderBooks = ({ books }) => {
     return books.map((book, i) => {
       return (
         <tr key={i}>
-          <td className="imp">
+          {/* <td className="imp">
             <Link to={`/book/${slugify(book.title)}/${book.book_code}`}>{ i + 1 }</Link>
-          </td>
+          </td> */}
           <td className="tableMedia" style={{ minWidth: '10rem' }}>
-            <div className="tableImage">
+            <Link to={`/book/${slugify(book.title)}/${book.book_code}`} 
+              className="tableImage"
+              target="_blank"
+            >
               <img src={`${host}/${book.bookurl}`} alt={book.title} />
-            </div>
+            </Link>
           </td>
           <td className="limited">{ book.title }</td>
           <td className="limited">{ book.author }</td>
@@ -32,7 +35,6 @@ const OrderBooks = ({ books }) => {
     <>
       <thead>
         <tr>
-          <th>#</th>
           <th>Image</th>
           <th>Title</th>
           <th>Author</th>

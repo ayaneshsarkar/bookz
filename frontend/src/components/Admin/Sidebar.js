@@ -20,6 +20,14 @@ const Sidebar = props => {
     }
   }
 
+  const getOrderMenu = () => {
+    if(pathname === '/admin/orders' || pathname.includes('order')) {
+      return 'sidebar__menu--icon active';
+    } else {
+      return 'sidebar__menu--icon';
+    }
+  }
+
   const categories = [ '/admin/categories', '/admin/add-category', '/admin/edit-category/:id' ];
   const books = [ '/admin/books', '/admin/add-book', '/admin/edit-book/:id' ];
 
@@ -38,7 +46,7 @@ const Sidebar = props => {
         {/* Orders */}
         <Link to="/admin/orders">
           <li className="sidebar__menu">
-            <svg className={getActiveMenu('/admin/orders')} style={{ marginLeft: "-0.3rem" }}>
+            <svg className={getOrderMenu()} style={{ marginLeft: "-0.3rem" }}>
               <use xlinkHref={`${Sprite}#shopping-cart`}></use>
             </svg>
           </li>
