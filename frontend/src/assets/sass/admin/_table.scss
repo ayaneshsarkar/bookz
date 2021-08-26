@@ -90,6 +90,14 @@
       // max-height: 1rem;
       text-overflow: ellipsis;
     }
+
+    .tableLink {
+      color: $themeColor;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &.small {

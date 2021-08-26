@@ -33,7 +33,7 @@ const OrderTable = ({ orders, user }) => {
       </thead>
 
       <tbody>
-        { orders && renderOrders(orders) }
+        { orders ? renderOrders(orders) : null }
       </tbody>
     </>
   );

@@ -8,7 +8,7 @@ const OrderBooks = ({ books }) => {
   const renderBooks = (books) => {
     return books.map((book, i) => {
       return (
-        <tr>
+        <tr key={i}>
           <td className="imp">
             <Link to={`/book/${slugify(book.title)}/${book.book_code}`}>{ i + 1 }</Link>
           </td>
@@ -44,7 +44,7 @@ const OrderBooks = ({ books }) => {
       </thead>
 
       <tbody>
-        { books.length ? renderBooks(books) : '' }
+        { books ? renderBooks(books) : null }
       </tbody>
     </>
   );

@@ -14,6 +14,10 @@ const OrderContainer = props => {
         <AdminBox table={true} tablePadding={props.tablePadding || null}>
           { props.children }
         </AdminBox>
+
+        { props.userTable ? props.userTable : null }
+
+        { props.paymentTable ? props.paymentTable : null }
       </AdminUX>
     </>
   );
