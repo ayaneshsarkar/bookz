@@ -143,7 +143,10 @@
                     }
 
                     if($bookMainFile) {
-                        FileHandler::deleteFile($book->bookfile);
+                        if($book->bookfile) {
+                            FileHandler::deleteFile($book->bookfile);
+                        }
+                        
                         $data->bookfile = FileHandler::moveFile($bookMainFile, 'bookfiles');
                     } else {
                         $data->bookfile = $book->bookfile;
