@@ -31,6 +31,7 @@
     // Books
     $route->get('/get-books', [BooksController::class, 'getBooks']);
     $route->get('/get-book', [BooksController::class, 'getBook']);
+    $route->get('/get-full-book', [BooksController::class, 'getFullBook']);
     $route->post('/get-book', [BooksController::class, 'getBook']);
     $route->post('/create-book', [BooksController::class, 'storeBook']);
     $route->put('/edit-book', [BooksController::class, 'updateBook']);

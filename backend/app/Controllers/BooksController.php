@@ -25,7 +25,7 @@
         public function setAllMiddlewares()
         {
             $this->registerMiddlewares(new AdminMiddleware([
-                
+                '/get-full-book'
             ]));
         }
 
@@ -46,6 +46,15 @@
             $slug = $request->getBody()->slug ?? NULL;
             $book = $this->book->first((int)$id, $slug);
             unset($book->bookfile);
+
+            return $response->json($book);
+        }
+
+        public function getFullBook(Request $request, Response $response)
+        {
+            $id = $request->getBody()->id ?? NULL;
+            $slug = $request->getBody()->slug ?? NULL;
+            $book = $this->book->first((int)$id, $slug);
 
             return $response->json($book);
         }
