@@ -52,6 +52,7 @@
             Validator::isInt($data->price ?? NULL, 'price', true);
             Validator::isInt($data->type_id ?? NULL, 'type', true);
             Validator::isString($data->publish_date ?? NULL, 'publish date', true);
+            Validator::isInt($data->popular ?? NULL, 'popular', false);
             Validator::isInt($data->featured ?? NULL, 'featured', false);
             Validator::isInt($data->premium ?? NULL, 'premium', false);
             Validator::isInt($data->inventory ?? NULL, 'inventory', false);
@@ -100,6 +101,7 @@
             Validator::isInt($data->type_id ?? NULL, 'type', true);
             Validator::isInt($data->price ?? NULL, 'price', true);
             Validator::isString($data->publish_date ?? NULL, 'publish date', true);
+            Validator::isInt($data->popular ?? NULL, 'popular', false);
             Validator::isInt($data->featured ?? NULL, 'featured', false);
             Validator::isInt($data->premium ?? NULL, 'premium', false);
             Validator::isInt($data->inventory ?? NULL, 'inventory', false);
