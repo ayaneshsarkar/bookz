@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { getCategories } from '../../../actions';
-import { getTypes, getBook, updateBook } from '../../../actions/bookActions';
+import { getTypes, getBook, getFullBook, updateBook } from '../../../actions/bookActions';
 import FormValidator from '../../../helpers/FormValidator';
 import BookContainer from '../../../containers/BookContainer';
 import BookForm from './BookForm';
@@ -22,13 +22,22 @@ class EditBook extends Component {
     price: '',
     type_id: '',
     category_id: '',
+
     bookurl: '',
+    bookfile: [],
     mainImage: '',
-    description: ''
+    bookFileName: '',
+
+    description: '',
+
+    popular: '',
+    featured: '',
+    premium: '',
+    inventory: ''
   }
 
   async componentDidMount() {
-    await this.props.getBook(this.state.id);
+    await this.props.getFullBook(this.state.id, true);
     await this.props.getTypes();
     await this.props.getCategories();
 
@@ -46,7 +55,12 @@ class EditBook extends Component {
       type_id: book.type_id || '',
       category_id: book.category_id || '',
       mainImage: book.bookurl || '',
-      description: book.description || ''
+      bookFileName: book.bookfile || '',
+      description: book.description || '',
+      popular: book.popular,
+      featured: book.featured,
+      premium: book.premium,
+      inventory: book.inventory
     });
   }
 
@@ -57,10 +71,15 @@ class EditBook extends Component {
     validator.isString(this.state.author, "author", true);
     validator.isDate(this.state.publish_date, "publish date", true);
     validator.isImage(this.state.bookurl, "main image");
+    validator.isFile(this.state.bookfile, 'bookfile', true, 'book');
     validator.isString(this.state.description, "description");
     validator.isInt(this.state.price, "price", true);
     validator.isInt(this.state.type_id, "type", true);
     validator.isInt(this.state.category_id, "category", true);
+    validator.isInt(this.state.popular, 'popular', true);
+    validator.isInt(this.state.featured, 'featured', true);
+    validator.isInt(this.state.premium, 'premium', true);
+    validator.isInt(this.state.inventory, 'inventory', true);
 
     this.setState({ 
       errors: this.state.validator.errors,
@@ -86,6 +105,23 @@ class EditBook extends Component {
       this.setState({
         mainImage: this.props.book.bookurl,
         bookurl: ''
+      });
+    }
+  }
+
+  handleBookFileChange = (e) => {
+    this.state.validator.isPDF(e.target.files[0], "bookfile");
+    
+    if(e.target.files[0]) {
+      this.setState({
+        bookFileName: e.target.files[0].name,
+        bookfile: e.target.files[0]
+      });
+
+    } else {
+      this.setState({
+        bookFileName: this.props.book.bookfile,
+        bookfile: ''
       });
     }
   }
@@ -118,6 +154,7 @@ class EditBook extends Component {
           <BookForm data={this.state} 
             handleChange={this.handleChange}
             handleFileChange={this.handleFileChange}
+            handleBookFileChange={this.handleBookFileChange}
             handleSubmit={this.handleSubmit}
             buttonText="Update Book"
           />
@@ -138,5 +175,5 @@ const mapStateToProps = (state, ownProps) => {
 
 
 export default connect(mapStateToProps, { 
-  getCategories, getTypes, getBook, updateBook 
+  getCategories, getTypes, getBook, getFullBook, updateBook 
 })(EditBook);

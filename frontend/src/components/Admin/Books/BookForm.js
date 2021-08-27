@@ -108,7 +108,7 @@ const BookForm = ({
           <select className="admin__form--select" name="popular" required 
           value={data.popular} onChange={handleChange}>
             <option value="">Select Popular</option>
-            <option value="0">No</option>
+            <option value="2">No</option>
             <option value="1">Yes</option>
           </select>
         </InputBox>
@@ -120,7 +120,7 @@ const BookForm = ({
           <select className="admin__form--select" name="featured" required 
           value={data.featured} onChange={handleChange}>
             <option value="">Select Featured</option>
-            <option value="0">No</option>
+            <option value="2">No</option>
             <option value="1">Yes</option>
           </select>
         </InputBox>
@@ -132,7 +132,7 @@ const BookForm = ({
           <select className="admin__form--select" name="premium" required 
           value={data.premium} onChange={handleChange}>
             <option value="">Select Premium</option>
-            <option value="0">No</option>
+            <option value="2">No</option>
             <option value="1">Yes</option>
           </select>
         </InputBox>

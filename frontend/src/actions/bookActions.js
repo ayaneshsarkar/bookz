@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { host } from '../config/server';
 // import { authHeader } from './header';
+import { fetchWithAuth } from './header';
+
 import {
   CREATE_BOOK,
   GET_BOOKS,
@@ -14,7 +16,7 @@ import {
 export const createBook = book => async dispatch => {
   const res = await axios.post(`${host}/create-book`, book);
   const id = parseInt(res.data.id);
-  const newRes = await axios.get(`${host}/get-book/?id=${id}`);
+  const newRes = await axios.get(`${host}/get-book?id=${id}`);
 
   dispatch({ type: CREATE_BOOK, payload: newRes.data });
 }
@@ -34,7 +36,14 @@ export const getBooks = () => async dispatch => {
 }
 
 export const getBook = id => async dispatch => {
-  const res = await fetch(`${host}/get-book/?id=${parseInt(id)}`);
+  const res = await fetch(`${host}/get-book?id=${parseInt(id)}`);
+  const data = await res.json();
+
+  dispatch({ type: GET_BOOK, payload: data });
+}
+
+export const getFullBook = id => async dispatch => {
+  const res = await fetchWithAuth('get', `${host}/get-full-book?id=${parseInt(id)}`, null);
   const data = await res.json();
 
   dispatch({ type: GET_BOOK, payload: data });
@@ -49,15 +58,15 @@ export const getBookBySlug = slug => async dispatch => {
 export const updateBook = book => async dispatch => {
   const res = await axios.post(`${host}/edit-book`, book);
   const id = await res.data.id;
-  const newRes = await fetch(`${host}/get-book/?id=${id}`);
+  const newRes = await fetch(`${host}/get-book?id=${id}`);
   const data = await newRes.json();
   
   dispatch({ type: UPDATE_BOOK, payload: data });
 }
 
 export const deleteBook = id => async dispatch => {
-  const res = await axios.get(`${host}/get-book/?id=${id}`);
-  await axios.get(`${host}/delete-book/?id=${id}`);
+  const res = await axios.get(`${host}/get-book?id=${id}`);
+  await axios.get(`${host}/delete-book?id=${id}`);
 
   dispatch({ type: DELETE_BOOK, payload: id });
   dispatch({ type: DELETE_FRONT_BOOK, payload: res.data.book_code });

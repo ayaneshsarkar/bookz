@@ -76,6 +76,8 @@ class AddBook extends Component {
       category_id: '',
       bookurl: '',
       mainImage: '',
+      bookfile: '',
+      bookFileName: '',
       description: '',
       popular: '',
       featured: '',
