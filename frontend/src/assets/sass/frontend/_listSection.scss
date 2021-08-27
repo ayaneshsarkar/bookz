@@ -30,7 +30,7 @@
 
   &.lg {
     justify-content: flex-start;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 25.5rem));
     grid-gap: 4rem;
   }
 
@@ -75,6 +75,14 @@
     &--title {
       font-weight: 600;
       font-size: 2rem;
+
+      &.frontBooks {
+        // color: red;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 20rem;
+        text-overflow: ellipsis;
+      }
     }
 
     &--author {

@@ -24,7 +24,7 @@ const Book = ({ book }) => {
         }
       </Link>
       <div className="list__book-item--details" style={{ paddingLeft: '0.5rem' }}>
-        <div className="list__box-item--title">{ book.title }</div>
+        <div className="list__box-item--title frontBooks">{ book.title }</div>
         <div className="list__box-item--author">
           { capitalize(book.category) }, { book.author }
         </div>
