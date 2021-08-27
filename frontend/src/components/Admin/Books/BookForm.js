@@ -3,12 +3,19 @@ import { capitalize } from '../../../helpers';
 import InputBox from '../../UI/InputBox';
 import { FlexBreak } from '../../../helpers';
 
-const BookForm = ({ data, handleChange, handleSubmit, handleFileChange, buttonText }) => {
+const BookForm = ({ 
+  data, handleChange, handleSubmit, handleFileChange, buttonText, handleBookFileChange 
+}) => {
   const fileInput = useRef(null);
+  const bookFileInput = useRef(null);
   const formRef = useRef(null);
 
   const fileClick = () => {
     fileInput.current.click();
+  }
+
+  const bookFileClick = () => {
+    bookFileInput.current.click();
   }
 
   return (
@@ -84,6 +91,52 @@ const BookForm = ({ data, handleChange, handleSubmit, handleFileChange, buttonTe
           </select>
         </InputBox>
 
+        <FlexBreak />
+
+        {/* Inventory */}
+        <InputBox parentClass="admin__form--box adjust right-margin" label="Inventory"
+        error={data.errors.inventory} >
+          <input className="admin__form--input" 
+          type="number" name="inventory" placeholder="Inventory"
+          value={data.inventory} onChange={handleChange} />
+        </InputBox>
+
+        {/* Popular */}
+        <InputBox parentClass="admin__form--box adjust right-margin" 
+          error={data.errors.popular}
+        >
+          <select className="admin__form--select" name="popular" required 
+          value={data.popular} onChange={handleChange}>
+            <option value="">Select Popular</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </InputBox>
+
+        {/* Featured */}
+        <InputBox parentClass="admin__form--box adjust right-margin" 
+          error={data.errors.featured}
+        >
+          <select className="admin__form--select" name="featured" required 
+          value={data.featured} onChange={handleChange}>
+            <option value="">Select Featured</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </InputBox>
+
+        {/* Premium */}
+        <InputBox parentClass="admin__form--box adjust" 
+          error={data.errors.premium}
+        >
+          <select className="admin__form--select" name="premium" required 
+          value={data.premium} onChange={handleChange}>
+            <option value="">Select Premium</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </InputBox>
+
         {/* Main Image */}
         <InputBox parentClass="admin__form--box full-width file"
         error={data.errors["main image"]} errorClass="fileError" >
@@ -91,12 +144,30 @@ const BookForm = ({ data, handleChange, handleSubmit, handleFileChange, buttonTe
           type="file" name="bookurl" placeholder="Main Image"
           onChange={handleFileChange} hidden />
 
-          <div className="admin__form--fileButton" onClick={fileClick}>Choose File</div>
+          <div className="admin__form--fileButton" onClick={fileClick}>Choose Image</div>
 
           <span 
           className=
-          {`admin__form--fileText${data.bookurl ? ' active' : '' }`}>
+          {`admin__form--fileText${data.bookurl.name ? ' active' : '' }`}>
             { data.mainImage || 'No File Chosen' }
+          </span>
+        </InputBox>
+
+        {/* Book File */}
+        <InputBox parentClass="admin__form--box full-width file"
+        error={data.errors.bookfile} errorClass="fileError" >
+          <input className="admin__form--input file" ref={bookFileInput}
+          type="file" name="bookfile" placeholder="Bookfile"
+          onChange={handleBookFileChange} hidden />
+
+          <div className="admin__form--fileButton" onClick={bookFileClick}>
+            Choose Book File
+          </div>
+
+          <span 
+          className=
+          {`admin__form--fileText${data.bookfile.name ? ' active' : '' }`}>
+            { data.bookFileName || 'No File Chosen' }
           </span>
         </InputBox>
 

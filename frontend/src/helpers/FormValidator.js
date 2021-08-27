@@ -87,11 +87,30 @@ class FormValidator {
     }
   }
 
+  isPDF = (file, key) => {
+    if(typeof file !== 'object') {
+      if(this.errors[key]) delete this.errors[key];
+      return true;
+    } else {
+      const fileName = file.name;
+      const allowedArray = ["pdf", "epub"];
+      const fileType = fileName.split('.')[fileName.split('.').length - 1].toLowerCase();
+
+      if(!inArray(fileType, allowedArray)) {
+        this.errors[key] = `${capitalize(key)} has to be a valid Book.`;
+      } else {
+        if(this.errors[key]) delete this.errors[key];
+      }
+    }
+  }
+
   isFile = (file, key, req = false, type = 'image') => {
     if(req && (file.length < 1)) {
       this.errors[key] = `${capitalize(key)} is required.`;
     } else if(type === 'image') {
       this.isImage(file, key);
+    } else if(type === 'book') {
+      this.isPDF(file, key);
     } else {
       if(this.errors[key]) delete this.errors[key];
     }

@@ -20,9 +20,18 @@ class AddBook extends Component {
     price: '',
     type_id: '',
     category_id: '',
+
     bookurl: [],
+    bookfile: [],
     mainImage: '',
-    description: ''
+    bookFileName: '',
+
+    description: '',
+
+    popular: '',
+    featured: '',
+    premium: '',
+    inventory: ''
   };
 
   async componentDidMount() {
@@ -42,10 +51,15 @@ class AddBook extends Component {
     validator.isString(this.state.author, "author", true);
     validator.isDate(this.state.publish_date, "publish date", true);
     validator.isFile(this.state.bookurl, "main image", true);
+    validator.isFile(this.state.bookfile, 'bookfile', true, 'book');
     validator.isString(this.state.description, "description");
     validator.isInt(this.state.price, "price", true);
     validator.isInt(this.state.type_id, "type", true);
     validator.isInt(this.state.category_id, "category", true);
+    validator.isInt(this.state.popular, 'popular', true);
+    validator.isInt(this.state.featured, 'featured', true);
+    validator.isInt(this.state.premium, 'premium', true);
+    validator.isInt(this.state.inventory, 'inventory', true);
 
     this.setState({ 
       errors: this.state.validator.errors,
@@ -62,7 +76,11 @@ class AddBook extends Component {
       category_id: '',
       bookurl: '',
       mainImage: '',
-      description: ''
+      description: '',
+      popular: '',
+      featured: '',
+      premium: '',
+      inventory: ''
     });
   }
 
@@ -79,6 +97,23 @@ class AddBook extends Component {
       this.setState({
         mainImage: '',
         bookurl: []
+      });
+    }
+  }
+
+  handleBookFileChange = (e) => {
+    this.state.validator.isPDF(e.target.files[0], "bookfile");
+    
+    if(e.target.files[0]) {
+      this.setState({
+        bookFileName: e.target.files[0].name,
+        bookfile: e.target.files[0]
+      });
+
+    } else {
+      this.setState({
+        bookFileName: '',
+        bookfile: []
       });
     }
   }
@@ -111,6 +146,7 @@ class AddBook extends Component {
         <BookContainer title="Recommerce Admin - Add Book" headerTitle="Add Book">
           <BookForm data={this.state} handleChange={this.handleChange}
           handleFileChange={this.handleFileChange}
+          handleBookFileChange={this.handleBookFileChange}
           handleSubmit={this.handleSubmit} />
         </BookContainer>
       </Fragment>
