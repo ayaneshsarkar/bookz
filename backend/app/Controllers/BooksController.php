@@ -31,14 +31,23 @@
 
         public function getBooks(Request $request, Response $response)
         {
-            return $response->json($this->book->get());
+            $books = $this->book->get();
+
+            foreach($books as $book) {
+                unset($book->bookfile);
+            }
+
+            return $response->json($books);
         }
 
         public function getBook(Request $request, Response $response)
         {
             $id = $request->getBody()->id ?? NULL;
             $slug = $request->getBody()->slug ?? NULL;
-            return $response->json($this->book->first((int)$id, $slug));
+            $book = $this->book->first((int)$id, $slug);
+            unset($book->bookfile);
+
+            return $response->json($book);
         }
 
         public function storeBook(Request $request, Response $response)
