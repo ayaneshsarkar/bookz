@@ -12,7 +12,8 @@ class Login extends Component {
     validator: new FormValidator(),
     errors: {},
     email: '',
-    password: ''
+    password: '',
+    disabledLogin: false
   }
 
   componentDidMount() {
@@ -20,6 +21,14 @@ class Login extends Component {
       errors: this.state.validator.errors
     });
   }
+
+  // controlDisabled() {
+  //   if(Object.values(this.state).includes('')) {
+  //     this.setState({ disabledLogin: true });
+  //   } else {
+  //     this.setState({ disabledLogin: false });
+  //   }
+  // }
 
   validateAllFields = () => {
     const validator = this.state.validator;
@@ -36,6 +45,8 @@ class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+
+    // this.controlDisabled();
   }
 
   handleSubmit = async (e) => {
@@ -43,6 +54,8 @@ class Login extends Component {
     this.validateAllFields();
 
     if(!Object.keys(this.state.errors).length) {
+      this.setState({ disabledLogin: true });
+
       const currentState = { ...this.state };
       await this.props.login(currentState);
     }

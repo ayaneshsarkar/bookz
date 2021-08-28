@@ -22,7 +22,7 @@ const AllBooks = ({ getBooks, books }) => {
 
 const mapStateToProps = state => {
   return {
-    books: Object.values(state.frontBooks)
+    books: Object.values(state.frontBooks).sort((a, b) => b.id - a.id)
   }
 }
 

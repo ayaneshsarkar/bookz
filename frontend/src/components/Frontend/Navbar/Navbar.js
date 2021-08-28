@@ -12,8 +12,6 @@ const Navbar = props => {
   const location = useLocation();
   const pathname = location.pathname;
 
-  // console.log(props);
-
   const getActiveMenu = (desiredPath, currentPath = pathname) => {
     if(isArray(desiredPath) && inArray((props.path || currentPath), desiredPath)) {
       return 'active';
@@ -26,9 +24,12 @@ const Navbar = props => {
     return '';
   }
 
-  const openLogin = (e) => {
-    e.preventDefault();
+  const openLogin = () => {
     props.setLogin(true);
+  }
+
+  const openSignUp = () => {
+    props.setSignUp(true);
   }
 
   const logout = () => {
@@ -52,17 +53,36 @@ const Navbar = props => {
         </form>
         {/* Main Menus */}
         <ul className="header__nav-items">
-          { !props.loggedIn ? <li className="nav-item">
-            <a href="/" onClick={openLogin}>
-              <svg className="nav-item-icon">
-                <use xlinkHref={`${Sprite}#user`}></use>
-              </svg>
-            </a>
-          </li> : <li className="nav-user online" onDoubleClick={logout}>
-            {props.user.avatar ? <img className="avatar"
-              src={`${host}/` + props.user.avatar} 
-              alt={props.user.first_name + props.user.last_name}
-            /> : ''}
+          { !props.loggedIn ? 
+            <li className="nav-item drop">
+              <a href="/" onClick={(e) => e.preventDefault()}>
+                <svg className="nav-item-icon">
+                  <use xlinkHref={`${Sprite}#user`}></use>
+                </svg>
+              </a>
+
+              <ul className="dropdown flex">
+                <li onClick={openSignUp}>
+                  <svg className="dropdown-icon">
+                    <use xlinkHref={`${Sprite}#user-plus`}></use>
+                  </svg>
+                </li>
+
+                <li onClick={openLogin}>
+                  <svg className="dropdown-icon">
+                    <use xlinkHref={`${Sprite}#user-check`}></use>
+                  </svg>
+                </li>
+              </ul>
+            </li> : 
+            <li className="nav-user drop online" onDoubleClick={logout}>
+              {props.user.avatar ? 
+                <img className="avatar"
+                  src={`${host}/` + props.user.avatar} 
+                  alt={props.user.first_name + props.user.last_name}
+                /> 
+                : ''
+              }
             <div className="online"></div>
           </li> }
 

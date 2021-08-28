@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createUser } from '../../../actions/authActions';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,24 +11,32 @@ class SignUp extends Component {
   state = {
     validator: new FormValidator(),
     errors: {},
-    profileImage: '',
-    avatar: '',
 
     first_name: '',
     last_name: '',
     email: '',
     password: '',
     confirmPassword: '',
-    date_of_birth: '',
     city: '',
     state: '',
-    country: ''
+    country: '',
+    address: '',
+
+    disabled: true
   }
 
   componentDidMount() {
     this.setState({
       errors: this.state.validator.errors
     });
+  }
+
+  controlDisabled() {
+    if(Object.values(this.state).includes('')) {
+      this.setState({ disabled: true });
+    } else {
+      this.setState({ disabled: false });
+    }
   }
 
   validateAllFields = () => {
@@ -39,11 +47,12 @@ class SignUp extends Component {
     validator.isEmail(this.state.email, "email", true);
     validator.isString(this.state.password, "password", true, 5, 16);
     validator.isMatch(this.state.confirmPassword, 'confirm password', this.state.password, 'password', true);
-    validator.isDate(this.state.date_of_birth, "date of birth", true);
+    // validator.isDate(this.state.date_of_birth, "date of birth");
     validator.isString(this.state.city, 'city', true);
     validator.isString(this.state.state, 'state', true);
     validator.isString(this.state.country, 'country', true);
-    validator.isImage(this.state.avatar, 'avatar');
+    // validator.isImage(this.state.avatar, 'avatar');
+    validator.isString(this.state.address, 'address', true);
 
     this.setState({
       errors: this.state.validator.errors
@@ -54,6 +63,8 @@ class SignUp extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+
+    this.controlDisabled();
   }
 
   handleFileChange = (e) => {
@@ -78,6 +89,7 @@ class SignUp extends Component {
     this.validateAllFields();
 
     if(!Object.keys(this.state.errors).length) {
+      this.setState({ disabled: true });
       const formData = new FormData(formRef.current);
 
       try {
@@ -91,22 +103,20 @@ class SignUp extends Component {
 
   render() {
     return(
-      <Fragment>
-        <Dialog open={this.props.open} onClose={() => this.props.setSignup(false)} 
-          classes={{ paper: 'br-none' }}
-          maxWidth="lg">
-          <div className="header__auth">
-            <div className="header__auth--iconbox">
-              <svg className="header__auth--icon">
-                <use xlinkHref={`${Sprite}#user-plus`}></use>
-              </svg>
-            </div>
-
-            <SignUpForm data={this.state} handleFileChange={this.handleFileChange} 
-            handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+      <Dialog open={this.props.open} onClose={() => this.props.setSignup(false)} 
+        classes={{ paper: 'br-none' }}
+        maxWidth="lg">
+        <div className="header__auth">
+          <div className="header__auth--iconbox">
+            <svg className="header__auth--icon">
+              <use xlinkHref={`${Sprite}#user-plus`}></use>
+            </svg>
           </div>
-        </Dialog>
-      </Fragment>
+
+          <SignUpForm data={this.state} handleFileChange={this.handleFileChange} 
+          handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        </div>
+      </Dialog>
     );
   }
 }

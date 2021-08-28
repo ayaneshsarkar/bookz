@@ -165,6 +165,10 @@ body {
       .nav-link {
         font-size: 3rem;
       }
+
+      &.drop {
+        position: relative;
+      }
     }
 
     .nav-user {
@@ -195,6 +199,50 @@ body {
         background-color: $onlineColor;
         border-radius: 50%;
         opacity: 0;
+      }
+    }
+
+    .nav-item, .nav-user {
+      .dropdown {
+        position: absolute;
+        top: 3rem;
+        left: 1rem;
+        padding: 1.6rem;
+        background-color: $darkenedBodyColor;
+        box-shadow: $bMd;
+        transition: $normalTransition;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(2rem);
+
+        li:hover {
+          cursor: pointer;
+        }
+
+        li:not(:last-of-type) {
+          margin-right: 2rem;
+        }
+
+        &.flex {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &-icon {
+          width: 3rem;
+          height: 3rem;
+          fill: none;
+          stroke: #fff;
+          stroke-width: 1.6;
+        }
+      }
+    }
+
+    .nav-item:hover, .nav-user:hover {
+      .dropdown {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   }

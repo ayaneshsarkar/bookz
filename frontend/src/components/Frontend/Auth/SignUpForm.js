@@ -4,12 +4,12 @@ import { FlexBreak } from '../../../helpers';
 
 const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
 
-  const avatar = useRef(null);
+  // const avatar = useRef(null);
   const formRef = useRef(null);
 
-  const fileClick = () => {
-    avatar.current.click();
-  }
+  // const fileClick = () => {
+  //   avatar.current.click();
+  // }
 
   return (
     <Fragment>
@@ -44,7 +44,7 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
 
         {/* Email */}
         <InputBox 
-          parentClass="auth__form--box adjust right-margin" 
+          parentClass="auth__form--box full-width adjust" 
           label="Email" 
           auth={true} error={data.errors.email} >
           <input className="auth__form--input" 
@@ -53,7 +53,7 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
         </InputBox>
 
         {/* DOB */}
-        <InputBox 
+        {/* <InputBox 
           parentClass="auth__form--box adjust" 
           label="Date Of Birth" 
           auth={true} error={data.errors["date of birth"]}>
@@ -61,7 +61,7 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
           type="text" name="date_of_birth" placeholder="Date/Of/Birth" 
           onFocus={(e) => e.target.type = "date"} 
           value={data.date_of_birth} onChange={handleChange}/>
-        </InputBox>
+        </InputBox> */}
 
         <FlexBreak auth={true} />
 
@@ -118,7 +118,7 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
         </InputBox>
 
         {/* Avatar */}
-        <InputBox parentClass="auth__form--box full-width file"
+        {/* <InputBox parentClass="auth__form--box full-width file"
           error={data.errors.avatar}
           errorClass="fileError"
         >
@@ -138,12 +138,22 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
           {`auth__form--fileText${data.avatar ? ' active' : '' }`}>
             { data.profileImage || 'No Image Chosen' }
           </span>
-        </InputBox>
+        </InputBox> */}
 
         {/* Address */}
+        <InputBox 
+          parentClass="auth__form--box full-width" 
+          label="Address" 
+          auth={true} error={data.errors.address} >
+          <textarea className="auth__form--input" rows="3"
+          type="text" name="address" placeholder="Address" 
+          value={data.address} onChange={handleChange}></textarea>
+        </InputBox>
 
-        <div className="auth__form--box" style={{ marginBottom: 0, width: '100%' }}>
-          <button className="auth__form--button">
+        <div className="auth__form--box" 
+          style={{ marginBottom: 0, marginTop: '5rem', width: '100%' }}
+        >
+          <button className="auth__form--button" disabled={ data.disabled ? true : false }>
             Sign Up
           </button>
         </div>

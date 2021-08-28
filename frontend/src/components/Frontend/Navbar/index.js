@@ -21,7 +21,7 @@ const NavbarFull = props => {
     <Fragment>
       <Navbar 
         setLogin={setLogin} 
-        setSignup={setSignup} 
+        setSignUp={setSignup} 
         loggedIn={props.loggedIn}
         user={props.user}
         path={props.path || null}
