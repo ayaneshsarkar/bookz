@@ -14,13 +14,18 @@ const Home = props => {
   return (
     <Fragment>
       <Head title="Recommerce API Design" />
+        <div className="w-100">
+          <div className="wrapper">
+            <header id="header" className="header" style={{ margin: '0 -2.5rem 3.5rem -2.5rem' }}>
+              <Navbar 
+                loggedIn={props.loggedIn}
+                user={props.user}
+              />
+            </header>
+          </div>
+        </div>
+
       <main className="wrapper">
-        <header id="header" className="header" style={{ margin: '0 -2.5rem 1.5rem -2.5rem' }}>
-          <Navbar 
-            loggedIn={props.loggedIn}
-            user={props.user}
-          />
-        </header>
         <Hero />
         <Categories />
         <Popular />
