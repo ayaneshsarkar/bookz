@@ -15,10 +15,12 @@ const Home = props => {
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   window.addEventListener('scroll', () => {
-    if(lastScrollY < window.scrollY) {
-      navRef.current.classList.add('bx');
-    } else if(lastScrollY <= 5) {
-      navRef.current.classList.remove('bx');
+    if(navRef && navRef.current) {
+      if(lastScrollY < window.scrollY) {
+        navRef.current.classList.add('bx');
+      } else if(lastScrollY <= 5) {
+        navRef.current.classList.remove('bx');
+      }
     }
 
     setLastScrollY(window.scrollY);
