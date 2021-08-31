@@ -6,6 +6,14 @@
 
   .primaryHeading {
     padding: 0 0 8rem 0;
+
+    @media only screen and (max-width: $bpMedium) {
+      padding: 0 0 5rem 0;
+    }
+
+    @media only screen and (max-width: $bp690) {
+      padding: 0 0 3rem 0;
+    }
   }
 
   &__box {
@@ -19,12 +27,32 @@
     justify-content: center;
     align-items: center;
 
+    @media only screen and (max-width: $bpMedium) {
+      height: 23rem;
+    }
+
     &-img {
       grid-column: 2 / 5;
       position: relative;
       width: 120%;
       height: 130%;
       align-self: center;
+
+      @media only screen and (max-width: $bpMedium) {
+        height: 115%;
+      }
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        height: 102%;
+      }
+
+      @media only screen and (max-width: $bp690) {
+        height: 95%;
+      }  
+
+      @media only screen and (max-width: $bp650) {
+        height: 90%;
+      } 
 
       img {
         height: 100%;
@@ -54,6 +82,10 @@
   &__input {
     display: flex;
     width: 100%;
+
+    @media only screen and (max-width: $bp690) {
+      width: 115% !important;
+    }
   }
 
   input {
@@ -73,6 +105,10 @@
     padding: 2rem 3rem;
     font-size: 2rem;
     font-weight: 600;
+
+    @media only screen and (max-width: $mdBreak) {
+      padding: 2rem 1.6rem;
+    }
   }
 
 }

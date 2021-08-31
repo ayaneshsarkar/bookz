@@ -6,7 +6,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5% !important; // 1rem = 10px
+  font-size: 62.5%; // 1rem = 10px
 
   @media only screen and (max-width: $bpHuge) { // 1800px
     font-size: 75%; // 1rem = 12px
@@ -23,6 +23,10 @@ html {
   @media only screen and (max-width: $bpMedium) { // 900px
     font-size: 50%; // 1rem = 8px
   }
+}
+
+body {
+  overflow-x: hidden;
 }
 
 *::selection {
@@ -86,6 +90,14 @@ button {
   font-size: 5rem;
   text-align: center;
   padding: 0 0 7rem 0;
+
+  @media only screen and (max-width: $bpMedium) {
+    padding: 0 0 5rem 0;
+  }
+
+  @media only screen and (max-width: $bp690) {
+    padding: 0 0 3rem 0;
+  }
 }
 
 .br-none {
@@ -94,4 +106,8 @@ button {
 
 .fullWidth {
   width: 100% !important;
+}
+
+.d-none {
+  display: none;
 }

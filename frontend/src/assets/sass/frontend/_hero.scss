@@ -9,12 +9,39 @@
   justify-content: space-between;
   margin-bottom: 2.5rem;
 
+  @media only screen and (max-width: $bpSmallerMedium) {
+    height: 25rem;
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: $bpSmall) {
+    height: 23rem;
+    align-items: center;
+  }
+
   .hero__textbox {
     flex: 0 0 50%;
+
+    @media only screen and (max-width: $bpSmall) {
+      margin-top: -0.5rem;
+    }
+
     h1 {
       font-size: 5rem;
       font-weight: 800;
       color: $themeColor;
+
+      @media only screen and (max-width: $bpMedium) {
+        font-size: 4rem;
+      }
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 3.5rem;
+      }
+
+      @media only screen and (max-width: $bpSmall) {
+        font-size: 3rem;
+      }
     }
 
     p {
@@ -22,6 +49,14 @@
       font-weight: 400;
       margin-bottom: 3rem;
       color: $secondaryText;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 1.6rem;
+      }
+
+      @media only screen and (max-width: $bpSmall) {
+        margin-bottom: 2rem;
+      }
     }
 
     a {
@@ -32,6 +67,10 @@
       border-radius: 5rem;
       background-color: $heroButton;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 1.6rem;
+      }
     }
   }
 
@@ -41,5 +80,21 @@
     height: 150%;
     align-self: center;
     margin-left: 3rem;
+
+    @media only screen and (max-width: $bpMedium) {
+      height: 115%;
+    }
+
+    @media only screen and (max-width: $bpSmallerMedium) {
+      height: 118%;
+    }
+
+    @media only screen and (max-width: $bp690) {
+      height: 107%;
+    }
+
+    @media only screen and (max-width: $bpSmall) {
+      height: 105%;
+    }
   }
 }

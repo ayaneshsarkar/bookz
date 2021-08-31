@@ -16,31 +16,66 @@ body {
 
     @media only screen and (max-width: 1140px) {
       max-width: 114rem;
-      padding: 0 2rem;
     }
 
-    @media only screen and (max-width: $xlBreak) {
-      max-width: 114rem;
+    @media only screen and (max-width: $bp1300) {
+      max-width: 112rem !important;
+    }
+
+    @media only screen and (max-width: $bp1100) {
+      max-width: 110rem !important;
+    }
+
+    @media only screen and (max-width: $bp1070) {
+      max-width: 105rem !important;
+    }
+
+    @media only screen and (max-width: $bp1020) {
+      max-width: 100rem !important;
     }
 
     @media only screen and (max-width: $lgBreak) {
-      max-width: 96rem;
-      padding: 0 2rem;
+      max-width: 96rem !important;
+    }
+
+    @media only screen and (max-width: $bp950) {
+      max-width: 93rem !important;
+    }
+
+    @media only screen and (max-width: $bp830) {
+      max-width: 90rem !important;
+    }
+
+    @media only screen and (max-width: $bpSmallMedium) {
+      max-width: 85rem !important;
     }
 
     @media only screen and (max-width: $mdBreak) {
-      max-width: 72rem;
-      padding: 0 2rem;
+      max-width: 84rem !important;
+    }
+
+    @media only screen and (max-width: $bpSmallerMedium) {
+      max-width: 80rem !important;
+    }
+
+    @media only screen and (max-width: $bp690) {
+      max-width: 75rem !important;
+    }
+
+    @media only screen and (max-width: $bp650) {
+      max-width: 70rem !important;
+    }
+
+    @media only screen and (max-width: $bpSmall) {
+      max-width: 65rem !important;
     }
 
     @media only screen and (max-width: $smBreak) {
-      max-width: 54rem;
-      padding: 0 2rem;
+      max-width: 54rem !important;
     }
 
     @media only screen and (max-width: $smBreak - 1) {
-      width: 100%;
-      padding: 0 2rem;
+      width: 100% !important;
     }
   }
 
@@ -58,6 +93,11 @@ body {
   height: 15rem;
   grid-column: 1 / -1;
   margin-bottom: 1.5rem;
+
+  @media only screen and (max-width: $bp1070) {
+    margin-bottom: 0 !important;
+    height: 9rem;
+  }
 }
 
 #footer {
@@ -70,6 +110,59 @@ body {
   grid-gap: 2rem;
   align-items: flex-start;
   margin-bottom: 0;
+
+  .mailbox button {
+    @media only screen and (max-width: $mdBreak) {
+      padding: 2rem 3rem;
+    }
+  }
+}
+
+.navBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $bodyColor;
+  z-index: 1;
+
+  .wrapper {
+    padding: 0 2rem;
+  }
+
+  &.bx {
+    box-shadow: $bDflt;
+    transition: $navTransition;
+
+    #header {
+      margin-bottom: 0 !important;
+    }
+
+
+    .header__logo {
+      font-size: 3rem;
+    }
+
+    .header__mainnav {
+      padding-bottom: 1.6rem !important;
+    }
+
+    .header__nav ul li > a {
+      font-size: 1.9rem !important;
+    }
+
+    .nav-item-icon {
+      width: 2.7rem;
+      height: 2.7rem;
+    }
+  }
+}
+
+#heroWrapper {
+  padding-top: 20rem !important;
+
+  @media only screen and (max-width: $bp1070) {
+    padding-top: 12rem !important;
+  }
 }
 
 .header {
@@ -79,15 +172,17 @@ body {
     // align-items: center;
     width: 100%;
     padding: 2rem 0;
+    transition: $navTransition;
   }
 
   &__logo {
     font-size: 3.5rem;
     font-weight: 700;
     color: $primaryText;
+    transition: $navTransition;
 
     &:link, &:visited {
-      color: $primaryText;;
+      color: $primaryText;
     }
   }
 
@@ -146,6 +241,14 @@ body {
     flex: 0 0 20%;
     align-self: center;
 
+    @media only screen and (max-width: $bp1070) {
+      flex: 0 0 25%;
+    }
+
+    @media only screen and (max-width: $bpSmallMedium) {
+      flex: 0 0 30%;
+    }
+
     color: $primaryText;
 
     &:link, &:visited {
@@ -168,6 +271,12 @@ body {
 
       &.drop {
         position: relative;
+      }
+
+      &.menu {
+        @media only screen and (max-width: $bp1070) {
+          display: block;
+        }
       }
     }
 
@@ -263,6 +372,7 @@ body {
       li > a {
         font-size: 2rem;
         font-weight: 600;
+        transition: $navTransition;
 
         &::after {
           content: '';
@@ -283,6 +393,10 @@ body {
         color: $themeColor;
       }
     }
+
+    @media only screen and (max-width: $bp1070) {
+      display: none;
+    }
   }
 }
 
@@ -291,9 +405,29 @@ body {
     grid-column: 1 / 7;
     position: relative;
 
+    @media only screen and (max-width: $bpMedium) {
+      align-self: center;
+    }
+
+    @media only screen and (max-width: $bp690) {
+      display: none;
+    }
+
     &--box {
       position: relative;
       height: 40rem;
+
+      @media only screen and (max-width: $bpMedium) {
+        height: 35rem;
+      }
+
+      @media only screen and (max-width: $mdBreak) {
+        height: 28rem;
+      }
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        height: 25rem;
+      }
 
       img {
         height: 100%;
@@ -308,6 +442,11 @@ body {
       padding: 1rem 0 4rem 0;
       font-size: 4.5rem;
       text-transform: uppercase;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 4rem;
+        padding: 1rem 0 2rem 0;
+      }
     }
 
     .mailbox {
@@ -316,17 +455,31 @@ body {
       input, button {
         border-radius: 0 !important;
       }
+
+      input {
+        @media only screen and (max-width: $bpSmallerMedium) {
+          padding: 1.6rem 2rem;
+        }
+      }
     }
 
     &--address {
       font-weight: 600;
       font-size: 2rem;
       margin-bottom: 1.5rem;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 1.6rem;
+      }
     }
 
     &--email {
       font-weight: 600;
       font-size: 2rem;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        font-size: 1.6rem;
+      }
     }
   }
 
@@ -337,6 +490,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: $bpSmallerMedium) {
+      margin: 5rem 0 2.5rem 0;
+    }
 
     &--svg {
       width: 3.5rem;

@@ -54,7 +54,7 @@ const Navbar = props => {
         {/* Main Menus */}
         <ul className="header__nav-items">
           { !props.loggedIn ? 
-            <li className="nav-item drop">
+            <li className="nav-item drop mainNavList">
               <a href="/" onClick={(e) => e.preventDefault()}>
                 <svg className="nav-item-icon">
                   <use xlinkHref={`${Sprite}#user`}></use>
@@ -75,18 +75,19 @@ const Navbar = props => {
                 </li>
               </ul>
             </li> : 
-            <li className="nav-user drop online" onDoubleClick={logout}>
-              {props.user.avatar ? 
-                <img className="avatar"
-                  src={`${host}/` + props.user.avatar} 
-                  alt={props.user.first_name + props.user.last_name}
-                /> 
-                : ''
-              }
-            <div className="online"></div>
-          </li> }
+              <li className="nav-user drop online mainNavList" onDoubleClick={logout}>
+                {props.user.avatar ? 
+                  <img className="avatar"
+                    src={`${host}/` + props.user.avatar} 
+                    alt={props.user.first_name + props.user.last_name}
+                  /> 
+                  : ''
+                }
+              <div className="online"></div>
+            </li> 
+          }
 
-          <li className="nav-item">
+          <li className="nav-item mainNavList">
             <Link to="/cart">
               <svg className="nav-item-icon">
                 <use xlinkHref={`${Sprite}#shopping-bag`}></use>
@@ -94,10 +95,18 @@ const Navbar = props => {
             </Link>
           </li>
 
-          <li className="nav-item">
+          <li className="nav-item mainNavList">
             <Link to="/admin">
               <svg className="nav-item-icon">
                 <use xlinkHref={`${Sprite}#globe`}></use>
+              </svg>
+            </Link>
+          </li>
+
+          <li className="nav-item mainNavList d-none menu">
+            <Link to="/" onClick={(e) => e.preventDefault()}>
+              <svg className="nav-item-icon">
+                <use xlinkHref={`${Sprite}#menu`}></use>
               </svg>
             </Link>
           </li>
