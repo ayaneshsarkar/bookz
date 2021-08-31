@@ -49,7 +49,7 @@ const Home = props => {
         <Premium />
       </div>
 
-      <div className="wrapper">
+      <div className="wrapper newsWrapper">
         <Newsletter />
       </div>
 

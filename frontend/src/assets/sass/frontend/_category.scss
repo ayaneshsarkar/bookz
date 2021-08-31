@@ -5,6 +5,10 @@
   grid-gap: 2rem;
   margin-bottom: $sectionBreak;
 
+  @media only screen and (max-width: $smBreak) {
+    display: none;
+  }
+
   &__box {
     height: 15rem;
     border-radius: 1.5rem;

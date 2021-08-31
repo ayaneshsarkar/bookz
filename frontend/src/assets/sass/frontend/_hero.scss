@@ -9,6 +9,10 @@
   justify-content: space-between;
   margin-bottom: 2.5rem;
 
+  @media only screen and (max-width: $smBreak) {
+    margin-bottom: 1rem;
+  }
+
   @media only screen and (max-width: $bpSmallerMedium) {
     height: 25rem;
     padding: 3rem;
@@ -17,6 +21,24 @@
   @media only screen and (max-width: $bpSmall) {
     height: 23rem;
     align-items: center;
+  }
+
+  @media only screen and (max-width: $smBreak) {
+    height: 20rem;
+  }
+
+  @media only screen and (max-width: $bp375) {
+    height: 17rem;
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 360px) {
+    height: 16rem;
+    padding: 1.6rem;
+  }
+
+  @media only screen and (max-width: 355px) {
+    padding: 1.3rem;
   }
 
   .hero__textbox {
@@ -42,6 +64,14 @@
       @media only screen and (max-width: $bpSmall) {
         font-size: 3rem;
       }
+
+      @media only screen and (max-width: $smBreak) {
+        font-size: 2.5rem;
+      }
+
+      @media only screen and (max-width: $bp430) {
+        font-size: 2rem;
+      }
     }
 
     p {
@@ -57,6 +87,21 @@
       @media only screen and (max-width: $bpSmall) {
         margin-bottom: 2rem;
       }
+
+      &.extra, span {
+        @media only screen and (max-width: $smBreak) {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: $bp430) {
+        font-size: 1.5rem;
+      }
+
+      @media only screen and (max-width: $bp430) {
+        max-width: 95%;
+        font-size: 1.4rem;
+      }
     }
 
     a {
@@ -70,6 +115,16 @@
       
       @media only screen and (max-width: $bpSmallerMedium) {
         font-size: 1.6rem;
+      }
+
+      @media only screen and (max-width: $bp430) {
+        font-size: 1.5rem;
+      }
+
+      @media only screen and (max-width: 355px) {
+        font-size: 1.4rem;
+        text-transform: none;
+        padding: 1rem 2rem;
       }
     }
   }
@@ -95,6 +150,20 @@
 
     @media only screen and (max-width: $bpSmall) {
       height: 105%;
+    }
+
+    @media only screen and (max-width: $smBreak) {
+      margin-left: 0;
+      height: 115%;
+    }
+
+    @media only screen and (max-width: $bp430) {
+      margin-top: -0.5rem;
+      height: 100%;
+    }
+
+    @media only screen and (max-width: 355px) {
+      margin-top: 1rem;
     }
   }
 }

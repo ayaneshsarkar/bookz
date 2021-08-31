@@ -54,6 +54,14 @@
         height: 90%;
       } 
 
+      @media only screen and (max-width: $bp550) {
+        height: 75%;
+      }
+
+      @media only screen and (max-width: $bp470) {
+        display: none;
+      }
+
       img {
         height: 100%;
       }
@@ -61,6 +69,26 @@
 
     &-emailbox {
       grid-column: 6 / 10;
+
+      @media only screen and (max-width: $bp470) {
+        grid-column: 2 / 10;
+      }
+
+      &--input {
+        @media only screen and (max-width: $bp470) {
+          flex-direction: column;
+          width: 100% !important;
+        }
+      }
+
+      button {
+        @media only screen and (max-width: $bp470) {
+          width: 15rem;
+          border-radius: 1.5rem;
+          margin-top: 1rem;
+          padding: 1.6rem !important;
+        }
+      }
     }
   }
 }
@@ -85,6 +113,10 @@
 
     @media only screen and (max-width: $bp690) {
       width: 115% !important;
+    }
+
+    @media only screen and (max-width: $bp470) {
+      width: 100% !important;
     }
   }
 
@@ -111,4 +143,22 @@
     }
   }
 
+}
+
+.newsWrapper {
+  @media only screen and (max-width: $smBreak) {
+    width: 100% !important;
+  }
+
+  &.wrapper {
+    @media only screen and (max-width: $smBreak) {
+      max-width: 100% !important;
+    }
+  }
+
+  .newsletter__box {
+    @media only screen and (max-width: $smBreak) {
+      border-radius: 0;
+    }
+  }
 }

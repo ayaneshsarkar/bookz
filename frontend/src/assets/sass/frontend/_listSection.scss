@@ -1,11 +1,19 @@
 .popular {
   grid-column: 1 / -1;
   margin-bottom: $sectionBreak-md;
+
+  @media only screen and (max-width: $smBreak) {
+    margin-bottom: 5rem;
+  }
 }
 
 .featured {
   grid-column: 1 / -1;
   margin-bottom: $sectionBreak-lg;
+
+  @media only screen and (max-width: $smBreak) {
+    margin-bottom: 5rem;
+  }
 }
 
 .allbooks {
@@ -19,6 +27,11 @@
   font-size: 3rem;
   margin-bottom: 3rem;
   // width: 100%;
+
+  @media only screen and (max-width: $smBreak) {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .list__box {

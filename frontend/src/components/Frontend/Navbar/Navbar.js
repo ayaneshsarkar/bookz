@@ -103,7 +103,7 @@ const Navbar = props => {
             </Link>
           </li>
 
-          <li className="nav-item mainNavList d-none menu">
+          <li className="nav-item d-none menu">
             <Link to="/" onClick={(e) => e.preventDefault()}>
               <svg className="nav-item-icon">
                 <use xlinkHref={`${Sprite}#menu`}></use>
