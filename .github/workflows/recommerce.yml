@@ -1,8 +1,8 @@
-name: recommerce-frontend
+name: bookz
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
   workflow_dispatch:
 
