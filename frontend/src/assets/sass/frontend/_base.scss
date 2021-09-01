@@ -109,5 +109,10 @@ button {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
+
+.d-flex-align-center {
+  display: flex;
+  align-items: center;
+} 

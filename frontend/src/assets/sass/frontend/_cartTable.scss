@@ -40,6 +40,9 @@
       &-title {
         font-weight: 700;
         font-size: 2.5rem;
+        max-width: 16rem;
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
       }
 
@@ -90,7 +93,6 @@
 
       @media only screen and (max-width: $bp700) {
         margin-top: 1rem;
-        // padding: 1rem 0 1rem 1rem;
       }
     }
 
@@ -168,6 +170,17 @@
           background-color: transparent;
           transition: all 0.2s ease-out;
 
+          @media only screen and (max-width: $bp700) {
+            width: 6rem;
+            height: 6rem;
+            margin-left: 2rem;
+
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+          }
+
           &.last {
             &:hover {
               background-color: $lighterTheme;
@@ -187,11 +200,22 @@
           fill: none;
           stroke: $bookGreyText;
           stroke-width: 1;
+
+          @media only screen and (max-width: $bp700) {
+            width: 4rem;
+            height: 4rem;
+          }
         }
 
         .cart-sm {
           @media only screen and (max-width: $bp700) {
-            display: block;
+            display: block !important;
+          }
+
+          &.cart-cross {
+            @media only screen and (max-width: $bp700) {
+              display: flex !important;
+            }
           }
         }
       }

@@ -34,9 +34,17 @@ const Cart = ({ cart, deleteSingleCart }) => {
               </div>
             </div>
 
-            <select className="cart__content--select d-none cart-sm" required>
-              <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
-            </select>
+            <div className="d-flex-align-center">
+              <select className="cart__content--select d-none cart-sm" required>
+                <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
+              </select>
+
+              <div className="cart-cross d-none cart-sm">
+                <svg onClick={() => deleteSingleCart(cart.cartbookid)}>
+                  <use xlinkHref={`${Sprite}#x`}></use>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </td>

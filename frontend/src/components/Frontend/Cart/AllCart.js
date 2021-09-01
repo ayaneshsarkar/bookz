@@ -41,7 +41,7 @@ class AllCart extends Component {
       });
     }
 
-    if(this.props.user.address && !this.state.address) {
+    if(this.props.user && this.props.user.address && !this.state.address) {
       this.setState({ address: true });
     }
   }
