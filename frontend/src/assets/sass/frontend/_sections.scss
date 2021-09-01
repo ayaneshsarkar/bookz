@@ -296,7 +296,7 @@ body {
 
       &.menu {
         @media only screen and (max-width: $bp1070) {
-          display: block;
+          display: block !important;
         }
       }
 
@@ -551,6 +551,23 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
+
+  @media only screen and (max-width: $bp450) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: $bpSmallest) {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .cart__confirm {
+    @media only screen and (max-width: $bp450) {
+      margin-top: 1rem;
+    }
+  }
 }
 
 #hero, #popular, #featured, .allcart {

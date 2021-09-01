@@ -105,8 +105,21 @@ class AllCart extends Component {
             })}
 
             {(this.state.carts !== [] && this.state.total > 0) && <tr className="last">
-              <td></td>
-              <td></td>
+              <td className="d-none cart-sm">
+                <div className="d-flex-justify-end-align-center">
+                  <div className="cart__content--price whiteSelection">
+                    { localizeInt((this.state.total), 'INR') }
+                  </div>
+
+                  <div className="cart-cross d-none cart-sm last" onClick={this.deleteAllCart}>
+                    <svg>
+                      <use xlinkHref={`${Sprite}#x`}></use>
+                    </svg>
+                  </div>
+                </div>
+              </td>
+              <td className="cart-lgmd"></td>
+              <td className="cart-lgmd"></td>
               <td className="cart-lgmd">
                 <div className="cart__content--price whiteSelection">
                   { localizeInt((this.state.total), 'INR') }

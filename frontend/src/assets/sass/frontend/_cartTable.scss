@@ -3,10 +3,19 @@
   grid-column: 1 / -1;
   margin-bottom: $sectionBreak-lg;
 
+  @media only screen and (max-width: $bpSmallest) {
+    width: 100%;
+    margin: 0 !important;
+  }
+
   .cart__title {
     font-weight: 700;
     font-size: 3rem;
     color: $bookGreyText;
+
+    @media only screen and (max-width: $bp450) {
+      font-size: 2.5rem;
+    }
   }
 
   .cart__confirm {
@@ -16,6 +25,10 @@
     font-size: 2.5rem;
     border-radius: 0.7rem;
     cursor: pointer;
+
+    @media only screen and (max-width: $bp450) {
+      font-size: 2rem;
+    }
   }
 
   .cart__content {
@@ -32,6 +45,10 @@
         max-width: 100%;
         height: 100%;
       }
+
+      @media only screen and (max-width: $bp430) {
+        width: 10rem;
+      }
     }
 
     &--details {
@@ -44,6 +61,10 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+
+        @media only screen and (max-width: $bp450) {
+          font-size: 2rem;
+        }
       }
 
       &-author {
@@ -105,6 +126,10 @@
       @media only screen and (max-width: $bp700) {
         margin-top: 0.5rem;
       }
+
+      @media only screen and (max-width: $bp450) {
+        font-size: 2rem;
+      }
     }
   }
 }
@@ -115,9 +140,14 @@
   background-color: $adminBookTheme;
   border-radius: 1rem;
   overflow: hidden;
+  overflow-x: hidden !important;
   box-shadow: $bMd;
   transition: $normalTransition;
   margin-bottom: 3rem;
+
+  @media only screen and (max-width: $bpSmallest) {
+    border-radius: 0;
+  }
 
   thead {
     tr {
@@ -182,6 +212,21 @@
           }
 
           &.last {
+            @media only screen and (max-width: $bp700) {
+              width: 3rem;
+              height: 3rem;
+              margin-left: 2rem;
+              margin-top: 0;
+  
+              display: flex !important;
+              justify-content: center;
+              align-items: center;
+            }
+
+            
+          }
+
+          &.last {
             &:hover {
               background-color: $lighterTheme;
             }
@@ -207,7 +252,7 @@
           }
         }
 
-        .cart-sm {
+        .cart-sm, &.cart-sm {
           @media only screen and (max-width: $bp700) {
             display: block !important;
           }
