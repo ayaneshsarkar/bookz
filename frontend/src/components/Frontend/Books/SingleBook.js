@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import { getBookBySlug } from '../../../actions/bookActions';
 import { storeCart } from '../../../actions/cartActions';
@@ -10,29 +10,44 @@ import BookMedia from './BookMedia';
 import BookContent from './BookContent';
 
 const Book = props => {
+  const navRef = useRef(null);
+  const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   useEffect(() => {
     const getBook = async (slug) => await props.getBookBySlug(slug);
     getBook(props.match.params.book_code);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [props]);
 
   const addToCart = async bookId => {
     await props.storeCart({ book_id: bookId });
     props.history.push('/cart');
   }
 
+  window.addEventListener('scroll', () => {
+    if(navRef && navRef.current) {
+      if(lastScrollY < window.scrollY) {
+        navRef.current.classList.add('bx');
+      } else if(lastScrollY <= 5) {
+        navRef.current.classList.remove('bx');
+      }
+    }
+
+    setLastScrollY(window.scrollY);
+  });
+
   return (
     <>
       <Head title={ props.book.title || 'Recommerce API Design - Single Book' } />
 
-      <div className="wrapper">
-        <header id="header" className="header" style={{ margin: '0 -2.5rem 1.5rem -2.5rem' }}>
-          <Navbar loggedIn={props.loggedIn} user={props.user} path="/:slug/:book_code" />
-        </header>
+      <div className="w-100 navBox" ref={navRef}>
+        <div className="wrapper">
+          <header id="header" className="header" style={{ margin: '0 -2.5rem 2.5rem -2.5rem' }}>
+            <Navbar loggedIn={props.loggedIn} user={props.user} path="/:slug/:book_code" />
+          </header>
+        </div>
       </div>
 
-      <main className="wrapper" style={{ padding: '2.5rem 0' }}>
+      <main className="wrapper singleBookWrapper" id="heroWrapper">
         <div id="singlebook">
           { (props.book !== []) ? 
               <>

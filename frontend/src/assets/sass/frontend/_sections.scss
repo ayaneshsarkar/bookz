@@ -335,6 +335,10 @@ body {
         border-radius: 50%;
         opacity: 0;
       }
+
+      @media only screen and (max-width: $smBreak) {
+        display: none;
+      }
     }
 
     .nav-item, .nav-user {
