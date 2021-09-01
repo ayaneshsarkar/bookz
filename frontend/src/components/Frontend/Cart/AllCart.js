@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCarts, deleteCart, getCartTotal, clearCart } from '../../../actions/cartActions';
-import { localizeInt, manipulateFirstLetter } from '../../../helpers';
+import { localizeInt } from '../../../helpers';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import Cart from './Cart';
 import ConfirmAddress from '../Auth/ConfirmAddress';
@@ -26,6 +26,7 @@ class AllCart extends Component {
 
     await this.props.getCarts();
     await this.props.getCartTotal();
+
     this.setState({
       carts: this.props.carts,
       total: this.props.total
@@ -106,12 +107,12 @@ class AllCart extends Component {
             {(this.state.carts !== [] && this.state.total > 0) && <tr className="last">
               <td></td>
               <td></td>
-              <td>
+              <td className="cart-lgmd">
                 <div className="cart__content--price whiteSelection">
-                  { manipulateFirstLetter(localizeInt((this.state.total), 'INR'), ' ') }
+                  { localizeInt((this.state.total), 'INR') }
                 </div>
               </td>
-              <td>
+              <td className="cart-lgmd">
                 <div className="cart-cross last" onClick={this.deleteAllCart}>
                   <svg>
                     <use xlinkHref={`${Sprite}#x`}></use>

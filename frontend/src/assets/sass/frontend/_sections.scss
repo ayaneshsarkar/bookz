@@ -75,6 +75,7 @@ body {
     }
 
     @media only screen and (max-width: $smBreak - 1) {
+      max-width: 100% !important;
       width: 100% !important;
     }
   }
@@ -552,13 +553,18 @@ body {
   margin-bottom: 3rem;
 }
 
-#hero, #popular, #featured {
-  @media only screen and (max-width: $bp470) {
+#hero, #popular, #featured, .allcart {
+  @media only screen and (max-width: $smBreak - 1) {
     margin: 0 2rem !important;
   }
 }
 
 #header {
+  @media only screen and (max-width: $smBreak - 1) {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
+  
   @media only screen and (max-width: $bp470) {
     margin: 0 !important;
   }

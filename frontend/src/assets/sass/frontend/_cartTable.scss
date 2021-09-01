@@ -47,6 +47,10 @@
         font-weight: 600;
         font-size: 1.7rem;
         color: $greyText;
+        max-width: 20rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
 
@@ -83,6 +87,11 @@
       background-repeat: no-repeat;
       background-size: 1.5rem;
       padding-right: 4.5rem;
+
+      @media only screen and (max-width: $bp700) {
+        margin-top: 1rem;
+        // padding: 1rem 0 1rem 1rem;
+      }
     }
 
     &--price {
@@ -90,6 +99,10 @@
       font-size: 2.5rem;
       // color: $themeColor;
       color: $bookGreyText;
+
+      @media only screen and (max-width: $bp700) {
+        margin-top: 0.5rem;
+      }
     }
   }
 }
@@ -174,6 +187,18 @@
           fill: none;
           stroke: $bookGreyText;
           stroke-width: 1;
+        }
+
+        .cart-sm {
+          @media only screen and (max-width: $bp700) {
+            display: block;
+          }
+        }
+      }
+
+      .cart-lgmd {
+        @media only screen and (max-width: $bp700) {
+          display: none;
         }
       }
     }

@@ -1,9 +1,5 @@
 import React from 'react';
-import { capitalize, 
-  localizeInt, 
-  removeDecimals, 
-  manipulateFirstLetter 
-} from '../../../helpers';
+import { capitalize, localizeInt, removeDecimals } from '../../../helpers';
 
 const BookContent = ({ book, addToCart }) => {
   return (
@@ -19,7 +15,7 @@ const BookContent = ({ book, addToCart }) => {
       {book.price &&
         <div className="bookcontent__price">
           <h3 className="bookcontent__price--price">
-            { manipulateFirstLetter(removeDecimals(localizeInt(book.price, 'INR')), ' ') }
+            { removeDecimals(localizeInt(book.price, 'INR')) }
           </h3>
         </div>
       }

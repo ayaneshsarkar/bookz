@@ -3,7 +3,7 @@ import slugify from 'react-slugify';
 import { Link } from 'react-router-dom';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { host } from '../../../config/server';
-import { localizeInt, manipulateFirstLetter, capitalize } from '../../../helpers';
+import { localizeInt, capitalize } from '../../../helpers';
 
 const Cart = ({ cart, deleteSingleCart }) => {
   return (
@@ -23,23 +23,34 @@ const Cart = ({ cart, deleteSingleCart }) => {
 
           <div className="cart__content--details">
             <h5 className="cart__content--details-title">{ cart.title }</h5>
+
             <p className="cart__content--details-author">
               { `${capitalize(cart.category)}, ${cart.author} (${capitalize(cart.type)})` }
             </p>
+
+            <div className="cart__content--details-price d-none cart-sm">
+              <div className="cart__content--price">
+                { localizeInt((cart.price * cart.quantity), 'INR') }
+              </div>
+            </div>
+
+            <select className="cart__content--select d-none cart-sm" required>
+              <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
+            </select>
           </div>
         </div>
       </td>
-      <td>
+      <td className="cart-lgmd">
         <select className="cart__content--select" required>
           <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
         </select>
       </td>
-      <td>
+      <td className="cart-lgmd">
         <div className="cart__content--price">
-          { manipulateFirstLetter(localizeInt((cart.price * cart.quantity), 'INR'), ' ') }
+          { localizeInt((cart.price * cart.quantity), 'INR') }
         </div>
       </td>
-      <td>
+      <td className="cart-lgmd">
         <div className="cart-cross">
           <svg onClick={() => deleteSingleCart(cart.cartbookid)}>
             <use xlinkHref={`${Sprite}#x`}></use>
