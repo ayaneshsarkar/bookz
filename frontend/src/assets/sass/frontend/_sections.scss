@@ -570,7 +570,7 @@ body {
   }
 }
 
-#hero, #popular, #featured, #allbooks, .allcart {
+#hero, #popular, #featured, #allbooks, .bookcontent, .allcart {
   @media only screen and (max-width: $smBreak - 1) {
     margin: 0 2rem !important;
   }
