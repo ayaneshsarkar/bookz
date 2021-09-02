@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Sprite from '../../assets/svg/feather-sprite.svg';
 import history from '../../config/history';
 
-const Header = ({ title, search, add, addLink }) => {
+const Header = ({ title, search, add, addLink, titleClass }) => {
   const goBack = () => {
     // e.preventDefault(); 
     history.goBack();
@@ -20,7 +20,7 @@ const Header = ({ title, search, add, addLink }) => {
           </a>
         </div>
         <div className="main__title--content">
-          <h1>{ title }</h1>
+          <h1 className={ titleClass ? titleClass : '' }>{ title }</h1>
         </div>
       </div>
 

@@ -20,12 +20,22 @@ const OrderBooks = ({ books }) => {
               <img src={`${host}/${book.bookurl}`} alt={book.title} />
             </Link>
           </td>
-          <td className="limited">{ book.title }</td>
-          <td className="limited">{ book.author }</td>
-          <td>{ book.category }</td>
-          <td>{ capitalize(book.type) }</td>
-          <td>{ book.quantity }</td>
-          <td>{ localizeInt(book.price, 'INR') }</td>
+
+          {/* Details */}
+          <td className="d-none table-sm">
+            <div className="limited m-1">{ book.title }</div>
+            <div className="limited m-1">{ book.author }</div>
+            <div className="limited m-1">{ book.category } ({ capitalize(book.type) })</div>
+            <div className="limited m-1 info">Qty: <span>{ book.quantity }</span></div>
+            <div className="limited m-1">{ localizeInt(book.price, 'INR') }</div>
+          </td>
+
+          <td className="limited lgmd">{ book.title }</td>
+          <td className="limited lgmd">{ book.author }</td>
+          <td className="lgmd">{ book.category }</td>
+          <td className="lgmd">{ capitalize(book.type) }</td>
+          <td className="lgmd">{ book.quantity }</td>
+          <td className="lgmd">{ localizeInt(book.price, 'INR') }</td>
         </tr>
       );
     })
@@ -36,12 +46,13 @@ const OrderBooks = ({ books }) => {
       <thead>
         <tr>
           <th>Image</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Category</th>
-          <th>Type</th>
-          <th>Qty.</th>
-          <th>Price</th>
+          <th className="d-none table-sm">Details</th>
+          <th className="lgmd">Title</th>
+          <th className="lgmd">Author</th>
+          <th className="lgmd">Category</th>
+          <th className="lgmd">Type</th>
+          <th className="lgmd">Qty.</th>
+          <th className="lgmd">Price</th>
         </tr>
       </thead>
 

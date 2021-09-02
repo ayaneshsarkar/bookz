@@ -41,11 +41,26 @@
 
     &--content {
       margin-left: 2rem;
+
       h1 {
         font-weight: 800;
         font-size: 4rem;
         color: $primaryText;
         line-height: inherit;
+
+        &.order {
+          @media only screen and (max-width: $bpLarge) {
+            font-size: 3rem;
+          }
+  
+          @media only screen and (max-width: $bp690) {
+            font-size: 2.5rem;
+          }
+  
+          @media only screen and (max-width: $bpSmall) {
+            font-size: 2.1rem;
+          }
+        }
       }
     }
   }

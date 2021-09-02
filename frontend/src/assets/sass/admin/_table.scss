@@ -111,4 +111,30 @@
   }
 
   margin-bottom: $sectionBreak-lg;
+
+  &.orderItemsTable, &.orderUserTable, &.orderPaymentTable {
+    .lgmd {
+      @media only screen and (max-width: $bp850) {
+        display: none;
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    .table-sm {
+      @media only screen and (max-width: $bp850) {
+        display: block !important;
+      }
+    }
+
+    .info {
+      color: $greyText;
+
+      span {
+        color: $bookGreyText;
+      }
+    }
+  }
 }

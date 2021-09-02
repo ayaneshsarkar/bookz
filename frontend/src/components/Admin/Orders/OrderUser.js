@@ -6,22 +6,30 @@ const OrderUser = ({ order }) => {
     {/* Name & E-Mail */}
       <thead>
         <tr>
-          <th>Name</th>
-          <th>E-Mail</th>
-          <th></th>
+          <th className="d-none table-sm">User</th>
+          <th className="lgmd">Name</th>
+          <th className="lgmd">E-Mail</th>
+          <th className="lgmd"></th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td>{ order.first_name + ' ' + order.last_name }</td>
-          <td>{ order.email }</td>
-          <td></td>
+          <td>
+            <div className="limited m-1">{ order.first_name + ' ' + order.last_name }</div>
+            <div className="limited m-1">{ order.email }</div>
+            <div className="limited m-1 info">City: <span>{ order.city }</span></div>
+            <div className="limited m-1 info">State: <span>{ order.state }</span></div>
+            <div className="limited m-1 info">Country: <span>{ order.country }</span></div>
+            <div style={{ whiteSpace: 'pre-line' }}>{ order.address }</div>
+          </td>
+          <td className="lgmd">{ order.email }</td>
+          <td className="lgmd"></td>
         </tr>
       </tbody>
 
       {/* City, State, Country */}
-      <thead>
+      <thead className="lgmd">
         <tr>
           <th>City</th>
           <th>State</th>
@@ -29,7 +37,7 @@ const OrderUser = ({ order }) => {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody className="lgmd">
         <tr>
           <td>{ order.city }</td>
           <td>{ order.state }</td>
@@ -38,7 +46,7 @@ const OrderUser = ({ order }) => {
       </tbody>
 
       {/* Address */}
-      <thead>
+      <thead className="lgmd">
         <tr>
           <th>Address</th>
           <th></th>
@@ -46,7 +54,7 @@ const OrderUser = ({ order }) => {
         </tr>
       </thead>
 
-      <tbody>
+      <tbody className="lgmd">
         <tr>
           <td style={{ whiteSpace: 'pre-line' }}>{ order.address }</td>
           <td></td>

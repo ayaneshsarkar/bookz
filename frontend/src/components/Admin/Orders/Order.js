@@ -12,7 +12,7 @@ const Order = ({ books, order, getOrder, match }) => {
 
   const userTable = () => {
     return (
-      <AdminBox table={true} tablePadding="smallMargin">
+      <AdminBox table={true} tablePadding="smallMargin orderUserTable">
         { order ? <OrderUser order={order} /> : null }
       </AdminBox>
     );
@@ -20,7 +20,7 @@ const Order = ({ books, order, getOrder, match }) => {
 
   const paymentTable = () => {
     return (
-      <AdminBox table={true}>
+      <AdminBox table={true} tablePadding="orderPaymentTable">
         { order ? <OrderPayment order={order} /> : null }
       </AdminBox>
     );
@@ -31,7 +31,7 @@ const Order = ({ books, order, getOrder, match }) => {
       <OrderContainer 
         title={`Order${order ? ' #' + order.invoice_id.toUpperCase() : ''}`} 
         headerTitle={`Order${order ? ' #' + order.invoice_id.toUpperCase() : ''}`}
-        tablePadding="small smallMargin"
+        tablePadding="small smallMargin orderItemsTable"
         userTable={userTable()}
         paymentTable={paymentTable()}
       >

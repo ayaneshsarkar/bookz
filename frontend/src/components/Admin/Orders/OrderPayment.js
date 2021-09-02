@@ -7,19 +7,37 @@ const OrderPayment = ({ order }) => {
     <>
       <thead>
         <tr>
-          <th>Payment Service</th>
-          <th>Transaction Id</th>
-          <th>Paid Amount</th>
-          <th>Invoice</th>
+          <th className="d-none table-sm">Order Payment Info</th>
+          <th className="lgmd">Payment Service</th>
+          <th className="lgmd">Transaction Id</th>
+          <th className="lgmd">Paid Amount</th>
+          <th className="lgmd">Invoice</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td>Stripe</td>
-          <td>{ order.transaction_id }</td>
-          <td>{ localizeInt(order.paid_amount) }</td>
-          <td>
+          <td className="d-none table-sm">
+            <div className="limited m-1 info">
+              Payment Service: <span>Stripe</span>
+            </div>
+
+            <div className="limited m-1 info">
+              Transaction Id: <span>{ order.transaction_id }</span>
+            </div>
+
+            <div className="limited m-1 info">
+              Paid Amount: <span>{ localizeInt(order.paid_amount) }</span>
+            </div>
+
+            <div className="limited m-1">
+              <Link to="/" className="tableLink">Download Invoice</Link>
+            </div>
+          </td>
+          <td className="lgmd">Stripe</td>
+          <td className="lgmd">{ order.transaction_id }</td>
+          <td className="lgmd">{ localizeInt(order.paid_amount) }</td>
+          <td className="lgmd">
             <Link to="/" className="tableLink">Download Invoice</Link>
           </td>
         </tr>
