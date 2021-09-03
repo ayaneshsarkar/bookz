@@ -108,6 +108,10 @@ button {
 
 .adminMargin {
   margin-left: 10rem !important;
+
+  @media only screen and (max-width: $bpSmall) {
+    margin-left: 0 !important;
+  }
 }
 
 .flexBreak {

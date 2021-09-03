@@ -15,7 +15,7 @@ const OrderUser = ({ order }) => {
 
       <tbody>
         <tr>
-          <td>
+          <td className="d-none table-sm">
             <div className="limited m-1">{ order.first_name + ' ' + order.last_name }</div>
             <div className="limited m-1">{ order.email }</div>
             <div className="limited m-1 info">City: <span>{ order.city }</span></div>
