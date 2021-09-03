@@ -18,7 +18,7 @@ const OrderTable = ({ orders, user }) => {
           </td>
           <td className="lgmd imp"><Link to={`/admin/order/${order.id}`}>{ i + 1 }</Link></td>
           <td className="lgmd">{ order.first_name + ' ' + order.last_name }</td>
-          <td>{ order.invoice_id.toUpperCase() }</td>
+          <td className="lgmd">{ order.invoice_id.toUpperCase() }</td>
 
           {user.type && <td>
             <svg>
