@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import Sprite from '../../assets/svg/feather-sprite.svg';
 import history from '../../config/history';
 
-const Header = ({ title, search, add, addLink, titleClass }) => {
+const Header = ({ title, search, add, addLink, titleClass, titleBoxClass, headClass }) => {
   const goBack = () => {
     // e.preventDefault(); 
     history.goBack();
   }
 
   return (
-    <div className="main__header">
-      <div className="main__title">
+    <div className={`main__header${headClass ? headClass : ''}`}>
+      <div className={`main__title${titleBoxClass ? titleBoxClass : ''}`}>
         <div className="main__title--direction">
           <a onClick={goBack} href="/">
             <svg className="main__title--direction-icon">

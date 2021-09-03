@@ -23,7 +23,7 @@ class Admin extends Component {
       <>
         <Head title="Recommerce Admin" />
         <AdminUX>
-          <Header title="Dashboard" search={true} />
+          <Header title="Dashboard" search={true} headClass=" admin" />
           <section id="books" className="books">
             <h1 className="books__title">Your Books</h1>
             <div className="books__content admin">

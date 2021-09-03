@@ -11,6 +11,7 @@ const OrderContainer = props => {
       <AdminUX path="">
         <Header title={props.headerTitle} search={false} add={false} addLink={false} 
           titleClass="order"
+          titleBoxClass=" order"
         />
 
         <AdminBox table={true} tablePadding={props.tablePadding || null}>

@@ -9,6 +9,43 @@
     align-items: center;
     height: 6.5rem;
     margin-bottom: 3.5rem;
+
+    &.admin {
+      @media only screen and (max-width: $bp650) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 7rem;
+      }
+
+      .main__search {
+        @media only screen and (max-width: $bp650) {
+          margin-top: 2rem;
+          margin-left: -3.9rem;
+        }
+      }
+
+      .main__title {
+        .main__title--content h1 {
+          @media only screen and (max-width: $bp370) {
+            font-size: 3rem;
+          }
+        }
+
+        .main__title--direction {
+          @media only screen and (max-width: $bp370) {
+            width: 4.5rem;
+            height: 4.5rem;
+          }
+
+          svg {
+            @media only screen and (max-width: $bp370) {
+              width: 3.5rem;
+              height: 3.5rem;
+            }
+          }
+        }
+      }
+    }
   }
 
   &__title {
@@ -17,10 +54,27 @@
     justify-content: flex-start;
     margin-left: -2.5rem;
 
-    @media only screen and (max-width: $bpSmaller) {
-      margin-left: 0;
-      flex-direction: column;
-      align-items: flex-start;
+    &.order {
+      @media only screen and (max-width: $bpSmaller) {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .main__title--direction {
+        @media only screen and (max-width: $bpSmaller) {
+          margin-bottom: 1rem;
+          width: 5rem;
+          height: 5rem;
+        }
+
+        &-icon {
+          @media only screen and (max-width: $bpSmaller) {
+            width: 3.5rem;
+            height: 3.5rem;
+          }
+        }       
+      }
     }
 
     &--direction {
@@ -30,12 +84,6 @@
       height: 5.5rem;
       border-radius: 50%;
       background-color: $adminDashboardTitle;
-
-      @media only screen and (max-width: $bpSmaller) {
-        margin-bottom: 1rem;
-        width: 5rem;
-        height: 5rem;
-      }
 
       &-icon {
         position: absolute;
@@ -48,11 +96,6 @@
         fill: none;
         stroke: $themeColor;
         stroke-width: 2;
-
-        @media only screen and (max-width: $bpSmaller) {
-          width: 3.5rem;
-          height: 3.5rem;
-        }
       }
     }
 
@@ -156,4 +199,13 @@
     }
   }
 
+  .books__title {
+    @media only screen and (max-width: $bp650) {
+      margin-bottom: 3rem;
+    } 
+
+    @media only screen and (max-width: $bp450) {
+      font-size: 3rem;
+    }
+  }
 }
