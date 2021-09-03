@@ -23,8 +23,8 @@ const OrderUser = ({ order }) => {
             <div className="limited m-1 info">Country: <span>{ order.country }</span></div>
             <div style={{ whiteSpace: 'pre-line' }}>{ order.address }</div>
           </td>
+          <td className="lgmd">{ order.first_name + ' ' + order.last_name }</td>
           <td className="lgmd">{ order.email }</td>
-          <td className="lgmd"></td>
         </tr>
       </tbody>
 

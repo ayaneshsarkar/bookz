@@ -8,7 +8,7 @@ const Orders = ({ orders, user, getOrders }) => {
   useEffect(() => getOrders(), [ getOrders ]);
 
   return (
-    <OrderContainer title="All Orders" headerTitle="All Orders">
+    <OrderContainer title="All Orders" headerTitle="All Orders" tablePadding="allOrdersTable">
       <OrderTable orders={orders} user={user} />
     </OrderContainer>
   );
