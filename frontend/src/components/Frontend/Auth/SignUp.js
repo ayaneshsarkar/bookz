@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createUser } from '../../../actions/authActions';
-import Dialog from '@material-ui/core/Dialog';
 import FormValidator from '../../../helpers/FormValidator';
-import Sprite from '../../../assets/svg/feather-sprite.svg';
-import SignUpForm from './SignUpForm';
+import SignUpDialog from './SignUpDialog';
 
 class SignUp extends Component {
 
@@ -103,20 +101,15 @@ class SignUp extends Component {
 
   render() {
     return(
-      <Dialog open={this.props.open} onClose={() => this.props.setSignup(false)} 
-        classes={{ paper: 'br-none' }}
-        maxWidth="lg">
-        <div className="header__auth">
-          <div className="header__auth--iconbox">
-            <svg className="header__auth--icon">
-              <use xlinkHref={`${Sprite}#user-plus`}></use>
-            </svg>
-          </div>
 
-          <SignUpForm data={this.state} handleFileChange={this.handleFileChange} 
-          handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-        </div>
-      </Dialog>
+        <SignUpDialog 
+          data={this.state} 
+          handleFileChange={this.handleFileChange} 
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          open={this.props.open}
+          setSignup={this.props.setSignup}
+        />
     );
   }
 }

@@ -1,9 +1,44 @@
 .header__auth {
+  position: relative;
   font-family: 'Nunito', sans-serif;
   background-color: $bodyColor;
   padding: 4rem;
   color: $primaryText;
   min-width: 65vw;
+
+  @media only screen and (max-width: $bp960) {
+    min-height: 100vh;
+  }
+
+  .crossbox {
+    display: none !important;
+    top: 2rem;
+    left: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: $bp960) {
+      display: block !important;
+    }
+  }
+
+  .crossicon {
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    fill: none;
+    stroke: #fff;
+  }
 
   &--iconbox {
     //margin-top: 2.5rem;

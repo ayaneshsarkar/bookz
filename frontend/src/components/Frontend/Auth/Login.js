@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../../actions/authActions';
-import Dialog from '@material-ui/core/Dialog';
-import Sprite from '../../../assets/svg/feather-sprite.svg';
-import LoginForm from './LoginForm';
+import LoginDialog from './LoginDialog';
 import FormValidator from '../../../helpers/FormValidator';
 
 class Login extends Component {
@@ -22,14 +20,6 @@ class Login extends Component {
     });
   }
 
-  // controlDisabled() {
-  //   if(Object.values(this.state).includes('')) {
-  //     this.setState({ disabledLogin: true });
-  //   } else {
-  //     this.setState({ disabledLogin: false });
-  //   }
-  // }
-
   validateAllFields = () => {
     const validator = this.state.validator;
 
@@ -45,8 +35,6 @@ class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
-    // this.controlDisabled();
   }
 
   handleSubmit = async (e) => {
@@ -63,20 +51,13 @@ class Login extends Component {
 
   render() {
     return (
-      <Dialog open={this.props.open} onClose={() => this.props.setLogin(false)} 
-      classes={{ paper: 'br-none' }}
-      maxWidth="lg">
-        <div className="header__auth">
-          <div className="header__auth--iconbox">
-            <svg className="header__auth--icon">
-              <use xlinkHref={`${Sprite}#user-check`}></use>
-            </svg>
-          </div>
-
-          <LoginForm data={this.state} handleChange={this.handleChange} 
-          handleSubmit={this.handleSubmit} />
-        </div>
-      </Dialog>
+      <LoginDialog 
+        open={this.props.open}
+        setLogin={this.props.setLogin}
+        data={this.state}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+      />
     );
   }
 }
