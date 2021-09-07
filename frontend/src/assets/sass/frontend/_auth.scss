@@ -6,8 +6,20 @@
   color: $primaryText;
   min-width: 65vw;
 
+  @media only screen and (max-width: $bpLarge) {
+    min-width: 75vh;
+  }
+
   @media only screen and (max-width: $bp960) {
-    min-height: 100vh;
+    min-height: 200vh;
+  }
+
+  @media only screen and (max-width: $bpSmallerMedium) {
+    min-height: 230vh;
+  }
+
+  @media only screen and (max-width: $bpSmaller) {
+    padding: 2rem;
   }
 
   .crossbox {

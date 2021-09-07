@@ -10,6 +10,11 @@
 
     &.adjust {
       flex: 1;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        flex-wrap: wrap;
+        flex-basis: 100%;
+      }
     }
 
     &.full-width {
@@ -22,6 +27,10 @@
 
     &.right-margin {
       margin-right: 3rem;
+
+      @media only screen and (max-width: $bpSmallerMedium) {
+        margin-right: 0;
+      }
     }
 
     &.no-margin {
