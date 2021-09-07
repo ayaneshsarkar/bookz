@@ -5,11 +5,13 @@ import { host } from '../../../config/server';
 import { logout } from '../../../actions/authActions';
 import { inArray } from '../../../helpers';
 import UserDetailsDialog from '../Auth/UserDetailsDialog';
+import UpdateUser from '../Auth/UpdateUser';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
 
 const Navbar = props => {
   const [open, setOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -103,11 +105,13 @@ const Navbar = props => {
                 </li>
 
                 <li>
-                  <Link to="/" onClick={(e) => e.preventDefault()}>
+                  <Link to="/" onClick={(e) => {e.preventDefault(); setEdit(true);}}>
                     <svg className="dropdown-icon">
                       <use xlinkHref={`${Sprite}#edit-2`}></use>
                     </svg>
                   </Link>
+
+                  <UpdateUser open={edit} setEdit={setEdit} />
                 </li>
 
                 <li>
