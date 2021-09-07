@@ -103,6 +103,16 @@
             ]);
         }
 
+        public function changePassword(object $data)
+        {
+            $query = "UPDATE users SET password = :password WHERE id = :id";
+
+            $this->db->prepare($query)->execute([
+                'id' => $data->id,
+                'password' => \password_hash($data->password, PASSWORD_BCRYPT)
+            ]);
+        }
+
         public function delete(?int $id)
         {
             if($id) {

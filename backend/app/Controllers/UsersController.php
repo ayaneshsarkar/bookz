@@ -8,6 +8,7 @@
     namespace App\Controllers;
 
     use App\Controllers\Controller;
+    use App\Core\Application;
     use App\Core\FileHandler;
     use App\Core\Request;
     use App\Core\Response;
@@ -26,10 +27,8 @@
         public function setAllMiddlewares()
         {
             $this->registerMiddlewares(new FreeAuthMiddleware(['/register-user']));
-            $this->registerMiddlewares(new AuthMiddleware(['/edit-user']));
-            $this->registerMiddlewares(new AdminMiddleware([
-                '/get-user'
-            ]));
+            $this->registerMiddlewares(new AuthMiddleware(['/edit-user', '/change-password']));
+            $this->registerMiddlewares(new AdminMiddleware([]));
         }
 
         public function getUsers()
@@ -116,6 +115,28 @@
                     return json_encode([ 'status' => FALSE, 'errors' => 'Invalid Email!' ]);
                 }
 
+            } else {
+                return json_encode([ 'status' => FALSE, 'errors' => $errors ]);
+            }
+        }
+
+        public function changePassword(Request $request, Response $response)
+        {
+            $data = $request->getBody();
+
+            Validator::isInt($data->id ?? NULL, 'id', true);
+            Validator::isString($data->password ?? NULL, 'password', true);
+
+            $errors = Validator::validate();
+
+            if(empty($errors)) {
+                if(Application::$APP->user->id == $data->id) {
+                    $this->user->changePassword($data);
+                    return json_encode([ 'status' => TRUE, 'errors' => NULL ]);
+                } else {
+                    return json_encode([ 'status' => FALSE, 'errors' => 'Invalid User!',
+                'id' => Application::$APP->user->id ]);
+                }
             } else {
                 return json_encode([ 'status' => FALSE, 'errors' => $errors ]);
             }

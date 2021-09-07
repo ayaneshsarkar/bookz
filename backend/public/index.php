@@ -57,6 +57,7 @@
     $route->post('/get-user', [UsersController::class, 'getUser']);
     $route->post('/register-user', [UsersController::class, 'register']);
     $route->put('/edit-user', [UsersController::class, 'updateUser']);
+    $route->put('/change-password', [UsersController::class, 'changePassword']);
     $route->get('/delete-user', [UsersController::class, 'deleteUser']);
     $route->delete('/delete-user', [UsersController::class, 'deleteUser']);
 
