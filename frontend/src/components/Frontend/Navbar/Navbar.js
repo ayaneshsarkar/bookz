@@ -1,17 +1,18 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-// import { host } from '../../../config/server';
 import { logout } from '../../../actions/authActions';
 import { inArray } from '../../../helpers';
 import UserDetailsDialog from '../Auth/UserDetailsDialog';
 import UpdateUser from '../Auth/UpdateUser';
+import ChangePassword from '../Auth/ChangePassword';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
 
 const Navbar = props => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [change, setChange] = useState(false);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -117,11 +118,13 @@ const Navbar = props => {
                 </li>
 
                 <li>
-                  <Link to="/" onClick={(e) => {e.preventDefault();}}>
+                  <Link to="/" onClick={(e) => {e.preventDefault(); setChange(true);}}>
                     <svg className="dropdown-icon">
                       <use xlinkHref={`${Sprite}#key`}></use>
                     </svg>
                   </Link>
+
+                  <ChangePassword open={change} setChange={setChange} />
                 </li>
 
                 <li>

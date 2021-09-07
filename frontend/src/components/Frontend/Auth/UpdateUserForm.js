@@ -2,7 +2,7 @@ import React, { Fragment, useRef } from 'react';
 import InputBox from '../../UI/InputBox';
 import { FlexBreak } from '../../../helpers';
 
-const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
+const UpdateUserForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
 
   const formRef = useRef(null);
 
@@ -101,4 +101,4 @@ const SignUpForm = ({ data, handleFileChange, handleChange, handleSubmit }) => {
   );
 }
 
-export default SignUpForm;
+export default UpdateUserForm;
