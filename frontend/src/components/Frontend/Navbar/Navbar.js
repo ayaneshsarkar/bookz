@@ -80,13 +80,15 @@ const Navbar = props => {
               </ul>
             </li> : 
               <li className="nav-user drop online mainNavList">
-                {props.user.avatar ? 
-                  <img className="avatar"
-                    src={`${host}/` + props.user.avatar} 
-                    alt={props.user.first_name + props.user.last_name}
-                  /> 
-                  : ''
-                }
+                {/* {props.user.avatar ? 
+                  // <img className="avatar"
+                  //   src={`${host}/` + props.user.avatar} 
+                  //   alt={props.user.first_name + props.user.last_name}
+                  // /> : ''
+                } */}
+                <svg className="navAvatar">
+                  <use xlinkHref={`${Sprite}#user`}></use>
+                </svg>
               <div className="online"></div>
 
               <ul className="dropdown flex-column-center user">
@@ -112,6 +114,14 @@ const Navbar = props => {
                   </Link>
 
                   <UpdateUser open={edit} setEdit={setEdit} />
+                </li>
+
+                <li>
+                  <Link to="/" onClick={(e) => {e.preventDefault();}}>
+                    <svg className="dropdown-icon">
+                      <use xlinkHref={`${Sprite}#key`}></use>
+                    </svg>
+                  </Link>
                 </li>
 
                 <li>

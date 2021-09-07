@@ -314,6 +314,17 @@ body {
       background-color: $heroColor;
       border-radius: 50%;
 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .navAvatar {
+        width: 2rem;
+        height: 2rem;
+        fill: none;
+        stroke: #fff;
+      }
+
       &:hover {
         cursor: pointer;
       }
@@ -334,7 +345,7 @@ body {
         left: 2rem;
         background-color: $onlineColor;
         border-radius: 50%;
-        opacity: 0;
+        opacity: 0.5;
       }
 
       @media only screen and (max-width: $smBreak) {
