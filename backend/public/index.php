@@ -39,6 +39,10 @@
     $route->get('/delete-book', [BooksController::class, 'deleteBook']);
     $route->delete('/delete-book', [BooksController::class, 'deleteBook']);
 
+    $route->get('/get-popular-books', [BooksController::class, 'getPopularBooks']);
+    $route->get('/get-featured-books', [BooksController::class, 'getFeaturedBooks']);
+    $route->get('/get-premium-books', [BooksController::class, 'getPremiumBooks']);
+
     // Book Types
     $route->get('/get-types', [TypesController::class, 'getTypes']);
 

@@ -40,6 +40,39 @@
             return $response->json($books);
         }
 
+        public function getPopularBooks(Request $request, Response $response)
+        {
+            $books = $this->book->getPopularBooks();
+
+            foreach($books as $book) {
+                unset($book->bookfile);
+            }
+
+            return $response->json($books);
+        }
+
+        public function getFeaturedBooks(Request $request, Response $response)
+        {
+            $books = $this->book->getFeaturedBooks();
+
+            foreach($books as $book) {
+                unset($book->bookfile);
+            }
+
+            return $response->json($books);
+        }
+
+        public function getPremiumBooks(Request $request, Response $response)
+        {
+            $books = $this->book->getPremiumBooks();
+
+            foreach($books as $book) {
+                unset($book->bookfile);
+            }
+
+            return $response->json($books);
+        }
+
         public function getBook(Request $request, Response $response)
         {
             $id = $request->getBody()->id ?? NULL;

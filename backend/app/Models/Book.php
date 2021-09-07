@@ -56,6 +56,27 @@
             
         }
 
+        public function getFeaturedBooks()
+        {
+            return $this->select('*')
+                    ->where('featured', 1)
+                    ->getAll();
+        }
+
+        public function getPopularBooks()
+        {
+            return $this->select('*')
+                    ->where('popular', 1)
+                    ->getAll();
+        }
+
+        public function getPremiumBooks()
+        {
+            return $this->select('*')
+                    ->where('premium', 1)
+                    ->getAll();
+        }
+
         public function create(object $data)
         {
             $bookArr = [
