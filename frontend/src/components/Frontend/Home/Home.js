@@ -29,6 +29,8 @@ const Home = props => {
   return (
     <>
       <Head title="Recommerce API Design" />
+      <div className="sideHeaderNav"></div>
+
       <div className="w-100 navBox" ref={navRef}>
         <div className="wrapper">
           <header id="header" className="header" style={{ margin: '0 -2.5rem 2.5rem -2.5rem' }}>

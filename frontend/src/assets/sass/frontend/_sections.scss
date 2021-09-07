@@ -586,3 +586,39 @@ body {
     margin: 0 !important;
   }
 }
+
+.sideHeaderNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: $bodyColor;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 30rem;
+  min-height: 100vh;
+  transform: translateX(30rem);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: transform 0.2s linear;
+
+  visibility: hidden;
+  opacity: 0;
+  z-index: 3;
+  box-shadow: $b2xl;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+
+  @media only screen and (max-width: $bp1070) {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
