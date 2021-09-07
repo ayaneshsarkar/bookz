@@ -43,6 +43,14 @@ export const updateUser = (user, id) => async dispatch => {
   }
 }
 
+export const changePassword = async (userData) => {
+  const res = await fetchWithAuth('put', `${host}/change-password`, userData);
+  const data = await res.json();
+
+  console.log(data);
+  return data;
+}
+
 export const login = user => async dispatch => {
   const res = await axios.post(`${host}/login`, user);
   

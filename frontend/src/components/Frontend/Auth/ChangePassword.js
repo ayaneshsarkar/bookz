@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../../actions/authActions';
+import { changePassword } from '../../../actions/authActions';
 import ChangePasswordDialog from './ChangePasswordDialog';
 import FormValidator from '../../../helpers/FormValidator';
 
 class ChangePassword extends Component {
 
   state = {
+    id: this.props.user.id,
     validator: new FormValidator(),
     errors: {},
     password: '',
@@ -45,7 +46,9 @@ class ChangePassword extends Component {
       this.setState({ disabledLogin: true });
 
       const currentState = { ...this.state };
-      await this.props.login(currentState);
+      await changePassword(currentState);
+      this.setState({ password: '', confirmPassword: '' });
+      this.props.setChange(false);
     }
   }
 
@@ -62,4 +65,10 @@ class ChangePassword extends Component {
   }
 }
 
-export default connect(null, { login })(ChangePassword);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, null)(ChangePassword);

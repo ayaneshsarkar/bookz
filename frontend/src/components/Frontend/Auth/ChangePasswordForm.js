@@ -32,7 +32,7 @@ const ChangePasswordForm = props => {
 
         <div className="auth__form--box" style={{ marginBottom: 0, width: '100%' }}>
           <button className="auth__form--button" 
-            disabled={ props.data.disabledLogin ? true : false }
+            
           >
             Change Password
           </button>
