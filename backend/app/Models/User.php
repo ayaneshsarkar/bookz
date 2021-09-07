@@ -72,7 +72,7 @@
                 'city' => $data->city,
                 'state' => $data->state,
                 'country' => $data->country,
-                'date_of_birth' => $data->date_of_birth,
+                'date_of_birth' => $data->date_of_birth ?? NULL,
                 'token' => $data->token ?? NULL,
                 'type' => $data->type ?? NULL
             ]);
@@ -92,13 +92,13 @@
                 'first_name' => $data->first_name,
                 'last_name' => $data->last_name,
                 'email' => $data->email,
-                'avatar' => $data->avatar,
+                'avatar' => $data->avatar ?? NULL,
                 'address' => $data->address,
                 'city' => $data->city,
                 'state' => $data->state,
                 'country' => $data->country,
-                'date_of_birth' => $data->date_of_birth,
-                'token' => $user->token,
+                'date_of_birth' => $data->date_of_birth ?? NULL,
+                'token' => $user->token ?? NULL,
                 'type' => $data->type ?? NULL
             ]);
         }

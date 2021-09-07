@@ -55,7 +55,7 @@
             Validator::isString($data->city ?? NULL, 'city', true);
             Validator::isString($data->state ?? NULL, 'state', true);
             Validator::isString($data->country ?? NULL, 'country', true);
-            Validator::isString($data->date_of_birth ?? NULL, 'date of birth', true);
+            Validator::isString($data->date_of_birth ?? NULL, 'date of birth', false);
             Validator::isString($data->token ?? NULL, 'token', false);
             Validator::isString($data->type ?? NULL, 'type', false);
 
@@ -95,12 +95,12 @@
             Validator::isString($data->first_name ?? NULL, 'first name', true);
             Validator::isString($data->last_name ?? NULL, 'last name', true);
             Validator::isEmail($data->email ?? NULL, 'email', true);
-            Validator::isString($data->avatar ?? NULL, 'avatar', true);
+            Validator::isString($data->avatar ?? NULL, 'avatar', false);
             Validator::isString($data->address ?? NULL, 'address', true);
             Validator::isString($data->city ?? NULL, 'city', true);
             Validator::isString($data->state ?? NULL, 'state', true);
             Validator::isString($data->country ?? NULL, 'country', true);
-            Validator::isString($data->date_of_birth ?? NULL, 'date of birth', true);
+            Validator::isString($data->date_of_birth ?? NULL, 'date of birth', false);
             Validator::isString($data->token ?? NULL, 'token', false);
             Validator::isString($data->type ?? NULL, 'type', false);
 
