@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { host } from '../../../config/server';
+// import { host } from '../../../config/server';
 import { logout } from '../../../actions/authActions';
 import { inArray } from '../../../helpers';
 import UserDetailsDialog from '../Auth/UserDetailsDialog';
