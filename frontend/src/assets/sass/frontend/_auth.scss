@@ -68,3 +68,23 @@
     stroke-width: 1.5;
   }
 }
+
+.userDetails {
+  .detail {
+    font-size: 2rem;
+    color: $greyText;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 1.6rem;
+
+    &.address {
+      white-space: pre-wrap;
+    }
+
+    span {
+      color: #fff;
+    }
+  }
+}

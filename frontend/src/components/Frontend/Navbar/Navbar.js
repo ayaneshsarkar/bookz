@@ -1,13 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { host } from '../../../config/server';
 import { logout } from '../../../actions/authActions';
 import { inArray } from '../../../helpers';
+import UserDetailsDialog from '../Auth/UserDetailsDialog';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
 
 const Navbar = props => {
+  const [open, setOpen] = useState(false);
 
   const location = useLocation();
   const pathname = location.pathname;
@@ -87,11 +89,17 @@ const Navbar = props => {
 
               <ul className="dropdown flex-column-center user">
                 <li>
-                  <Link to="/" onClick={(e) => e.preventDefault()}>
+                  <Link to="/" onClick={(e) => {e.preventDefault(); setOpen(true);}}>
                     <svg className="dropdown-icon">
                       <use xlinkHref={`${Sprite}#user`}></use>
                     </svg>
                   </Link>
+
+                  <UserDetailsDialog 
+                    open={open}
+                    setClose={setOpen}
+                    user={props.user}
+                  />
                 </li>
 
                 <li>
@@ -162,4 +170,10 @@ const Navbar = props => {
   );
 }
 
-export default connect(null, { logout })(Navbar);
+const mapStateToProps = state => {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, { logout })(Navbar);
