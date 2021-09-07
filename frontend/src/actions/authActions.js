@@ -27,12 +27,19 @@ export const createUser = user => async dispatch => {
   }
 }
 
-export const updateUser = user => async dispatch => {
-  const res = await fetchWithAuth('put', `${host}/edit-user`, user);
+export const updateUser = (user, id) => async dispatch => {
+  const userData = {};
+
+  user.forEach(function(value, key){
+    userData[key] = value;
+  });
+
+  const res = await fetchWithAuth('put', `${host}/edit-user`, userData);
   const data = await res.json();
+  const updatedUser = await axios.get(`${host}/get-user/?id=${id}`);
 
   if(data.status) {
-    dispatch({ type: UPDATE_USER, payload: user });
+    dispatch({ type: UPDATE_USER, payload: updatedUser.data });
   }
 }
 

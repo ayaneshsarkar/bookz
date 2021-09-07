@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createUser } from '../../../actions/authActions';
+import { updateUser } from '../../../actions/authActions';
 import FormValidator from '../../../helpers/FormValidator';
 import UpdateUserDialog from './UpdateUserDialog';
 
@@ -114,10 +114,11 @@ class UpdateUser extends Component {
     if(!Object.keys(this.state.errors).length) {
       this.setState({ disabled: true });
       const formData = new FormData(formRef.current);
+      formData.append('id', this.props.user.id);
 
       try {
-        await this.props.createUser(formData);
-        this.props.setSignup(false);
+        await this.props.updateUser(formData, this.props.user.id);
+        this.props.setEdit(false);
       } catch(err) {
         console.log(err);
       }
@@ -144,4 +145,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { createUser })(UpdateUser);
+export default connect(mapStateToProps, { updateUser })(UpdateUser);
