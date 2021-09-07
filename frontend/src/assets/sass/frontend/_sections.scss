@@ -376,6 +376,14 @@ body {
           stroke: #fff;
           stroke-width: 1.6;
         }
+
+        &.user li {
+          margin-right: 0;
+
+          &:not(:last-of-type) {
+            margin-bottom: 1.6rem;
+          }
+        }
       }
     }
 

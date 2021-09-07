@@ -122,3 +122,16 @@ button {
   justify-content: flex-end;
   align-items: center;
 } 
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+
+  &-center {
+    align-items: center;
+  }
+}
+
+.flex-row {
+  display: flex;
+}

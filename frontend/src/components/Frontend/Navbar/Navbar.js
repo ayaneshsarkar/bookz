@@ -75,7 +75,7 @@ const Navbar = props => {
                 </li>
               </ul>
             </li> : 
-              <li className="nav-user drop online mainNavList" onDoubleClick={logout}>
+              <li className="nav-user drop online mainNavList">
                 {props.user.avatar ? 
                   <img className="avatar"
                     src={`${host}/` + props.user.avatar} 
@@ -84,6 +84,32 @@ const Navbar = props => {
                   : ''
                 }
               <div className="online"></div>
+
+              <ul className="dropdown flex-column-center user">
+                <li>
+                  <Link to="/" onClick={(e) => e.preventDefault()}>
+                    <svg className="dropdown-icon">
+                      <use xlinkHref={`${Sprite}#user`}></use>
+                    </svg>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" onClick={(e) => e.preventDefault()}>
+                    <svg className="dropdown-icon">
+                      <use xlinkHref={`${Sprite}#edit-2`}></use>
+                    </svg>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" onClick={(e) => {e.preventDefault(); logout();}}>
+                    <svg className="dropdown-icon">
+                      <use xlinkHref={`${Sprite}#power`}></use>
+                    </svg>
+                  </Link>
+                </li>
+              </ul>
             </li> 
           }
 
