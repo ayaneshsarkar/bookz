@@ -2,7 +2,6 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Dialog from '@material-ui/core/Dialog';
-import ChangePasswordForm from './ChangePasswordForm';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 
 const UnAuthAlert = props => {
@@ -10,7 +9,7 @@ const UnAuthAlert = props => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Dialog open={props.open} onClose={() => props.setChange(false)} 
+    <Dialog open={props.open} onClose={() => props.setAuth(false)} 
       PaperProps={{
         style: {
           backgroundColor: 'transparent',

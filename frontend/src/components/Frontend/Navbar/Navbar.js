@@ -10,12 +10,14 @@ import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
 import history from '../../../config/history';
 import UnAuthAlert from '../Auth/UnAuthAlert';
+import SearchFormAlert from '../Auth/SearchAlert';
 
 const Navbar = props => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState(false);
   const [auth, setAuth] = useState(false);
+  const [search, setSearch] = useState(false);
 
   const menuRef = useRef(null);
   const sideRef = useRef(null);
@@ -67,18 +69,22 @@ const Navbar = props => {
     }
   }
 
-  const handleAuthWithCart = () => {
+  const handleAuthWithCart = (e = null) => {
+    if(e) e.preventDefault();
+
     if(!props.loggedIn) {
       setAuth(true);
     } else {
-      history.push('/cart');
+      window.location.href = '/cart';
     }
   }
 
-  const handleAuthWithCallback = (callback = null) => {
+  const handleAuthWithCallback = (e, callback = null) => {
+    e.preventDefault();
+
     if(!props.loggedIn) {
       setAuth(true);
-
+    } else {
       if(callback) {
         callback(true);
       }
@@ -88,7 +94,7 @@ const Navbar = props => {
   return (
     <Fragment>
       <div className="sideHeaderNav" ref={sideRef}>
-        <div className="item">
+        <div className="item" onClick={() => setSearch(true)}>
           <svg className="icon">
             <use xlinkHref={`${Sprite}#search`}></use>
           </svg>
@@ -103,6 +109,14 @@ const Navbar = props => {
             </svg>
 
             <div className="menuText">Profile</div>
+          </div>
+
+          <div className="item" onClick={() => window.location.href = '/admin'}>
+            <svg className="icon">
+              <use xlinkHref={`${Sprite}#users`}></use>
+            </svg>
+
+            <div className="menuText">Admin</div>
           </div>
 
           <div className="item" onClick={() => setEdit(true)}>
@@ -165,6 +179,7 @@ const Navbar = props => {
         </div> : '' }
 
         <UnAuthAlert open={auth} setAuth={setAuth} />
+        <SearchFormAlert open={search} setSearch={setSearch} />
       </div>
 
       <nav className="header__mainnav">
@@ -227,6 +242,14 @@ const Navbar = props => {
                 </li>
 
                 <li>
+                  <Link to="/" onClick={() => window.location.href="/admin"}>
+                    <svg className="dropdown-icon">
+                      <use xlinkHref={`${Sprite}#users`}></use>
+                    </svg>
+                  </Link>
+                </li>
+
+                <li>
                   <Link to="/" onClick={(e) => {e.preventDefault(); setEdit(true);}}>
                     <svg className="dropdown-icon">
                       <use xlinkHref={`${Sprite}#edit-2`}></use>
@@ -258,7 +281,7 @@ const Navbar = props => {
           }
 
           <li className="nav-item mainNavList">
-            <Link to="/cart">
+            <Link to="/cart" onClick={(e) => handleAuthWithCart(e)}>
               <svg className="nav-item-icon">
                 <use xlinkHref={`${Sprite}#shopping-bag`}></use>
               </svg>
@@ -266,9 +289,9 @@ const Navbar = props => {
           </li>
 
           <li className="nav-item mainNavList">
-            <Link to="/admin">
+            <Link to="/books">
               <svg className="nav-item-icon">
-                <use xlinkHref={`${Sprite}#globe`}></use>
+                <use xlinkHref={`${Sprite}#book`}></use>
               </svg>
             </Link>
           </li>
@@ -294,12 +317,16 @@ const Navbar = props => {
             </Link>
           </li>
           <li>
-            <Link to="/cart" className={getActiveMenu(['/cart'])}>
+            <Link to="/cart" className={getActiveMenu(['/cart'])}
+              onClick={(e) => handleAuthWithCart(e)}
+            >
               Cart
             </Link>
           </li>
-          <li><a href="/">Blogs</a></li>
-          <li><a href="/">Find Us</a></li>
+          <li><a href="/" onClick={(e) => handleAuthWithCallback(e, setOpen)}>Profile</a></li>
+          <li>
+            <a href="/" onClick={(e) => handleAuthWithCallback(e, setEdit)}>Edit Profile</a>
+          </li>
         </ul>
       </nav>
     </Fragment>
