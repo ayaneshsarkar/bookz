@@ -22,23 +22,23 @@
     padding: 4rem 0;
   }
 
-  @media only screen and (max-width: $bpSmaller) {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 17rem));
-    // justify-content: flex-start;
-    padding: 3rem 0;
-  }
+  // @media only screen and (max-width: $bpSmaller) {
+  //   grid-template-columns: repeat(auto-fit, minmax(16rem, 17rem));
+  //   // justify-content: flex-start;
+  //   padding: 3rem 0;
+  // }
 
-  @media only screen and (max-width: $bp470) {
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 15rem));
-  }
+  // @media only screen and (max-width: $bp470) {
+  //   grid-template-columns: repeat(auto-fit, minmax(14rem, 15rem));
+  // }
 
-  @media only screen and (max-width: $bp430) {
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 14rem));
-  }
+  // @media only screen and (max-width: $bp430) {
+  //   grid-template-columns: repeat(auto-fit, minmax(13rem, 14rem));
+  // }
 
-  @media only screen and (max-width: $bpSmallest) {
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 11rem));
-  }
+  // @media only screen and (max-width: $bpSmallest) {
+  //   grid-template-columns: repeat(auto-fit, minmax(10rem, 11rem));
+  // }
 
   @media only screen and (max-width: 330px) {
     grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));

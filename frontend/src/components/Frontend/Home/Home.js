@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { 
   getPopularBooks, 
   getFeaturedBooks, 
-  getPremiumBooks 
+  getPremiumBooks,
+  getCategories
 } from '../../../actions/homeActions';
 import Navbar from '../Navbar/index';
 import Hero from './Hero';
@@ -84,10 +85,11 @@ const mapStateToProps = state => {
     user: state.auth.user,
     popularBooks: Object.values(state.popularBooks),
     featuredBooks: Object.values(state.featuredBooks),
-    premiumBooks: Object.values(state.premiumBooks)
+    premiumBooks: Object.values(state.premiumBooks),
+    frontCategories: Object.values(state.frontCategories)
   }
 }
 
 export default connect(mapStateToProps, 
-  { getPopularBooks, getFeaturedBooks, getPremiumBooks }
+  { getPopularBooks, getFeaturedBooks, getPremiumBooks, getCategories }
 )(Home);

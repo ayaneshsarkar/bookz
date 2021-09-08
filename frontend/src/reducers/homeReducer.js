@@ -1,5 +1,19 @@
 import _ from 'lodash';
-import { GET_POPULAR_BOOKS, GET_FEATURED_BOOKS, GET_PREMIUM_BOOKS } from "../actions/type";
+import { 
+  GET_POPULAR_BOOKS, 
+  GET_FEATURED_BOOKS, 
+  GET_PREMIUM_BOOKS,
+  GET_CATEGORIES
+} from "../actions/type";
+
+export const frontCategoryReducer = (state = {}, action) => {
+  switch(action.type) {
+    case GET_CATEGORIES:
+      return { ..._.mapKeys(action.payload, 'id') };
+    default:
+      return state;
+  }
+}
 
 export const popularReducer = (state = {}, action) => {
   switch(action.type) {
