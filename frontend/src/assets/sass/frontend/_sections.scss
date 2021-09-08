@@ -489,7 +489,7 @@ body {
     grid-column: 8 / -1;
 
     @media only screen and (max-width: $smBreak) {
-      display: none;
+      grid-column: 1 / -1;
     }
 
     .primaryHeading {
@@ -589,7 +589,7 @@ body {
   }
 }
 
-#hero, #popular, #featured, #allbooks, .bookcontent, .allcart {
+#hero, #popular, #featured, #allbooks, .bookcontent, .allcart, #category {
   @media only screen and (max-width: $smBreak - 1) {
     margin: 0 2rem !important;
   }
@@ -631,9 +631,9 @@ body {
   }
 
   @media only screen and (max-width: $bp1070) {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
+    // visibility: visible;
+    // opacity: 1;
+    // transform: translateX(0);
   }
 
   &.visible {

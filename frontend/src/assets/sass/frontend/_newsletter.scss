@@ -4,6 +4,10 @@
   padding-bottom: 0;
   margin-bottom: $sectionBreak-lg;
 
+  @media only screen and (max-width: $smBreak - 1) {
+    margin-bottom: 10rem;
+  }
+
   .primaryHeading {
     padding: 0 0 8rem 0;
 
@@ -13,6 +17,10 @@
 
     @media only screen and (max-width: $bp690) {
       padding: 0 0 3rem 0;
+    }
+
+    @media only screen and (max-width: $smBreak - 1) {
+      font-size: 4rem;
     }
   }
 
@@ -46,19 +54,19 @@
         height: 102%;
       }
 
-      @media only screen and (max-width: $bp690) {
-        height: 95%;
-      }  
+      // @media only screen and (max-width: $bp690) {
+      //   height: 95%;
+      // }  
 
-      @media only screen and (max-width: $bp650) {
-        height: 90%;
-      } 
+      // @media only screen and (max-width: $bp650) {
+      //   height: 90%;
+      // } 
 
-      @media only screen and (max-width: $bp550) {
-        height: 75%;
-      }
+      // @media only screen and (max-width: $bp550) {
+      //   height: 75%;
+      // }
 
-      @media only screen and (max-width: $bp470) {
+      @media only screen and (max-width: $mdBreak) {
         display: none;
       }
 
@@ -70,19 +78,19 @@
     &-emailbox {
       grid-column: 6 / 10;
 
-      @media only screen and (max-width: $bp470) {
+      @media only screen and (max-width: $mdBreak) {
         grid-column: 2 / 10;
       }
 
       &--input {
-        @media only screen and (max-width: $bp470) {
+        @media only screen and (max-width: $mdBreak) {
           flex-direction: column;
           width: 100% !important;
         }
       }
 
       button {
-        @media only screen and (max-width: $bp470) {
+        @media only screen and (max-width: $mdBreak) {
           width: 15rem;
           border-radius: 1.5rem;
           margin-top: 1rem;
@@ -111,11 +119,11 @@
     display: flex;
     width: 100%;
 
-    @media only screen and (max-width: $bp690) {
-      width: 115% !important;
-    }
+    // @media only screen and (max-width: $bp690) {
+    //   width: 115% !important;
+    // }
 
-    @media only screen and (max-width: $bp470) {
+    @media only screen and (max-width: $mdBreak) {
       width: 100% !important;
     }
   }
