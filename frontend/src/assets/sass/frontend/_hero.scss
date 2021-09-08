@@ -32,10 +32,11 @@
   }
 
   @media only screen and (max-width: $bp450) {
-    padding: 1.6rem;
+    padding: 2rem;
     justify-content: center;
-    flex-direction: column;
-    height: 23rem;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    height: 30rem;
   }
 
   @media only screen and (max-width: 355px) {
@@ -200,6 +201,8 @@
     }
 
     @media only screen and (max-width: $bp450) {
+      flex: 1 1 75%;
+      height: 75%;
       margin-bottom: 0;
     }
 
