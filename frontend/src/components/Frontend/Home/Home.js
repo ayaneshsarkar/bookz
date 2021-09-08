@@ -15,12 +15,14 @@ import Premium from './Premium';
 import Newsletter from './Newsletter';
 import Footer from '../Footer';
 import Head from '../../../containers/Helmet';
+import Sprite from '../../../assets/svg/feather-sprite.svg';
 
 const Home = ({ 
   loggedIn, user, getPopularBooks, getFeaturedBooks, getPremiumBooks, getCategories,
   popularBooks, featuredBooks, premiumBooks, frontCategories
 }) => {
   const navRef = useRef(null);
+  const sideRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   useEffect(() => {
@@ -45,12 +47,11 @@ const Home = ({
   return (
     <>
       <Head title="Recommerce API Design" />
-      <div className="sideHeaderNav"></div>
-
+      
       <div className="w-100 navBox" ref={navRef}>
         <div className="wrapper">
           <header id="header" className="header" style={{ margin: '0 -2.5rem 2.5rem -2.5rem' }}>
-            <Navbar 
+            <Navbar navRef={sideRef}
               loggedIn={loggedIn}
               user={user}
             />

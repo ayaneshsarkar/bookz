@@ -10,7 +10,7 @@ const Featured = ({ books }) => {
         <div className="list__box">
           { books ? books.map((book, i) => {
             return (
-              <div className="list__box-item">
+              <div className="list__box-item" key={i}>
                 <div className="list__box-item--img">
                   <img src={`${host}/${book.bookurl}`} alt={book.title} className="img" />
                 </div>

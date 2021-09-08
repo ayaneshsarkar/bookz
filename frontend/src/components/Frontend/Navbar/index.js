@@ -26,6 +26,7 @@ const NavbarFull = props => {
         loggedIn={props.loggedIn}
         user={props.user}
         path={props.path || null}
+        navRef={props.navRef || null}
       />
 
       {!props.loggedIn && renderAuthComponents()}

@@ -11,6 +11,11 @@ const UpdateUserDialog = props => {
 
   return (
     <Dialog open={props.open} onClose={() => props.setEdit(false)} 
+      PaperProps={{
+        style: {
+          backgroundColor: 'transparent',
+        },
+      }}
       classes={{ paper: 'br-none' }}
       maxWidth="lg"
       fullScreen={fullScreen}

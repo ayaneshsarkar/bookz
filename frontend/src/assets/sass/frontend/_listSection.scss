@@ -76,7 +76,7 @@
     }
 
     @media only screen and (max-width: $bp370) {
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 17rem));
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 16rem));
     }
 
     @media only screen and (max-width: $bp310) {
@@ -116,7 +116,7 @@
         }
 
         @media only screen and (max-width: $bp370) {
-          height: 23rem;
+          height: 22rem;
         }
 
         @media only screen and (max-width: $bp310) {

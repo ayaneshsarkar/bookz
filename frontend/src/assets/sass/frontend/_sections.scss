@@ -295,8 +295,14 @@ body {
       }
 
       &.menu {
-        @media only screen and (max-width: $bp1070) {
+        transition: all 0.2s linear;
+
+        @media only screen and (max-width: $smBreak) {
           display: block !important;
+        }
+
+        &.margin {
+          margin-right: 20rem;
         }
       }
 
@@ -613,9 +619,9 @@ body {
   background-color: $bodyColor;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 30rem;
+  width: 20rem;
   min-height: 100vh;
-  transform: translateX(30rem);
+  transform: translateX(20rem);
   -ms-overflow-style: none;
   scrollbar-width: none;
   transition: transform 0.2s linear;
@@ -624,6 +630,9 @@ body {
   opacity: 0;
   z-index: 3;
   box-shadow: $b2xl;
+
+  display: flex;
+  flex-direction: column;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -639,6 +648,35 @@ body {
   &.visible {
     visibility: visible;
     opacity: 1;
+    transform: translateX(0);
+  }
+
+  .item {
+    border-bottom: 0.05rem solid $greyText;
+    padding-bottom: 1rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+    padding-top: 1.6rem;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:first-of-type {
+      padding-top: 5rem;
+    }
+
+    .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: none;
+      stroke: #fff;
+      margin-right: 1.6rem;
+    }
+
+    .menuText {
+      font-size: 1.9rem;
+    }
   }
 }
 
