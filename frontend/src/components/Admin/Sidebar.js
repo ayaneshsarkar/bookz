@@ -1,5 +1,7 @@
-import { isArray } from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
+import { isArray } from 'lodash';
+import { logout } from '../../actions/authActions';
 import { Link, useLocation } from 'react-router-dom';
 import Sprite from '../../assets/svg/feather-sprite.svg';
 import { inArray } from '../../helpers';
@@ -35,13 +37,13 @@ const Sidebar = props => {
     <nav className="sidebar">
       <ul className="sidebar__menus">
         {/* Dashboard */}
-        <Link to="/admin">
+        <a href="/">
           <li className="sidebar__menu">
             <svg className={getActiveMenu('/admin')}>
               <use xlinkHref={`${Sprite}#home`}></use>
             </svg>
           </li>
-        </Link>
+        </a>
 
         {/* Orders */}
         <Link to="/admin/orders">
@@ -53,26 +55,44 @@ const Sidebar = props => {
         </Link>
 
         {/* Books */}
-        <Link to="/admin/books">
+        { (props.user && props.user.type === 'admin') ? <Link to="/admin/books">
           <li className="sidebar__menu">
             <svg className={getActiveMenu(books)}>
               <use xlinkHref={`${Sprite}#book`}></use>
             </svg>
           </li>
-        </Link>
+        </Link> : ''}
 
         {/* Categories */}
-        <Link to="/admin/categories">
+        {(props.user && props.user.type === 'admin') ? <Link to="/admin/categories">
           <li className="sidebar__menu">
             <svg className={getActiveMenu(categories)}>
               <use xlinkHref={`${Sprite}#grid`}></use>
             </svg>
           </li>
-        </Link>
-        
+        </Link> : '' }
+
+        {(props.loggedIn) ? <Link to="/admin/categories" 
+        onClick={(e) => {
+          e.preventDefault();
+          props.logout();
+        }}>
+          <li className="sidebar__menu">
+            <svg className={getActiveMenu(['/logout'])}>
+              <use xlinkHref={`${Sprite}#power`}></use>
+            </svg>
+          </li>
+        </Link> : '' }
       </ul>
     </nav>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.auth.loggedIn,
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, { logout })(Sidebar);

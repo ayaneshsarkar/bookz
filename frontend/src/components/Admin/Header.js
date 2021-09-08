@@ -4,8 +4,8 @@ import Sprite from '../../assets/svg/feather-sprite.svg';
 import history from '../../config/history';
 
 const Header = ({ title, search, add, addLink, titleClass, titleBoxClass, headClass }) => {
-  const goBack = () => {
-    // e.preventDefault(); 
+  const goBack = (e) => {
+    e.preventDefault(); 
     history.goBack();
   }
 
@@ -24,7 +24,7 @@ const Header = ({ title, search, add, addLink, titleClass, titleBoxClass, headCl
         </div>
       </div>
 
-      {search && <div className="main__search">
+      {search && <div className="main__search" style={{ display: 'none' }}>
         <form className="main__search--form">
           <input type="text" className="main__search--input" placeholder="Find The Book" />
           <button className="main__search--button">

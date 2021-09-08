@@ -2,6 +2,7 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { host } from '../config/server';
 import { fetchWithAuth } from './header';
+import history from '../config/history';
 import { CREATE_USER, LOGGED_IN, VERIFY_USER, LOGGED_OUT, UPDATE_USER } from './type';
 
 const cookies = new Cookies();
@@ -75,6 +76,7 @@ export const logout = () => async (dispatch, getState) => {
       localStorage.removeItem('refreshToken');
 
       dispatch({ type: LOGGED_OUT, payload: res.data });
+      history.push('/');
     }
   }
 }
