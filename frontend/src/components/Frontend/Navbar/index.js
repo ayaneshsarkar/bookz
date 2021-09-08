@@ -20,6 +20,7 @@ const NavbarFull = props => {
   return (
     <Fragment>
       <Navbar 
+        term={props.term || null}
         setLogin={setLogin} 
         setSignUp={setSignup} 
         loggedIn={props.loggedIn}

@@ -49,6 +49,10 @@
   justify-content: center;
   align-items: center;
 
+  &.search {
+    justify-content: flex-start !important;
+  }
+
   &.lg {
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 25.5rem));

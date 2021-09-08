@@ -10,7 +10,8 @@ import {
   UPDATE_BOOK,
   DELETE_BOOK,
   DELETE_FRONT_BOOK,
-  GET_TYPES
+  GET_TYPES,
+  GET_SEARCH_BOOKS
 } from './type';
 
 export const createBook = book => async dispatch => {
@@ -53,6 +54,12 @@ export const getBookBySlug = slug => async dispatch => {
   const res = await axios.post(`${host}/get-book`, { slug });
 
   dispatch({ type: GET_BOOK, payload: res.data });
+}
+
+export const searchBooks = term => async dispatch => {
+  const res = await axios.get(`${host}/search-books/?term=${term}`);
+
+  dispatch({ type: GET_SEARCH_BOOKS, payload: res.data });
 }
 
 export const updateBook = book => async dispatch => {

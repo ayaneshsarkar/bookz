@@ -10,7 +10,8 @@ import {
   popularReducer, 
   featuredReducer, 
   premiumReducer, 
-  frontCategoryReducer 
+  frontCategoryReducer,
+  searchBooksReducer
 } from './homeReducer';
 
 export default combineReducers({
@@ -26,5 +27,6 @@ export default combineReducers({
   popularBooks: popularReducer,
   featuredBooks: featuredReducer,
   premiumBooks: premiumReducer,
-  frontCategories: frontCategoryReducer
+  frontCategories: frontCategoryReducer,
+  searchBooks: searchBooksReducer
 });

@@ -8,6 +8,7 @@ import UpdateUser from '../Auth/UpdateUser';
 import ChangePassword from '../Auth/ChangePassword';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
+import history from '../../../config/history';
 
 const Navbar = props => {
   const [open, setOpen] = useState(false);
@@ -41,15 +42,27 @@ const Navbar = props => {
     props.logout();
   }
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const term = formData.get('search');
+
+    if(term) {
+      history.push(`/search/${term}`);
+    }
+  }
+
   return (
     <Fragment>
       <nav className="header__mainnav">
         {/* Logo */}
         <Link to="/" className="header__logo">Bookz</Link>
         {/* Search Form */}
-        <form className="header__form">
+        <form className="header__form" onSubmit={handleSearch}>
           <input type="text" className="header__search" name="search" id="header__search"
-          placeholder="Search Your Favourite Books Here" />
+          placeholder="Search Your Favourite Books Here" 
+          defaultValue={props.term ? props.term : ''} />
           <button className="header__search-button" type="submit">
             <svg className="header__search-icon">
               <use xlinkHref={`${Sprite}#search`}></use>
