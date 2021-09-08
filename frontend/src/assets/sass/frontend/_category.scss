@@ -1,9 +1,18 @@
 .category {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 21rem));
   grid-gap: 2rem;
   margin-bottom: $sectionBreak;
+
+  @media only screen and (max-width: $bp1300) {
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 20rem));
+  }
+
+  @media only screen and (max-width: $bp1070) {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 17.9rem));
+    justify-content: center;
+  }
 
   @media only screen and (max-width: $bpMedium) {
     margin-bottom: 5rem;
@@ -14,7 +23,25 @@
   }
 
   @media only screen and (max-width: $bpSmaller) {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 17rem));
+    justify-content: flex-start;
     padding: 3rem 0;
+  }
+
+  @media only screen and (max-width: $bp470) {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 15rem));
+  }
+
+  @media only screen and (max-width: $bp430) {
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 14rem));
+  }
+
+  @media only screen and (max-width: $bpSmallest) {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 11rem));
+  }
+
+  @media only screen and (max-width: 330px) {
+    grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
   }
 
   &__box {
@@ -29,12 +56,20 @@
       height: 12rem;
     }
 
+    @media only screen and (max-width: $bpSmallest) {
+      height: 10rem;
+    }
+
     h2 {
       font-weight: 600;
       font-size: 2.5rem;
 
       @media only screen and (max-width: $smBreak - 1) {
         font-size: 2rem;
+      }
+
+      @media only screen and (max-width: $bpSmallest) {
+        font-size: 1.6rem;
       }
     }
   }
