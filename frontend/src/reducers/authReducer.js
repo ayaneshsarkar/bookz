@@ -16,7 +16,7 @@ const authReducer = (state = initState, action) => {
     case UPDATE_USER:
       return { ...state, loggedIn: true, user: action.payload };
     case LOGGED_OUT:
-      return { ...state, loggedIn: false, user: {} };
+      return { ...state, loggedIn: false, user: {}, cart: {}, orders: {}, orderBooks: {} };
     default:
       return state;
   }

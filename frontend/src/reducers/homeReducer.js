@@ -4,12 +4,22 @@ import {
   GET_FEATURED_BOOKS, 
   GET_PREMIUM_BOOKS,
   GET_FRONT_CATEGORIES,
-  GET_SEARCH_BOOKS
+  GET_SEARCH_BOOKS,
+  GET_CATEGORY_BOOKS
 } from "../actions/type";
 
 export const searchBooksReducer = (state = {}, action) => {
   switch(action.type) {
     case GET_SEARCH_BOOKS:
+      return { ..._.mapKeys(action.payload, 'book_code') };
+    default:
+      return state;
+  }
+}
+
+export const categoryBooksReducer = (state = {}, action) => {
+  switch(action.type) {
+    case GET_CATEGORY_BOOKS:
       return { ..._.mapKeys(action.payload, 'book_code') };
     default:
       return state;

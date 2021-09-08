@@ -6,6 +6,7 @@ import SearchBooks from '../components/Frontend/Books/SearchBooks';
 import SingleBook from '../components/Frontend/Books/SingleBook';
 import Cart from '../components/Frontend/Cart';
 import '../assets/sass/frontend/app.scss';
+import AllCategoryBooks from '../components/Frontend/Books/AllCategoryBooks';
 
 class Frontend extends Component {
 
@@ -15,6 +16,7 @@ class Frontend extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/books" component={Books} />
         <Route path="/search/:term" component={SearchBooks} />
+        <Route path="/category/:id/:name" component={AllCategoryBooks} />
         <Route exact path="/book/:slug/:book_code" component={SingleBook} />
         <Route exact path="/cart" component={Cart} />
       </Fragment>

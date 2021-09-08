@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { searchBooks } from '../../../actions/bookActions';
+import { categoryBooks } from '../../../actions/bookActions';
 import Book from './Book';
 
-const CategoryBooks = ({ searchBooks, books, term }) => {
+const CategoryBooks = ({ categoryBooks, books, id, name }) => {
 
-  useEffect(() => searchBooks(term), [searchBooks, term]);
-  // useEffect(() => getBooks());
+  useEffect(() => categoryBooks(id), [categoryBooks, id]);
 
   return (
     <div id="allbooks" className="allbooks">
-      <h3 className="list__title">Category: Cat</h3>
+      <h3 className="list__title">Category: { name }</h3>
 
       <div className="list__box lg search">
         { books ? books.map(book => <Book key={book.id} book={book} />) : '' }
@@ -21,8 +20,8 @@ const CategoryBooks = ({ searchBooks, books, term }) => {
 
 const mapStateToProps = state => {
   return {
-    books: Object.values(state.searchBooks).sort((a, b) => b.id - a.id)
+    books: Object.values(state.categoryBooks).sort((a, b) => b.id - a.id)
   }
 }
 
-export default connect(mapStateToProps, { searchBooks })(CategoryBooks);
+export default connect(mapStateToProps, { categoryBooks })(CategoryBooks);

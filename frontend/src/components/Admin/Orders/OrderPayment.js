@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { host } from '../../../config/server';
 import { localizeInt } from '../../../helpers';
 
 const OrderPayment = ({ order }) => {
@@ -38,7 +39,12 @@ const OrderPayment = ({ order }) => {
           <td className="lgmd">{ order.transaction_id }</td>
           <td className="lgmd">{ localizeInt(order.paid_amount) }</td>
           <td className="lgmd">
-            <Link to="/" className="tableLink">Download Invoice</Link>
+            <a target="_blank" 
+            rel="noreferrer"
+            href={`${host}/orders/${order.user_id}/${order.id}/invoices/${order.invoice_id}.pdf`}
+            className="tableLink">
+              Download Invoice
+              </a>
           </td>
         </tr>
       </tbody>

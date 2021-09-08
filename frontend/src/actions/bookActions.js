@@ -11,7 +11,8 @@ import {
   DELETE_BOOK,
   DELETE_FRONT_BOOK,
   GET_TYPES,
-  GET_SEARCH_BOOKS
+  GET_SEARCH_BOOKS,
+  GET_CATEGORY_BOOKS
 } from './type';
 
 export const createBook = book => async dispatch => {
@@ -60,6 +61,12 @@ export const searchBooks = term => async dispatch => {
   const res = await axios.get(`${host}/search-books/?term=${term}`);
 
   dispatch({ type: GET_SEARCH_BOOKS, payload: res.data });
+}
+
+export const categoryBooks = id => async dispatch => {
+  const res = await axios.get(`${host}/get-category-books/?id=${id}`);
+
+  dispatch({ type: GET_CATEGORY_BOOKS, payload: res.data });
 }
 
 export const updateBook = book => async dispatch => {
