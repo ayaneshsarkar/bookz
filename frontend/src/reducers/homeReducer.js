@@ -3,12 +3,12 @@ import {
   GET_POPULAR_BOOKS, 
   GET_FEATURED_BOOKS, 
   GET_PREMIUM_BOOKS,
-  GET_CATEGORIES
+  GET_FRONT_CATEGORIES
 } from "../actions/type";
 
 export const frontCategoryReducer = (state = {}, action) => {
   switch(action.type) {
-    case GET_CATEGORIES:
+    case GET_FRONT_CATEGORIES:
       return { ..._.mapKeys(action.payload, 'id') };
     default:
       return state;

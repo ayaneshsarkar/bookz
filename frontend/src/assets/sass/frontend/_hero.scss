@@ -231,6 +231,10 @@
         bottom: unset;
         transform: translate(-50%, -50%);
       }
+
+      @media only screen and (max-width: $bp310) {
+        height: 90%;
+      }
     }
   }
 

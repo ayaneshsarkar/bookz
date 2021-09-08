@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 
-const Categories = () => {
+const Categories = ({ categories }) => {
   return (
     <Fragment>
       <section id="category" className="category">
-        <div className="category__box"><h2>Fantasy</h2></div>
-        <div className="category__box"><h2>Comedy</h2></div>
-        <div className="category__box"><h2>Horror</h2></div>
-        <div className="category__box"><h2>Tech</h2></div>
-        <div className="category__box"><h2>Sci-Fi</h2></div>
+        { categories ? categories.map((category, i) => {
+          return (
+            <div className="category__box" key={i}><h2>{ category.name }</h2></div>
+          )
+        }) : '' }
       </section>
     </Fragment>
   );

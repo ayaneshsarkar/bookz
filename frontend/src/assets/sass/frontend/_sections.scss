@@ -497,6 +497,10 @@ body {
         font-size: 4rem;
         padding: 1rem 0 2rem 0;
       }
+
+      @media only screen and (max-width: $bp470) {
+        font-size: 3.2rem !important;
+      }
     }
 
     .mailbox {
@@ -782,6 +786,33 @@ body {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+  }
+}
+
+.footer {
+  &__links {
+    @media only screen and (max-width: $mdBreak) {
+      grid-column: 2 / 12;
+    }
+
+    @media only screen and (max-width: $bp470) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__contact {
+    .mailbox__input {
+      @media only screen and (max-width: $mdBreak) {
+        flex-direction: column;
+      }
+
+      button {
+        @media only screen and (max-width: $mdBreak) {
+          width: 16rem;
+          margin-top: 1rem;
+        }
       }
     }
   }

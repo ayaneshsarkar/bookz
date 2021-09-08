@@ -11,6 +11,11 @@ const LoginDialog = props => {
 
   return (
     <Dialog open={props.open} onClose={() => props.setChange(false)} 
+      PaperProps={{
+        style: {
+          backgroundColor: 'transparent',
+        },
+      }}
       classes={{ paper: 'br-none' }}
       maxWidth="lg"
       fullScreen={fullScreen}

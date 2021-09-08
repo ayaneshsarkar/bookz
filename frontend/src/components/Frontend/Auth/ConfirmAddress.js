@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
 import { updateUser } from '../../../actions/authActions';
 import FormValidator from '../../../helpers/FormValidator';
-import InputBox from '../../UI/InputBox';
+import ConfirmAddressDialog from './ConfirmAddressDialog';
 
 class ConfirmAddress extends Component {
 
@@ -50,35 +49,13 @@ class ConfirmAddress extends Component {
 
   render() {
     return (
-      <Dialog 
-        open={this.props.open} 
-        onClose={() => this.props.closeAddress(false)}
-        classes={{ paper: 'br-none' }}
-        maxWidth="lg"
-      >
-        <div className="header__auth">
-          <form className="auth__form" onSubmit={this.handleSubmit}>
-            <InputBox
-              parentClass="auth__form--box full-width noMargin"
-              label="Address"
-              auth={true}
-              error={this.state.errors.address}
-              textarea={true}
-            >
-              <textarea name="address" rows="5" className="auth__form--input"
-              placeholder="Address"
-              value={this.state.address}
-              onChange={this.handleChange}></textarea>
-            </InputBox>
-
-            <div className="auth__form--box noMargin">
-              <button className="auth__form--button" style={{ marginTop: '19rem' }}>
-                Save Address
-              </button>
-            </div>
-          </form>
-        </div>
-      </Dialog>
+      <ConfirmAddressDialog 
+        open={this.props.open}
+        closeAddress={this.props.closeAddress}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        data={this.state}
+      />
     );
   }
 

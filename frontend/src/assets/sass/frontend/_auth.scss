@@ -6,16 +6,54 @@
   color: $primaryText;
   min-width: 65vw;
 
+  &.order {
+    .order__title {
+      @media only screen and (max-width: $bp470) {
+        font-size: 2.3rem;
+      }
+    }
+
+    .order__delivery {
+      @media only screen and (max-width: $bp470) {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .order__payment--title {
+      @media only screen and (max-width: $bp470) {
+        font-size: 2rem;
+      }
+    }
+
+    .order__delivery--title {
+      @media only screen and (max-width: $bp470) {
+        font-size: 2.1rem;
+      }
+    }
+
+    .order__delivery--name {
+      @media only screen and (max-width: $bp470) {
+        font-size: 1.9rem;
+      }
+    }
+
+    .order__delivery--content {
+      @media only screen and (max-width: $bp470) {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media only screen and (max-width: $bp960) {
+      min-width: 100%;
+    }
+  }
+
   @media only screen and (max-width: $bpLarge) {
-    min-width: 75vh;
+    min-width: 75vw;
   }
 
   @media only screen and (max-width: $bp960) {
-    min-height: 200vh;
-  }
-
-  @media only screen and (max-width: $bpSmallerMedium) {
-    min-height: 230vh;
+    min-height: 100vh;
   }
 
   @media only screen and (max-width: $bpSmaller) {

@@ -17,8 +17,8 @@ import Footer from '../Footer';
 import Head from '../../../containers/Helmet';
 
 const Home = ({ 
-  loggedIn, user, getPopularBooks, getFeaturedBooks, getPremiumBooks, 
-  popularBooks, featuredBooks, premiumBooks 
+  loggedIn, user, getPopularBooks, getFeaturedBooks, getPremiumBooks, getCategories,
+  popularBooks, featuredBooks, premiumBooks, frontCategories
 }) => {
   const navRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
@@ -27,7 +27,8 @@ const Home = ({
     getPopularBooks();
     getFeaturedBooks();
     getPremiumBooks();
-  }, [getFeaturedBooks, getPopularBooks, getPremiumBooks]);
+    getCategories();
+  }, [getFeaturedBooks, getPopularBooks, getPremiumBooks, getCategories]);
 
   window.addEventListener('scroll', () => {
     if(navRef && navRef.current) {
@@ -59,7 +60,7 @@ const Home = ({
 
       <main className="wrapper" id="heroWrapper">
         <Hero />
-        <Categories />
+        <Categories categories={frontCategories} />
         <Popular books={popularBooks} />
         <Featured books={featuredBooks} />
       </main>
