@@ -9,11 +9,14 @@ import ChangePassword from '../Auth/ChangePassword';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { isArray } from 'lodash';
 import history from '../../../config/history';
+import UnAuthAlert from '../Auth/UnAuthAlert';
 
 const Navbar = props => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState(false);
+  const [auth, setAuth] = useState(false);
+
   const menuRef = useRef(null);
   const sideRef = useRef(null);
 
@@ -61,6 +64,24 @@ const Navbar = props => {
     if(sideRef) {
       sideRef.current.classList.toggle('visible');
       menuRef.current.classList.toggle('margin');
+    }
+  }
+
+  const handleAuthWithCart = () => {
+    if(!props.loggedIn) {
+      setAuth(true);
+    } else {
+      history.push('/cart');
+    }
+  }
+
+  const handleAuthWithCallback = (callback = null) => {
+    if(!props.loggedIn) {
+      setAuth(true);
+
+      if(callback) {
+        callback(true);
+      }
     }
   }
 
@@ -127,7 +148,7 @@ const Navbar = props => {
           <div className="menuText">Books</div>
         </div>
 
-        <div className="item">
+        <div className="item" onClick={handleAuthWithCart}>
           <svg className="icon">
             <use xlinkHref={`${Sprite}#shopping-bag`}></use>
           </svg>
@@ -142,6 +163,8 @@ const Navbar = props => {
 
           <div className="menuText">Logout</div>
         </div> : '' }
+
+        <UnAuthAlert open={auth} setAuth={setAuth} />
       </div>
 
       <nav className="header__mainnav">
