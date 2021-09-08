@@ -459,7 +459,7 @@ body {
       align-self: center;
     }
 
-    @media only screen and (max-width: $bp690) {
+    @media only screen and (max-width: $mdBreak) {
       display: none;
     }
 
@@ -472,11 +472,7 @@ body {
       }
 
       @media only screen and (max-width: $mdBreak) {
-        height: 28rem;
-      }
-
-      @media only screen and (max-width: $bpSmallerMedium) {
-        height: 25rem;
+        display: none;
       }
 
       img {
@@ -488,7 +484,7 @@ body {
   &__contact {
     grid-column: 8 / -1;
 
-    @media only screen and (max-width: $smBreak) {
+    @media only screen and (max-width: $mdBreak) {
       grid-column: 1 / -1;
     }
 

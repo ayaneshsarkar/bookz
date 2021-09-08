@@ -27,14 +27,15 @@
     height: 20rem;
   }
 
-  @media only screen and (max-width: $bp375) {
-    height: 17rem;
+  @media only screen and (max-width: $bp470) {
     padding: 2rem;
   }
 
-  @media only screen and (max-width: 360px) {
-    height: 16rem;
+  @media only screen and (max-width: $bp450) {
     padding: 1.6rem;
+    justify-content: center;
+    flex-direction: column;
+    height: 23rem;
   }
 
   @media only screen and (max-width: 355px) {
@@ -48,10 +49,23 @@
       margin-top: -0.5rem;
     }
 
+    @media only screen and (max-width: $bp450) {
+      order: 1;
+      justify-self: flex-end;
+      flex: 0 0 40%;
+      display: none;
+    }
+
     h1 {
       font-size: 5rem;
       font-weight: 800;
       color: $themeColor;
+
+      @media only screen and (max-width: $bp450) {
+        text-align: right;
+        margin-bottom: 1rem;
+        // max-width: 85%;
+      }
 
       @media only screen and (max-width: $bpMedium) {
         font-size: 4rem;
@@ -94,6 +108,14 @@
         }
       }
 
+      @media only screen and (max-width: $bp450) {
+        display: none;
+        text-align: right;
+        margin-right: 0;
+        max-width: 100%;
+        margin-bottom: 1rem;
+      }
+
       @media only screen and (max-width: $bp430) {
         font-size: 1.5rem;
       }
@@ -112,6 +134,10 @@
       border-radius: 5rem;
       background-color: $heroButton;
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+      @media only screen and (max-width: $bp450) {
+        float: right;
+      }
       
       @media only screen and (max-width: $bpSmallerMedium) {
         font-size: 1.6rem;
@@ -157,13 +183,65 @@
       height: 115%;
     }
 
-    @media only screen and (max-width: $bp430) {
-      margin-top: -0.5rem;
+    @media only screen and (max-width: $smBreak - 1) {
+      margin-bottom: 2rem;
+    }
+
+    @media only screen and (max-width: $bp550) {
+      margin-bottom: 1.6rem;
+    }
+
+    @media only screen and (max-width: $bpSmaller) {
+      margin-bottom: 1rem;
+    }
+
+    @media only screen and (max-width: $bp470) {
       height: 100%;
     }
 
-    @media only screen and (max-width: 355px) {
-      margin-top: 1rem;
+    @media only screen and (max-width: $bp450) {
+      margin-bottom: 0;
+    }
+
+    img {
+      @media only screen and (max-width: $smBreak - 1) {
+        height: 115%;
+        margin-left: 2.5rem;
+      }
+
+      @media only screen and (max-width: $bp550) {
+        height: 110%;
+        margin-left: 1.5rem;
+      }
+
+      @media only screen and (max-width: $bpSmaller) {
+        height: 100%;
+        margin-left: 1rem;
+      }
+
+      @media only screen and (max-width: $bp450) {
+        height: 100%;
+        margin-left: 0;
+        top: 50%;
+        left: 50%;
+        right: unset;
+        bottom: unset;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  .viewAllBooks {
+    @media only screen and (max-width: $bp450) {
+      display: block !important;
+      font-size: 1.6rem;
+      font-weight: 600;
+      border-radius: 5rem;
+      text-transform: uppercase;
+      box-shadow: $bDflt;
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background-color: $heroButton;
     }
   }
 }

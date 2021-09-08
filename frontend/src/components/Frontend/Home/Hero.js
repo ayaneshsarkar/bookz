@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import HeroImg from '../../../assets/img/hero.png';
 
 const Hero = () => {
@@ -17,6 +18,8 @@ const Hero = () => {
         <div className="hero__image">
           <img src={HeroImg} alt="Hero" className="img" />
         </div>
+
+        <Link className="viewAllBooks d-none" to="/books">View All Books</Link>
       </section>
     </Fragment>
   );

@@ -13,6 +13,10 @@
     padding: 4rem 0;
   }
 
+  @media only screen and (max-width: $bpSmaller) {
+    padding: 3rem 0;
+  }
+
   &__box {
     height: 15rem;
     border-radius: 1.5rem;
