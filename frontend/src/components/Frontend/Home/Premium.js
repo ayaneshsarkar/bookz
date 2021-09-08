@@ -1,42 +1,26 @@
 import React, { Fragment } from 'react';
+import { host } from '../../../config/server';
 
-const Premium = () => {
+const Premium = ({ books }) => {
 
   return (
     <Fragment>
       <section id="premium" className="premium">
         <h1 className="primaryHeading">Premium Books</h1>
         <div className="list__box">
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
-          <div className="list__box-item">
-            <div className="list__box-item--img"></div>
-            <div className="list__box-item--title">The Witcher</div>
-            <div className="list__box-item--author">Andrez Sapkowski</div>
-          </div>
+          {books ? books.map((book, i) => {
+            return (
+              <div className="list__box-item" key={i}>
+                <div className="list__box-item--img">
+                  <img src={`${host}/${book.bookurl}`} alt={book.title} className="img" />
+                </div>
+                <div className="list__box-item--title">{ book.title }</div>
+                <div className="list__box-item--author">{ book.author }</div>
+              </div>
+            )
+          })
+          : ''
+          }
         </div>
       </section>
     </Fragment>

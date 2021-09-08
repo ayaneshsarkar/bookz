@@ -1,5 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { 
+  getPopularBooks, 
+  getFeaturedBooks, 
+  getPremiumBooks 
+} from '../../../actions/homeActions';
 import Navbar from '../Navbar/index';
 import Hero from './Hero';
 import Categories from './Categories';
@@ -10,9 +15,18 @@ import Newsletter from './Newsletter';
 import Footer from '../Footer';
 import Head from '../../../containers/Helmet';
 
-const Home = props => {
+const Home = ({ 
+  loggedIn, user, getPopularBooks, getFeaturedBooks, getPremiumBooks, 
+  popularBooks, featuredBooks, premiumBooks 
+}) => {
   const navRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
+
+  useEffect(() => {
+    getPopularBooks();
+    getFeaturedBooks();
+    getPremiumBooks();
+  }, [getFeaturedBooks, getPopularBooks, getPremiumBooks]);
 
   window.addEventListener('scroll', () => {
     if(navRef && navRef.current) {
@@ -35,8 +49,8 @@ const Home = props => {
         <div className="wrapper">
           <header id="header" className="header" style={{ margin: '0 -2.5rem 2.5rem -2.5rem' }}>
             <Navbar 
-              loggedIn={props.loggedIn}
-              user={props.user}
+              loggedIn={loggedIn}
+              user={user}
             />
           </header>
         </div>
@@ -45,12 +59,12 @@ const Home = props => {
       <main className="wrapper" id="heroWrapper">
         <Hero />
         <Categories />
-        <Popular />
-        <Featured />
+        <Popular books={popularBooks} />
+        <Featured books={featuredBooks} />
       </main>
 
       <div className="full-wrapper">
-        <Premium />
+        <Premium books={premiumBooks} />
       </div>
 
       <div className="wrapper newsWrapper">
@@ -67,8 +81,13 @@ const Home = props => {
 const mapStateToProps = state => {
   return {
     loggedIn: state.auth.loggedIn,
-    user: state.auth.user
+    user: state.auth.user,
+    popularBooks: Object.values(state.popularBooks),
+    featuredBooks: Object.values(state.featuredBooks),
+    premiumBooks: Object.values(state.premiumBooks)
   }
 }
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps, 
+  { getPopularBooks, getFeaturedBooks, getPremiumBooks }
+)(Home);
