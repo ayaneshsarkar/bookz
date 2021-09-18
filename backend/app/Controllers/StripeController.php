@@ -201,4 +201,28 @@
             return $pdf;
         }
 
+        public function download(Request $request, Response $response)
+        {
+            $data = $request->getBody();
+
+            $userId = Application::$APP->user->id;
+            $orderId = $data->orderId;
+            $file = $data->file;
+
+            $path = $_ENV['BASE_URL'] . "/orders/$userId/$orderId/$file";
+
+            if(\file_exists($path)) {
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename="'.basename($path).'"');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($path));
+                flush(); // Flush system output buffer
+                readfile($path);
+            }
+
+            return $response->json([ 'status' => TRUE ]);
+        }
     }

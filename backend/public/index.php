@@ -88,6 +88,7 @@
     $route->get('/get-order', [StripeController::class, 'getOrder']);
     $route->post('/get-order', [StripeController::class, 'getOrder']);
     $route->get('/get-order-books', [StripeController::class, 'getOrderBooks']);
+    $route->get('/download', [StripeController::class, 'download']);
 
     $app->run();
     
