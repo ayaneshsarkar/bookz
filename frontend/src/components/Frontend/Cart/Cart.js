@@ -1,13 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import slugify from 'react-slugify';
+import { updateCart } from '../../../actions/cartActions';
 import { Link } from 'react-router-dom';
 import Sprite from '../../../assets/svg/feather-sprite.svg';
 import { host } from '../../../config/server';
 import { localizeInt, capitalize } from '../../../helpers';
 
-const Cart = ({ cart, deleteSingleCart }) => {
-  return (
+const Cart = ({ cart, deleteSingleCart, updateCart }) => {
+  const editCart = async (bookId, qty) => {
+    const quantity = parseInt(qty) + 1;
+    await updateCart({ book_id: bookId, quantity });
+  }
 
+  return (
     <tr>
       <td>
         <div className="cart__content">
@@ -35,8 +41,23 @@ const Cart = ({ cart, deleteSingleCart }) => {
             </div>
 
             <div className="d-flex-align-center">
-              <select className="cart__content--select d-none cart-sm" required>
-                <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
+              <select className="cart__content--select d-none cart-sm" required
+                onChange={(e) => editCart(cart.cartbookid, e.target.value)}
+              >
+                {
+                  Array.from(Array(cart.inventory), (e, i) => {
+                    if((i + 1) === cart.quantity) {
+                      return (
+                        <option key={i} value={i++} selected>{i++}</option>
+                      )
+                    } else {
+                      return (
+                        <option key={i} value={i++}>{i++}</option>
+                      )
+                    }
+                  })
+                }
+                {/* <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option> */}
               </select>
 
               <div className="cart-cross d-none cart-sm">
@@ -49,8 +70,23 @@ const Cart = ({ cart, deleteSingleCart }) => {
         </div>
       </td>
       <td className="cart-lgmd">
-        <select className="cart__content--select" required>
-          <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option>
+        <select className="cart__content--select" required
+          onChange={(e) => editCart(cart.cartbookid, e.target.value)}
+        >
+          {
+            Array.from(Array(cart.inventory), (e, i) => {
+              if((i + 1) === cart.quantity) {
+                return (
+                  <option key={i} value={i++} selected>{i++}</option>
+                )
+              } else {
+                return (
+                  <option key={i} value={i++}>{i++}</option>
+                )
+              }
+            })
+          }
+          {/* <option value={`${cart.quantity || ''}`}>{ cart.quantity || 'Qty' }</option> */}
         </select>
       </td>
       <td className="cart-lgmd">
@@ -69,4 +105,4 @@ const Cart = ({ cart, deleteSingleCart }) => {
   );
 }
 
-export default Cart;
+export default connect(null, { updateCart })(Cart);

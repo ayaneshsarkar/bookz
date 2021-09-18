@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { capitalize, localizeInt, removeDecimals } from '../../../helpers';
 
-const BookContent = ({ book, addToCart }) => {
+const BookContent = ({ book, addToCart, setQty }) => {
   const [inventory, setInventory] = useState(1);
 
   useEffect(() => {
@@ -36,7 +36,11 @@ const BookContent = ({ book, addToCart }) => {
 
       {book.price && <div className="bookcontent__cartbox">
         <div className="bookcontent__cartbox--quantity">
-          <select className="bookcontent__cartbox--quantity-select" required>
+          <select className="bookcontent__cartbox--quantity-select" required
+            onChange={(e) => 
+              { const quantity = e.target.value; setQty(parseInt(quantity) + 1) }
+            }
+          >
             <option value="">Qty</option>
             {inventory ? Array.from(Array(inventory), (e, i) => {
                 return (

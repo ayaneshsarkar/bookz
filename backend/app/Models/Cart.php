@@ -61,6 +61,7 @@
                 'cart_items.publish_date',
                 'cart_items.category',
                 'cart_items.quantity',
+                'cart_items.inventory',
                 'cart_items.discount',
                 'cart_items.price',
                 'cart_items.type',
@@ -89,6 +90,7 @@
                 'cart_items.publish_date',
                 'cart_items.category',
                 'cart_items.quantity',
+                'cart_items.inventory',
                 'cart_items.discount',
                 'cart_items.price',
                 'cart_items.type',
@@ -154,6 +156,7 @@
                 'publish_date' => $book->publish_date,
                 'category' => $book->category,
                 'quantity' => $data->quantity ?? 1,
+                'inventory' => $book->inventory ?? 1,
                 'price' => (int)$book->price,
                 'type' => $book->type,
                 'book_code' => $book->book_code
@@ -174,7 +177,8 @@
                 'discount' => $data->discount ?? 0,
                 'publish_date' => $book->publish_date,
                 'category' => $book->category,
-                'quantity' => $quantity,
+                'quantity' => $data->quantity ?? $quantity,
+                'inventory' => $book->inventory ?? 1,
                 'price' => $book->price,
                 'type' => $book->type,
                 'book_code' => $book->book_code

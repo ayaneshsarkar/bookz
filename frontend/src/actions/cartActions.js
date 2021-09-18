@@ -18,6 +18,25 @@ export const storeCart = cart => async dispatch => {
   }
 }
 
+export const updateCart = cart => async dispatch => {
+  const res = await axios.post(`${host}/cart`, cart, authHeader);
+
+  if(res.data.status) {
+    const cart = await fetchWithAuth('get', 
+      `${host}/single-cart?cartitemid=${parseInt(res.data.cartitemid)}`
+    );
+    const data = await cart.json();
+
+    await getCartTotal();
+
+    const totalRes = await fetchWithAuth('get', `${host}/cart-total`);
+    const totalData = await totalRes.json();
+    
+    dispatch({ type: STORE_CART, payload: data.carts });
+    dispatch({ type: GET_CART_TOTAL, payload: totalData.total });
+  }
+}
+
 export const getCarts = () => async dispatch => {
   const res = await fetchWithAuth('get', `${host}/carts`);
   const data = await res.json();

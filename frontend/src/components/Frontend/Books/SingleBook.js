@@ -12,6 +12,7 @@ import BookContent from './BookContent';
 
 const Book = props => {
   const navRef = useRef(null);
+  const [qty, setQty] = useState(1);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
   const { getBookBySlug, match }  = props;
@@ -21,7 +22,7 @@ const Book = props => {
   }, [getBookBySlug, match.params.book_code]);
 
   const addToCart = async bookId => {
-    await props.storeCart({ book_id: bookId });
+    await props.storeCart({ book_id: bookId, quantity: qty || 1 });
     window.location.href = '/cart';
   }
 
@@ -54,7 +55,7 @@ const Book = props => {
           { (props.book !== []) ? 
               <>
                 <BookMedia book={props.book} /> 
-                <BookContent book={props.book} addToCart={addToCart} />
+                <BookContent book={props.book} addToCart={addToCart} setQty={setQty} />
               </>
             : ''
           }
