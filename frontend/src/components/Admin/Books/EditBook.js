@@ -71,7 +71,7 @@ class EditBook extends Component {
     validator.isString(this.state.author, "author", true);
     validator.isDate(this.state.publish_date, "publish date", true);
     validator.isImage(this.state.bookurl, "main image");
-    validator.isFile(this.state.bookfile, 'bookfile', true, 'book');
+    validator.isFile(this.state.bookfile, 'bookfile', false, 'book');
     validator.isString(this.state.description, "description");
     validator.isInt(this.state.price, "price", true);
     validator.isInt(this.state.type_id, "type", true);

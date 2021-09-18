@@ -12,6 +12,8 @@ const categoryReducer = (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload };
     case 'DELETE_CATEGORY':
       return _.omit(state, action.payload);
+    case 'EMPTY_CATEGORIES':
+      return {};
     default:
       return state;
   }

@@ -4,7 +4,9 @@ import {
   GET_SINGLE_ORDER, 
   GET_ORDER, 
   GET_ORDER_BOOKS,
-  GET_SINGLE_ORDER_BOOKS
+  GET_SINGLE_ORDER_BOOKS,
+  EMPTY_ORDERS,
+  EMPTY_ORDER_BOOKS
 } from '../actions/type';
 
 export const orderReducer = (state = {}, action) => {
@@ -15,6 +17,8 @@ export const orderReducer = (state = {}, action) => {
       return { ..._.mapKeys(action.payload, 'id') };
     case GET_ORDER:
       return { ...state, [action.payload.id]: action.payload };
+    case EMPTY_ORDERS:
+      return {};
     default:
       return state;
   }
@@ -26,6 +30,8 @@ export const orderBooksReducer = (state = {}, action) => {
       return { ...state, ..._.mapKeys(action.payload, 'id') };
     case GET_SINGLE_ORDER_BOOKS:
       return { ..._.mapKeys(action.payload, 'orderitemid') };
+    case EMPTY_ORDER_BOOKS:
+      return {};
     default:
       return state;
   }

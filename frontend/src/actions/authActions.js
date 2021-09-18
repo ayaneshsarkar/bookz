@@ -3,7 +3,19 @@ import Cookies from 'universal-cookie';
 import { host } from '../config/server';
 import { fetchWithAuth } from './header';
 import history from '../config/history';
-import { CREATE_USER, LOGGED_IN, VERIFY_USER, LOGGED_OUT, UPDATE_USER } from './type';
+import { 
+  CREATE_USER, 
+  LOGGED_IN, 
+  VERIFY_USER, 
+  LOGGED_OUT, 
+  UPDATE_USER,
+  EMPTY_BOOKS,
+  EMPTY_ORDERS,
+  EMPTY_ORDER_BOOKS,
+  CLEAR_CART,
+  EMPTY_CATEGORIES,
+  EMPTY_TYPES,
+} from './type';
 
 const cookies = new Cookies();
 const accessToken = cookies.get('accessToken');
@@ -60,6 +72,8 @@ export const login = user => async dispatch => {
     cookies.set('accessToken', res.data.access_token, { path: '/' });
 
     dispatch({ type: LOGGED_IN, payload: res.data });
+  } else {
+    throw new Error('Email or Password is incorrect!');
   }
 }
 
@@ -76,6 +90,13 @@ export const logout = () => async (dispatch, getState) => {
       localStorage.removeItem('refreshToken');
 
       dispatch({ type: LOGGED_OUT, payload: res.data });
+      dispatch({ type: EMPTY_BOOKS, payload: null });
+      dispatch({ type: EMPTY_ORDERS, payload: null });
+      dispatch({ type: EMPTY_ORDER_BOOKS, payload: null });
+      dispatch({ type: CLEAR_CART, payload: null });
+      dispatch({ type: EMPTY_CATEGORIES, payload: null });
+      dispatch({ type: EMPTY_TYPES, payload: null });
+      
       history.push('/');
     }
   }

@@ -107,9 +107,9 @@ class FormValidator {
   isFile = (file, key, req = false, type = 'image') => {
     if(req && (file.length < 1)) {
       this.errors[key] = `${capitalize(key)} is required.`;
-    } else if(type === 'image') {
+    } else if(req && type === 'image') {
       this.isImage(file, key);
-    } else if(type === 'book') {
+    } else if(req && type === 'book') {
       this.isPDF(file, key);
     } else {
       if(this.errors[key]) delete this.errors[key];

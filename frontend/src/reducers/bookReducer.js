@@ -4,7 +4,8 @@ import {
   GET_BOOKS,
   GET_BOOK,
   UPDATE_BOOK,
-  DELETE_BOOK
+  DELETE_BOOK,
+  EMPTY_BOOKS
 } from '../actions/type';
 
 const bookReducer = (state = {}, action) => {
@@ -19,6 +20,8 @@ const bookReducer = (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload };
     case DELETE_BOOK:
       return _.omit(state, action.payload);
+    case EMPTY_BOOKS:
+      return {};
     default:
       return state;
   }

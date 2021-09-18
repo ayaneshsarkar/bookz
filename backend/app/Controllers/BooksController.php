@@ -13,6 +13,7 @@
     use App\Core\Validator;
     use App\Middlewares\AdminMiddleware;
     use App\Core\FileHandler;
+    use App\Core\Application;
     
 
     /**
@@ -32,6 +33,20 @@
         public function getBooks(Request $request, Response $response)
         {
             $books = $this->book->get();
+
+            if(Application::$APP->user && (Application::$APP->user->type !== 'admin')) {
+                foreach($books as $book) {
+                    unset($book->bookfile);
+                }
+            }
+
+            return $response->json($books);
+        }
+
+        public function getCategoryBooks(Request $request, Response $response)
+        {
+            $id = $request->getBody()->id;
+            $books = $this->book->getCategoryBooks($id);
 
             foreach($books as $book) {
                 unset($book->bookfile);
@@ -209,6 +224,21 @@
                 return $response->json([ 'status' => FALSE, 'errors' => $errors ]);
             }
 
+        }
+
+        public function searchBooks(Request $request, Response $response)
+        {
+            $data = $request->getBody();
+
+            $books = $this->book->searchBooks($data->term);
+
+            if($books) {
+                foreach($books as $book) {
+                    unset($book->bookfile);
+                }
+            }
+
+            return $response->json($books);
         }
 
         public function deleteBook(Request $request, Response $response)

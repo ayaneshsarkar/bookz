@@ -45,7 +45,13 @@ class Login extends Component {
       this.setState({ disabledLogin: true });
 
       const currentState = { ...this.state };
-      await this.props.login(currentState);
+      
+      try {
+        await this.props.login(currentState);
+      } catch(err) {
+        this.setState({ disabledLogin: false });
+        this.setState({ errors: { email: err.message, password: err.message } });
+      }
     }
   }
 

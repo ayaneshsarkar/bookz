@@ -77,6 +77,30 @@
                     ->getAll();
         }
 
+        public function searchBooks(?string $term)
+        {
+            $query = "SELECT books.*, categories.name as category FROM books 
+                JOIN categories ON books.category_id = categories.id
+                WHERE title ILIKE :term 
+                OR author ILIKE :term";
+            $statement = $this->db->prepare($query);
+            $statement->execute([ 'term' => "%$term%" ]);
+
+            return $statement->fetchAll();
+        }
+
+        public function getCategoryBooks($id)
+        {
+            $query = "SELECT books.*, categories.name as category FROM books 
+                JOIN categories ON books.category_id = categories.id
+                WHERE category_id = :id";
+                
+            $statement = $this->db->prepare($query);
+            $statement->execute([ 'id' => $id ]);
+
+            return $statement->fetchAll();
+        }
+
         public function create(object $data)
         {
             $bookArr = [

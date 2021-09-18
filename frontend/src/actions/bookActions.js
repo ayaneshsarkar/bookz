@@ -20,7 +20,9 @@ export const createBook = book => async dispatch => {
   const id = parseInt(res.data.id);
   const newRes = await axios.get(`${host}/get-book?id=${id}`);
 
-  dispatch({ type: CREATE_BOOK, payload: newRes.data });
+  if(newRes.data) {
+    dispatch({ type: CREATE_BOOK, payload: newRes.data });
+  }
 }
 
 export const getTypes = () => async dispatch => {
@@ -75,7 +77,9 @@ export const updateBook = book => async dispatch => {
   const newRes = await fetch(`${host}/get-book?id=${id}`);
   const data = await newRes.json();
   
-  dispatch({ type: UPDATE_BOOK, payload: data });
+  if(data && data.id) {
+    dispatch({ type: UPDATE_BOOK, payload: data });
+  }
 }
 
 export const deleteBook = id => async dispatch => {

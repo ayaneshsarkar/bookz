@@ -33,6 +33,8 @@
     $route->get('/get-book', [BooksController::class, 'getBook']);
     $route->get('/get-full-book', [BooksController::class, 'getFullBook']);
     $route->post('/get-book', [BooksController::class, 'getBook']);
+    $route->get('/search-books', [BooksController::class, 'searchBooks']);
+    $route->get('/get-category-books', [BooksController::class, 'getCategoryBooks']);
     $route->post('/create-book', [BooksController::class, 'storeBook']);
     $route->put('/edit-book', [BooksController::class, 'updateBook']);
     $route->post('/edit-book', [BooksController::class, 'updateBook']);
