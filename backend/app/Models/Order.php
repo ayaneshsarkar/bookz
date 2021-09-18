@@ -64,7 +64,8 @@
                     'quantity' => $item->quantity,
                     'type' => $item->type,
                     'price' => $item->price,
-                    'book_code' => $item->book_code
+                    'book_code' => $item->book_code,
+                    'bookfile' => $item->bookfile ?? NULL
                 ], 'order_items');
             }
         }
@@ -113,6 +114,7 @@
                 'order_items.description',
                 'order_items.author',
                 'order_items.bookurl',
+                'order_items.bookfile',
                 'order_items.book_code',
                 'order_items.publish_date',
                 'order_items.category',

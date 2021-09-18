@@ -90,6 +90,7 @@
             FileHandler::makeDir('orders/'.$userId."/$orderId");
             FileHandler::makeDir('orders/'.$userId."/$orderId/avatars");
             FileHandler::makeDir('orders/'.$userId."/$orderId/bookimages");
+            FileHandler::makeDir('orders/'.$userId."/$orderId/bookfiles");
             FileHandler::makeDir('orders/'.$userId."/$orderId/invoices");
 
             if(Application::$APP->user->avatar) {
@@ -104,6 +105,8 @@
             // Store Order Items
             foreach($cartItems as $item) {
                 $cartId = $item->id;
+                $bookfileData = $this->book->first($item->cartbookid);
+                $bookfile = $bookfileData->bookfile ?? null;
 
                 if($item->bookurl) {
                     $imageName = $item->bookurl;
@@ -111,6 +114,15 @@
                     FileHandler::copyFile(
                         $item->bookurl,
                         'orders/'.$userId."/$orderId/$imageName"
+                    );
+                }
+
+                if($bookfile) {
+                    $item->bookfile = $bookfile;
+
+                    FileHandler::copyFile(
+                        $bookfile,
+                        'orders/'.$userId."/$orderId/$bookfile"
                     );
                 }
             }
