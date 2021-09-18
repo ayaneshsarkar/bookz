@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { capitalize, localizeInt, removeDecimals } from '../../../helpers';
 
 const BookContent = ({ book, addToCart }) => {
+  const [inventory, setInventory] = useState(1);
+
+  useEffect(() => {
+    if(book.inventory) {
+      setInventory(book.inventory);
+    }
+  }, [book.inventory]);
+
   return (
     <div className="bookcontent">
       <h1 className="bookcontent__title">{ book.title }</h1>
@@ -30,7 +38,12 @@ const BookContent = ({ book, addToCart }) => {
         <div className="bookcontent__cartbox--quantity">
           <select className="bookcontent__cartbox--quantity-select" required>
             <option value="">Qty</option>
-            <option value="1">1</option>
+            {inventory ? Array.from(Array(inventory), (e, i) => {
+                return (
+                  <option key={i} value={i++}>{i++}</option>
+                )
+              }) 
+            : '' }
           </select>
         </div>
 

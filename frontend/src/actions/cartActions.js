@@ -12,7 +12,8 @@ export const storeCart = cart => async dispatch => {
     );
     const data = await cart.json();
 
-    getCartTotal();
+    await getCartTotal();
+    
     dispatch({ type: STORE_CART, payload: data.carts });
   }
 }

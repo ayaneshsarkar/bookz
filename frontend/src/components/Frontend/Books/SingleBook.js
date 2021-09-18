@@ -5,6 +5,7 @@ import { storeCart } from '../../../actions/cartActions';
 import Head from '../../../containers/Helmet';
 import Navbar from '../Navbar/index';
 
+// eslint-disable-next-line no-unused-vars
 import FrontBox from '../../../containers/FrontBox';
 import BookMedia from './BookMedia';
 import BookContent from './BookContent';
@@ -13,14 +14,15 @@ const Book = props => {
   const navRef = useRef(null);
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
 
+  const { getBookBySlug, match }  = props;
+
   useEffect(() => {
-    const getBook = async (slug) => await props.getBookBySlug(slug);
-    getBook(props.match.params.book_code);
-  }, [props]);
+    getBookBySlug(match.params.book_code);
+  }, [getBookBySlug, match.params.book_code]);
 
   const addToCart = async bookId => {
     await props.storeCart({ book_id: bookId });
-    props.history.push('/cart');
+    window.location.href = '/cart';
   }
 
   window.addEventListener('scroll', () => {
