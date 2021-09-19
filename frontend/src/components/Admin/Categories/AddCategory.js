@@ -7,6 +7,7 @@ import AdminUX from '../../../containers/AdminUX';
 import Header from '../Header';
 import AdminBox from '../../../containers/AdminBox';
 import CategoryForm from './CategoryForm';
+import history from '../../../config/history';
 
 class AddCategory extends Component {
 
@@ -63,18 +64,23 @@ class AddCategory extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <Head title="Recommerce Admin - Add Category" />
-        <AdminUX>
-          <Header title="Add Category" search={false} />
-          <AdminBox>
-            <CategoryForm data={ this.state } onSubmit={this.handleSubmit} 
-            onChange={this.handleChange} />
-          </AdminBox>
-        </AdminUX>
-      </Fragment>
-    );
+    if(!this.props.auth.user || this.props.auth.user.type !== 'admin') {
+      history.push('/');
+      return <></>;
+    } else {
+      return (
+        <Fragment>
+          <Head title="Recommerce Admin - Add Category" />
+          <AdminUX>
+            <Header title="Add Category" search={false} />
+            <AdminBox>
+              <CategoryForm data={ this.state } onSubmit={this.handleSubmit} 
+              onChange={this.handleChange} />
+            </AdminBox>
+          </AdminUX>
+        </Fragment>
+      );
+    }
   }
 }
 

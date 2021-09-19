@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getBooks, deleteBook } from '../../../actions/bookActions';
 import BookContainer from '../../../containers/BookContainer';
 import BookTable from './BookTable';
+import history from '../../../config/history';
 
 class Books extends Component {
 
@@ -27,23 +28,29 @@ class Books extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <BookContainer title="Recommerce Admin - All Books" headerTitle="All Books" table={true} 
-        add={true} 
-        addLink={'/admin/add-book'}
-        tablePadding={'small'}>
-          <BookTable books={this.state.books} deleteBookProcess={this.deleteBookProcess} />
-        </BookContainer>
-      </Fragment>
-    );
+    if(!this.props.user || this.props.user.type !== 'admin') {
+      history.push('/');
+      return <></>;
+    } else {
+      return (
+        <Fragment>
+          <BookContainer title="Recommerce Admin - All Books" headerTitle="All Books" table={true} 
+          add={true} 
+          addLink={'/admin/add-book'}
+          tablePadding={'small'}>
+            <BookTable books={this.state.books} deleteBookProcess={this.deleteBookProcess} />
+          </BookContainer>
+        </Fragment>
+      );
+    }
   }
 
 }
 
 const mapStateToProps = state => {
   return {
-    books: Object.values(state.books).sort().reverse()
+    books: Object.values(state.books).sort().reverse(),
+    user: state.auth.user
   }
 };
 

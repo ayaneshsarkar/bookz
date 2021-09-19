@@ -5,6 +5,7 @@ import AdminUX from '../../containers/AdminUX';
 import Header from './Header';
 import Book from './Book';
 import Head from '../../containers/Helmet';
+import history from '../../config/history';
 
 class Admin extends Component {
 
@@ -19,29 +20,36 @@ class Admin extends Component {
   }
 
   render() {
-    return (
-      <>
-        <Head title="Recommerce Admin" />
-        <AdminUX>
-          <Header title="Dashboard" search={true} headClass=" admin" />
-          <section id="books" className="books">
-            <h1 className="books__title">Your Books</h1>
-            <div className="books__content admin">
-              {
-                this.state.books.length ? 
-                this.state.books.map(book => <Book key={book.id} book={book} />)
-                : ''
-              }
-            </div>
-          </section>
-        </AdminUX>
-      </>
-    );
+    if(!this.props.user) {
+      history.push('/');
+      return <></>;
+    } else {
+      return (
+        <>
+          <Head title="Recommerce Admin" />
+          <AdminUX>
+            <Header title="Dashboard" search={true} headClass=" admin" />
+            <section id="books" className="books">
+              <h1 className="books__title">Your Books</h1>
+              <div className="books__content admin">
+                {
+                  this.state.books.length ? 
+                  this.state.books.map(book => <Book key={book.id} book={book} 
+                    user={this.props.user} />)
+                  : ''
+                }
+              </div>
+            </section>
+          </AdminUX>
+        </>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => {
   return {
+    user: state.auth.user,
     books: Object.values(state.orderBooks).sort().reverse()
   }
 }

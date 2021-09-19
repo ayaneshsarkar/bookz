@@ -6,6 +6,7 @@ import { getTypes, getBook, getFullBook, updateBook } from '../../../actions/boo
 import FormValidator from '../../../helpers/FormValidator';
 import BookContainer from '../../../containers/BookContainer';
 import BookForm from './BookForm';
+import history from '../../../config/history';
 
 class EditBook extends Component {
   
@@ -144,32 +145,38 @@ class EditBook extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <BookContainer 
-          title="Recommerce Admin - Edit Book" 
-          headerTitle="Edit Book"
-          path={this.props.match.path}
-        >
-          <BookForm data={this.state} 
-            handleChange={this.handleChange}
-            handleFileChange={this.handleFileChange}
-            handleBookFileChange={this.handleBookFileChange}
-            handleSubmit={this.handleSubmit}
-            buttonText="Update Book"
-          />
-        </BookContainer>
-      </Fragment>
-    );
+    if(!this.props.user || this.props.user.type !== 'admin') {
+      history.push('/');
+      return <></>;
+      
+    } else {
+      return (
+        <Fragment>
+          <BookContainer 
+            title="Recommerce Admin - Edit Book" 
+            headerTitle="Edit Book"
+            path={this.props.match.path}
+          >
+            <BookForm data={this.state} 
+              handleChange={this.handleChange}
+              handleFileChange={this.handleFileChange}
+              handleBookFileChange={this.handleBookFileChange}
+              handleSubmit={this.handleSubmit}
+              buttonText="Update Book"
+            />
+          </BookContainer>
+        </Fragment>
+      );
+    }
   }
-
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
     book: state.books[ownProps.match.params.id] || [],
     categories: Object.values(state.categories),
-    types: Object.values(state.types)
+    types: Object.values(state.types),
+    user: state.auth.user
   }
 }
 

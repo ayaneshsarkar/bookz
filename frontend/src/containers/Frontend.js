@@ -7,6 +7,7 @@ import SingleBook from '../components/Frontend/Books/SingleBook';
 import Cart from '../components/Frontend/Cart';
 import '../assets/sass/frontend/app.scss';
 import AllCategoryBooks from '../components/Frontend/Books/AllCategoryBooks';
+// import Error404 from '../components/Frontend/Books/404'; 
 
 class Frontend extends Component {
 
@@ -19,6 +20,8 @@ class Frontend extends Component {
         <Route path="/category/:id/:name" component={AllCategoryBooks} />
         <Route exact path="/book/:slug/:book_code" component={SingleBook} />
         <Route exact path="/cart" component={Cart} />
+        {/* <Route component={Error404} /> */}
+        {/* <Redirect to="/404" /> */}
       </Fragment>
     );
   }

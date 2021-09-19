@@ -5,6 +5,7 @@ import { getTypes, createBook } from '../../../actions/bookActions';
 import FormValidator from '../../../helpers/FormValidator';
 import BookContainer from '../../../containers/BookContainer';
 import BookForm from './BookForm';
+import history from '../../../config/history';
 
 class AddBook extends Component {
 
@@ -143,16 +144,21 @@ class AddBook extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <BookContainer title="Recommerce Admin - Add Book" headerTitle="Add Book">
-          <BookForm data={this.state} handleChange={this.handleChange}
-          handleFileChange={this.handleFileChange}
-          handleBookFileChange={this.handleBookFileChange}
-          handleSubmit={this.handleSubmit} />
-        </BookContainer>
-      </Fragment>
-    );
+    if(!this.props.user || this.props.user.type !== 'admin') {
+      history.push('/');
+      return <></>;
+    } else {
+      return (
+        <Fragment>
+          <BookContainer title="Recommerce Admin - Add Book" headerTitle="Add Book">
+            <BookForm data={this.state} handleChange={this.handleChange}
+            handleFileChange={this.handleFileChange}
+            handleBookFileChange={this.handleBookFileChange}
+            handleSubmit={this.handleSubmit} />
+          </BookContainer>
+        </Fragment>
+      );
+    }
   }
 
 }
@@ -160,7 +166,8 @@ class AddBook extends Component {
 const mapStateToProps = state => {
   return {
     categories: Object.values(state.categories),
-    types: Object.values(state.types)
+    types: Object.values(state.types),
+    user: state.auth.user
   }
 }
 

@@ -6,6 +6,7 @@ import AdminUX from '../../../containers/AdminUX';
 import Header from '../Header';
 import AdminBox from '../../../containers/AdminBox';
 import CategoryTable from './CategoryTable';
+import history from '../../../config/history';
 
 class AllCategories extends Component {
 
@@ -35,26 +36,31 @@ class AllCategories extends Component {
   }
 
   render() {
-    return (
-      <Fragment>
-        <Head title="Recommerce Admin - All Categories" />
-        <AdminUX>
-          <Header title="All Categories" search={false} add={true}
-          addLink={'/admin/add-category'} />
-          <AdminBox table={true}>
-            { this.state.isLoaded && 
-              <CategoryTable categories={this.state.categories} 
-                deleteCategoryProcess={this.deleteCategoryProcess} /> 
-            }
-          </AdminBox>
-        </AdminUX>
-      </Fragment>
-    );
+    if(!this.props.user || this.props.user.type !== 'admin') {
+      history.push('/');
+      return <></>;
+    } else {
+      return (
+        <Fragment>
+          <Head title="Recommerce Admin - All Categories" />
+          <AdminUX>
+            <Header title="All Categories" search={false} add={true}
+            addLink={'/admin/add-category'} />
+            <AdminBox table={true}>
+              { this.state.isLoaded && 
+                <CategoryTable categories={this.state.categories} 
+                  deleteCategoryProcess={this.deleteCategoryProcess} /> 
+              }
+            </AdminBox>
+          </AdminUX>
+        </Fragment>
+      );
+    }
   }
 }
 
 const mapStateToProps = state => {
-  return { categories: Object.values(state.categories) }
+  return { categories: Object.values(state.categories), user: state.auth.user }
 };
 
 export default connect(mapStateToProps, { getCategories, deleteCategory })(AllCategories);
