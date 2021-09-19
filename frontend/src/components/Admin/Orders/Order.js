@@ -35,7 +35,7 @@ const Order = ({ books, order, getOrder, match, user }) => {
     return (
       <>
         <OrderContainer 
-          title={`Order${order ? ' #' + order.invoice_id.toUpperCase() : ''}`} 
+          title={`Bookz — Order${order ? ' #' + order.invoice_id.toUpperCase() : ''}`} 
           headerTitle={`Order${order ? ' #' + order.invoice_id.toUpperCase() : ''}`}
           tablePadding="small smallMargin orderItemsTable"
           userTable={userTable()}

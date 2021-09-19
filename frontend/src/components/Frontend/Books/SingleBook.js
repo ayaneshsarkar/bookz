@@ -40,7 +40,7 @@ const Book = props => {
 
   return (
     <>
-      <Head title={ props.book.title || 'Recommerce API Design - Single Book' } />
+      <Head title={ props.book.title || 'Bookz — Single Book' } />
 
       <div className="w-100 navBox" ref={navRef}>
         <div className="wrapper">

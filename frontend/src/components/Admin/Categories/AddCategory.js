@@ -70,7 +70,7 @@ class AddCategory extends Component {
     } else {
       return (
         <Fragment>
-          <Head title="Recommerce Admin - Add Category" />
+          <Head title="Bookz — Add Category" />
           <AdminUX>
             <Header title="Add Category" search={false} />
             <AdminBox>

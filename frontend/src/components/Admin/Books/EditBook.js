@@ -153,7 +153,7 @@ class EditBook extends Component {
       return (
         <Fragment>
           <BookContainer 
-            title="Recommerce Admin - Edit Book" 
+            title="Bookz Admin — Edit Book" 
             headerTitle="Edit Book"
             path={this.props.match.path}
           >

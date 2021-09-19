@@ -42,7 +42,7 @@ class AllCategories extends Component {
     } else {
       return (
         <Fragment>
-          <Head title="Recommerce Admin - All Categories" />
+          <Head title="Bookz — All Categories" />
           <AdminUX>
             <Header title="All Categories" search={false} add={true}
             addLink={'/admin/add-category'} />

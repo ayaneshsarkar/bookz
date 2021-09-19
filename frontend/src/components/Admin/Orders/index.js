@@ -14,7 +14,7 @@ const Orders = ({ orders, user, getOrders }) => {
     
   } else {
     return (
-      <OrderContainer title="All Orders" headerTitle="All Orders" tablePadding="allOrdersTable">
+      <OrderContainer title="Bookz — All Orders" headerTitle="All Orders" tablePadding="allOrdersTable">
         <OrderTable orders={orders} user={user} />
       </OrderContainer>
     );

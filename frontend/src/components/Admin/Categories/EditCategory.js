@@ -72,7 +72,7 @@ class EditCategory extends Component {
     } else {
       return (
         <Fragment>
-          <Head title="Recommerce Admin - Edit Category" />
+          <Head title="Bookz — Edit Category" />
           <AdminUX path={this.props.match.path}>
             <Header title="Edit Category" search={false} add={true} 
             addLink={'/admin/add-category'} />

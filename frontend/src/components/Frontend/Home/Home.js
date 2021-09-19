@@ -15,7 +15,6 @@ import Premium from './Premium';
 import Newsletter from './Newsletter';
 import Footer from '../Footer';
 import Head from '../../../containers/Helmet';
-import Sprite from '../../../assets/svg/feather-sprite.svg';
 
 const Home = ({ 
   loggedIn, user, getPopularBooks, getFeaturedBooks, getPremiumBooks, getCategories,
@@ -46,7 +45,7 @@ const Home = ({
 
   return (
     <>
-      <Head title="Recommerce API Design" />
+      <Head title="Bookz — Home" />
       
       <div className="w-100 navBox" ref={navRef}>
         <div className="wrapper">

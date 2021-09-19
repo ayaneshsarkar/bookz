@@ -22,7 +22,7 @@ const Books = props => {
 
   return (
     <>
-      <Head title="Recommerce API Design - Books" />
+      <Head title="Bookz — Search" />
 
       <div className="w-100 navBox" ref={navRef}>
         <div className="wrapper">

@@ -21,7 +21,6 @@ class Frontend extends Component {
         <Route exact path="/book/:slug/:book_code" component={SingleBook} />
         <Route exact path="/cart" component={Cart} />
         {/* <Route component={Error404} /> */}
-        {/* <Redirect to="/404" /> */}
       </Fragment>
     );
   }

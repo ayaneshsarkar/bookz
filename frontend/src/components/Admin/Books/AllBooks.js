@@ -34,7 +34,7 @@ class Books extends Component {
     } else {
       return (
         <Fragment>
-          <BookContainer title="Recommerce Admin - All Books" headerTitle="All Books" table={true} 
+          <BookContainer title="Bookz Admin — All Books" headerTitle="All Books" table={true} 
           add={true} 
           addLink={'/admin/add-book'}
           tablePadding={'small'}>

@@ -150,7 +150,7 @@ class AddBook extends Component {
     } else {
       return (
         <Fragment>
-          <BookContainer title="Recommerce Admin - Add Book" headerTitle="Add Book">
+          <BookContainer title="Bookz Admin — Add Book" headerTitle="Add Book">
             <BookForm data={this.state} handleChange={this.handleChange}
             handleFileChange={this.handleFileChange}
             handleBookFileChange={this.handleBookFileChange}

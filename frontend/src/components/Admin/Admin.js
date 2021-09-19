@@ -26,7 +26,7 @@ class Admin extends Component {
     } else {
       return (
         <>
-          <Head title="Recommerce Admin" />
+          <Head title="Bookz — Admin" />
           <AdminUX>
             <Header title="Dashboard" search={true} headClass=" admin" />
             <section id="books" className="books">

@@ -28,7 +28,7 @@ const Cart = props => {
   } else {
     return (
       <>
-        <Head title='Recommerce API Design - Cart' />
+        <Head title='Bookz — Cart' />
   
         <div className="w-100 navBox" ref={navRef}>
           <div className="wrapper">
