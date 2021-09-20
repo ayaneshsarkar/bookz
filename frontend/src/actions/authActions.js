@@ -38,6 +38,8 @@ export const createUser = user => async dispatch => {
   if(status) {
     dispatch({ type: CREATE_USER, payload: status });
   }
+
+  return res.data;
 }
 
 export const updateUser = (user, id) => async dispatch => {

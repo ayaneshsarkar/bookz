@@ -90,11 +90,14 @@ class SignUp extends Component {
       this.setState({ disabled: true });
       const formData = new FormData(formRef.current);
 
-      try {
-        await this.props.createUser(formData);
+      const res = await this.props.createUser(formData);
+
+      if(res.status) {
         this.props.setSignup(false);
-      } catch(err) {
-        console.log(err);
+      } else {
+        this.setState({ disabled: false });
+        this.setState({ errors: { email: res.errors } });
+        console.log(res.errors);
       }
     }
   }
