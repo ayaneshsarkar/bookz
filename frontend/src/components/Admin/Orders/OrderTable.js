@@ -8,19 +8,20 @@ const OrderTable = ({ orders, user }) => {
       return (
         <tr key={i}>
           <td className="d-none table-sm">
-            <div className="limited m-1 info">
-              Buyer: <span>{ order.first_name + ' ' + order.last_name }</span>
-            </div>
-            <div className="limited m-1 info">
-              Order No. <span>{ order.invoice_id.toUpperCase() }</span>
-            </div>
-
+            <Link to={`/admin/order/${order.id}`}>
+              <div className="limited m-1 info">
+                Buyer: <span>{ order.first_name + ' ' + order.last_name }</span>
+              </div>
+              <div className="limited m-1 info">
+                Order No. <span>{ order.invoice_id.toUpperCase() }</span>
+              </div>
+            </Link>
           </td>
           <td className="lgmd imp"><Link to={`/admin/order/${order.id}`}>{ i + 1 }</Link></td>
           <td className="lgmd">{ order.first_name + ' ' + order.last_name }</td>
           <td className="lgmd">{ order.invoice_id.toUpperCase() }</td>
 
-          {user.type && <td>
+          {user.type && <td className="d-none">
             <svg>
               <use xlinkHref={`${Sprite}#trash-2`}></use>
             </svg>
@@ -38,7 +39,7 @@ const OrderTable = ({ orders, user }) => {
           <th className="lgmd">#</th>
           <th className="lgmd">User</th>
           <th className="lgmd">Order No.</th>
-          {user.type && <th></th>}
+          {user.type && <th className="d-none"></th>}
         </tr>
       </thead>
 

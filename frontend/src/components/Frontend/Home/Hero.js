@@ -12,7 +12,7 @@ const Hero = () => {
             Start picking from the range of books from our library. <br />
             <span className="extra">30 day money-back guaranteed.</span>
           </p>
-          <a href="/">View All</a>
+          <Link to="/books">View All</Link>
         </div>
 
         <div className="hero__image">

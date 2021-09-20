@@ -126,6 +126,10 @@
     @media only screen and (max-width: $mdBreak) {
       width: 100% !important;
     }
+
+    button {
+      cursor: pointer;
+    }
   }
 
   input {

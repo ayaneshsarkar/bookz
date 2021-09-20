@@ -1,8 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useRef } from 'react';
 import FooterImg from '../../assets/img/footer.png';
 import Sprite from '../../assets/svg/feather-sprite.svg';
+import MailDialog from './Auth/MailDialog';
 
 const Footer = () => {
+  const [open, setClose] = useState(false);
+  const inputRef = useRef(null);
+
+  const isEmail = (val) => {
+    const regEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(!regEx.test(val)) return false;
+    
+    return true;
+  }
+
+  const handleSubmit = () => {
+    if(inputRef.current && inputRef.current.value && isEmail(inputRef.current.value)) {
+      setClose(true);
+    }
+  }
+
   const date = new Date().getFullYear();
 
   return (
@@ -18,8 +36,8 @@ const Footer = () => {
           <h1 className="primaryHeading">Contact Us</h1>
           <div className="mailbox">
             <div className="mailbox__input">
-              <input type="text" placeholder="jdoe@jdoe.com" />
-              <button type="submit">Send</button>
+              <input type="email" placeholder="jdoe@jdoe.com" ref={inputRef} />
+              <button onClick={handleSubmit} type="submit">Send</button>
             </div>
           </div>
           <p className="footer__contact--address">
@@ -76,6 +94,8 @@ const Footer = () => {
           Copyright &copy; <span>{date}</span> Ayanesh Sarkar. All Rights Reserved.
         </p>
       </footer>
+
+      <MailDialog open={open} setClose={setClose} conf={"Thanks, we've received your request."} />
     </Fragment>
   );
 }
