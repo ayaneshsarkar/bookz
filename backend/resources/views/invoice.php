@@ -253,13 +253,13 @@
       <div style="position: absolute; top: 0;" class="header mb-5">
         <span style="white-space: pre-line !important;">
           <strong>Mr./Mrs./Company</strong><br>
-          Ayanesh Sarkar<br>
-          South Sreepur Boral<br>
-          Kolkata - 700154<br>
-          India<br>
+          <?= $user->first_name . ' ' . $user->last_name ?><br>
+          <?= $user->address ?><br>
+          <?= $user->state ?><br>
+          <?= $user->country ?><br>
           <strong>E-Mail: </strong> 
-            <a href="mailto:ayaneshsarkar101@gmail.com" target="_blank">
-              ayaneshsarkar101@gmail.com
+            <a href="mailto:<?= $user->email ?>" target="_blank">
+              <?= $user->email ?>
             </a>
           <br>
         </span>

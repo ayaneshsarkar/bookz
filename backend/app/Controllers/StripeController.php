@@ -132,6 +132,7 @@
             // Store Invoice
 
             $invoiceData = [
+                'user' => Application::$APP->user,
                 'orderId' => $orderId,
                 'invoiceNo' => $invoiceId,
                 'transactionId' => $data->transactionId ?? null,
