@@ -18,6 +18,7 @@ const Footer = () => {
   const handleSubmit = () => {
     if(inputRef.current && inputRef.current.value && isEmail(inputRef.current.value)) {
       setClose(true);
+      inputRef.current.value = '';
     }
   }
 
