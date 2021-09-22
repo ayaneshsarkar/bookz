@@ -30,7 +30,7 @@ const BookContent = ({ book, addToCart, setQty }) => {
 
       {book.price &&
         <p className="bookcontent__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aliquid error quod doloremque consequatur dolorem!
+          {book.description || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aliquid error quod doloremque consequatur dolorem!"}
         </p>
       }
 

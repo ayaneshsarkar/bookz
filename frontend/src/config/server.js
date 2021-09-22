@@ -1,1 +1,1 @@
-export const host  = 'http://bookzapi.ayaneshdev.xyz';
+export const host  = 'https://bookzapi.ayaneshdev.xyz';
